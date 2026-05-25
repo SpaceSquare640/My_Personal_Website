@@ -8,7 +8,8 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 - Smooth fade-up entrance animations
 - Three-language support: **English** (default), **Traditional Chinese**, **Simplified Chinese**
 - Language preference persisted via `localStorage`
-- Password-protected Résumé page
+- 2FA-protected Résumé page (rotating TOTP codes via authenticator app)
+- Gradient display headings with soft glow (purple → teal accent)
 - Modular structure: shared CSS, i18n system, and component builder
 - Ready for GitHub Pages deployment (no build step required)
 
@@ -26,7 +27,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
-| `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! |
+| `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! (with QR invite + friend code) |
 
 ## File Structure
 
