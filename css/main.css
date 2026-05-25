@@ -33,9 +33,24 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-b);
+  font-weight: 400;
   line-height: 1.7;
   min-height: 100vh;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Gradient accent for display text — purple → teal */
+.accent-gradient,
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 28px rgba(124,110,255,0.35));
 }
 
 /* noise grain */
@@ -73,8 +88,8 @@ body::after {
 
 .nav-logo {
   font-family: var(--font-h);
-  font-weight: 800; font-size: 1rem;
-  letter-spacing: 0.02em;
+  font-weight: 800; font-size: 1.05rem;
+  letter-spacing: -0.01em;
   color: var(--text); text-decoration: none;
   flex-shrink: 0;
 }
@@ -143,9 +158,11 @@ body::after {
 }
 
 .section-title {
-  font-family: var(--font-h); font-weight: 700;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  letter-spacing: -0.01em; margin-bottom: 2rem;
+  font-family: var(--font-h); font-weight: 800;
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 2rem;
 }
 
 .section-desc {
@@ -180,10 +197,11 @@ hr.divider {
 
 .card-title {
   font-family: var(--font-h); font-weight: 700;
-  font-size: 1rem; color: var(--text);
+  font-size: 1.05rem; color: var(--text);
+  letter-spacing: -0.01em;
 }
 
-.card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
 .card-arrow { margin-top: auto; padding-top: 0.5rem; font-size: 0.78rem; color: var(--accent); }
 

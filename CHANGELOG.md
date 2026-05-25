@@ -4,6 +4,19 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.9] — 2026-05-25
+
+### Changed
+- **Typography refresh — more display impact**
+  - `css/main.css` — added antialiased rendering, optimizeLegibility, font-weight 400 baseline
+  - `css/main.css` — new `.accent-gradient` utility (purple → teal text gradient with soft glow); auto-applied to `.hero h1 .accent`
+  - `css/main.css` — `.section-title` bumped to weight 800, larger clamp, tighter -0.025em tracking, line-height 1.1
+  - `css/main.css` — `.nav-logo` slightly larger with tighter tracking
+  - `css/main.css` — `.card-title` larger with tighter tracking
+  - `index.html` — hero `h1` tightened (-0.04em tracking, line-height 0.98, larger clamp); `.hero-greeting` switched to DM Sans italic 300 for variety; `.hero-sub` slightly larger; `.nav-card-title` matched to the new card hierarchy
+
+---
+
 ## [1.0.8] — 2026-05-25
 
 ### Changed
