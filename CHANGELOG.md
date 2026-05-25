@@ -4,6 +4,24 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.10] — 2026-05-26
+
+### Added
+- **Full responsive support — mobile · tablet · desktop**
+- `js/components.js` — new hamburger nav (`nav-toggle` button + `nav-menu` wrapper); `toggleMobileNav()` opens/closes the panel; tap-outside and resize-to-desktop auto-close handlers
+- `css/main.css` — 3-tier breakpoints (≤640 mobile · 641–1024 tablet · >1024 desktop):
+  - Hamburger reveals only ≤768; animated bars → X when open; nav-menu turns into a glassy dropdown panel anchored under the bar
+  - Tablet shrinks nav padding, nav-link font-size, and section padding
+  - Mobile (≤640) tightens `.section` padding, scales `.section-title` to `clamp(1.4rem, 6.5vw, 1.9rem)` with `word-break`, smaller buttons + modals
+  - Catch-all `body .sub-hero / .comm-hero / .post-page / .posts-body / .comm-body / .post-body` padding shrink so every page wrapper respects the narrow viewport without per-page edits
+- `index.html` — mobile-specific hero overrides: `h1` clamp dropped to `2.1rem–3.6rem` with `word-break` to keep "SpaceSquare" on one line in the viewport; tighter padding, smaller greeting/sub, full-width CTA buttons; nav-card paddings shrunk on tablet + mobile
+
+### Fixed
+- Mobile homepage no longer overflows horizontally — hero gradient text now fits within the viewport, section title `"What would you like to explore?"` no longer clips the `?`, and the nav no longer cuts off menu items
+- iOS notch + status bar safer with smaller hero top padding and reduced min-height on mobile
+
+---
+
 ## [1.0.9] — 2026-05-25
 
 ### Changed

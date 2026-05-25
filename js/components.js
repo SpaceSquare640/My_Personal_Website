@@ -35,12 +35,38 @@ function buildNav(activeKey) {
 
   nav.innerHTML = `
     <a class="nav-logo" href="${_R}/index.html"><span class="accent">Space</span>Square</a>
-    <ul class="nav-links">${links}</ul>
-    <div class="nav-right">
-      <div class="lang-switcher">${langBtns}</div>
+    <button class="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu">
+      <ul class="nav-links">${links}</ul>
+      <div class="nav-right">
+        <div class="lang-switcher">${langBtns}</div>
+      </div>
     </div>
   `;
 }
+
+function toggleMobileNav() {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
+  const isOpen = nav.classList.toggle('mobile-open');
+  nav.querySelector('.nav-toggle')?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+// Auto-close mobile nav when tapping outside or switching to desktop width
+document.addEventListener('click', (e) => {
+  const nav = document.getElementById('main-nav');
+  if (!nav || !nav.classList.contains('mobile-open')) return;
+  if (!nav.contains(e.target)) {
+    nav.classList.remove('mobile-open');
+    nav.querySelector('.nav-toggle')?.setAttribute('aria-expanded', 'false');
+  }
+});
+window.addEventListener('resize', () => {
+  const nav = document.getElementById('main-nav');
+  if (nav && window.innerWidth > 768) nav.classList.remove('mobile-open');
+});
 
 function buildFooter() {
   const ft = document.getElementById('main-footer');
