@@ -72,10 +72,10 @@ Each product should have its own sub-page (e.g. `pages/product-item-name.html`).
 In `pages/community-blog.html` and `pages/community-game.html`, follow the comment instructions to add post list items.
 
 ### 5. Deploy to GitHub Pages
-1. Push this folder to a GitHub repository
-2. Go to **Settings → Pages**
-3. Set source to **Deploy from a branch → main → / (root)**
-4. Your site will be live at `https://yourusername.github.io/repo-name/`
+Repository: [SpaceSquare640/SpaceSquare640.github.io](https://github.com/SpaceSquare640/SpaceSquare640.github.io)
+**Live URL: https://spacesquare640.github.io/**
+
+Deployed from `main` branch root. GitHub Pages is enabled automatically for `<username>.github.io` repos.
 
 ## Tech Stack
 

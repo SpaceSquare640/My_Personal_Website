@@ -4,6 +4,16 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.5] — 2026-05-25
+
+### Deployment
+- Pushed to GitHub: `SpaceSquare640/SpaceSquare640.github.io`
+- Live at **https://spacesquare640.github.io/**
+- Added `.nojekyll` to disable Jekyll processing
+- Added `img/blog/` directory for blog post photos
+
+---
+
 ## [1.0.4] — 2026-05-25
 
 ### Added
