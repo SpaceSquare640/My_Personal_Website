@@ -45,7 +45,16 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 3rem;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
     }
+    .product-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .product-card:hover .product-img img { transform: scale(1.06); }
     .product-info { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
     .product-name {
       font-family: var(--font-h); font-weight: 700; font-size: 0.95rem;
@@ -100,7 +109,9 @@
         <p class="shop-section-label" id="own-label">My Own Products</p>
         <div class="product-grid">
           <a class="product-card" href="product-bloxfruit-account.html">
-            <div class="product-img">🎮</div>
+            <div class="product-img">
+              <img src="../img/shop/blox-fruits-account-1.jpg" alt="Blox Fruits Account preview" loading="lazy">
+            </div>
             <div class="product-info">
               <div class="product-name" id="p1-name">Blox Fruits Account</div>
               <div class="product-desc" id="p1-desc">Lv.2618 · Angel V4 · 6.7M Bounty · 10 Perm Fruits · Dragon, Dough, T-Rex · CDK + TTK</div>

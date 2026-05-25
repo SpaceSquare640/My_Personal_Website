@@ -7,6 +7,8 @@ All notable changes to the SpaceSquare website are recorded here.
 ## [1.0.13] — 2026-05-26
 
 ### Added
+- **Shop card thumbnail** — Blox Fruits Account card on `pages/shop.html` now uses `blox-fruits-account-1.jpg` instead of the 🎮 placeholder
+  - `.product-img` updated to host an `<img>` (object-fit: cover, hover scale 1.06)
 - **Blox Fruits Account — 4-photo gallery** with hover zoom + click-to-enlarge lightbox
   - `img/shop/` — new directory for shop product images
   - `img/shop/blox-fruits-account-1.jpg` — fighting styles / fruits / races progress (161 KB)
