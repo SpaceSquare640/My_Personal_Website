@@ -81,4 +81,4 @@ Deployed from `main` branch root via GitHub Pages.
 
 - Pure HTML / CSS / Vanilla JavaScript
 - No build tools, no dependencies, no npm
-- Google Fonts: [Syne](https://fonts.google.com/specimen/Syne) + [DM Sans](https://fonts.google.com/specimen/DM+Sans)
+- Google Fonts: [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) (display) + [DM Sans](https://fonts.google.com/specimen/DM+Sans) (body)

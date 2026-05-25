@@ -4,6 +4,23 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.12] — 2026-05-26
+
+### Changed
+- **Display font swap — Syne → Big Shoulders Display** (taller, more vertical proportions; fixes "字體太過扁")
+  - `css/main.css` — Google Fonts import updated; `--font-h` now resolves to `'Big Shoulders Display', 'Syne', sans-serif`
+  - Bumped display weights across the board (700 → 800, 800 → 900) and tightened line-heights to take advantage of the taller x-height
+  - `.nav-logo` — weight 900, +0.25rem size, `text-transform: uppercase`, `line-height: 1`
+  - `.section-title` — weight 900, clamp raised to `2rem–2.85rem`, `line-height: 1.0`
+  - `.card-title` / `.nav-card-title` — weight 800, +0.2rem size
+  - `.modal-box h3` — weight 800, +0.25rem size
+  - `index.html` — hero `h1` weight 900, clamp raised to `4rem–9rem`, `line-height: 0.88`, `text-transform: uppercase`; mobile clamp lifted to `2.8rem–4.6rem` with `0.92` leading
+  - `pages/post-pikmin-bloom.html` / `post-city-contrast.html` / `product-bloxfruit-account.html` — `.post-title` and `.product-title` / `.big-price` bumped to weight 900 with tighter leading and -0.01em tracking
+  - `pages/community.html` — `.platform-info h2` and `.sub-page-title` bumped (weight 800, larger)
+  - `pages/community-blog.html` — `.post-title` bumped (weight 800, larger)
+
+---
+
 ## [1.0.11] — 2026-05-26
 
 ### Added

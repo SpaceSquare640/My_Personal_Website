@@ -20,11 +20,12 @@
 
     .hero h1 {
       font-family: var(--font-h);
-      font-weight: 800;
-      font-size: clamp(3.25rem, 9.5vw, 7rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
+      font-weight: 900;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: -0.025em;
       margin: 1.5rem 0 0;
+      text-transform: uppercase;
     }
     /* .hero h1 .accent gets the purple→teal gradient + glow from main.css */
 
@@ -100,9 +101,10 @@
 
     .nav-card-icon { font-size: 1.6rem; line-height: 1; }
     .nav-card-title {
-      font-family: var(--font-h); font-weight: 700;
-      font-size: 1.05rem; color: var(--text);
-      letter-spacing: -0.01em;
+      font-family: var(--font-h); font-weight: 800;
+      font-size: 1.25rem; color: var(--text);
+      letter-spacing: -0.005em;
+      line-height: 1.1;
     }
     .nav-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
     .nav-card-arrow {
@@ -121,17 +123,16 @@
 
     /* Responsive — Mobile · Tablet */
     @media (max-width: 1024px) {
-      .hero h1 { font-size: clamp(2.6rem, 8.5vw, 5rem); }
+      .hero h1 { font-size: clamp(3.4rem, 11vw, 6.5rem); }
       .nav-card { padding: 1.5rem; }
     }
     @media (max-width: 640px) {
       .hero { padding: 2.5rem 1.25rem 4rem; min-height: calc(100vh - var(--nav-h) - 2rem); }
       .hero h1 {
-        font-size: clamp(2.1rem, 12vw, 3.6rem);
-        letter-spacing: -0.03em;
-        line-height: 1.0;
+        font-size: clamp(2.8rem, 14vw, 4.6rem);
+        letter-spacing: -0.02em;
+        line-height: 0.92;
         overflow-wrap: break-word;
-        word-break: break-word;
       }
       .hero-greeting { font-size: 1rem; }
       .hero-sub { font-size: 0.95rem; max-width: 100%; margin-top: 1.25rem; }

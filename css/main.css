@@ -1,6 +1,6 @@
 /* ── SpaceSquare Design System ── */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,7 +24,7 @@
   --ambient-glow: rgba(124,110,255,0.07);
   --nav-bg:    rgba(8,8,16,0.75);
   --menu-bg:   rgba(12,12,20,0.96);
-  --font-h:    'Syne', sans-serif;
+  --font-h:    'Big Shoulders Display', 'Syne', sans-serif;
   --font-b:    'DM Sans', sans-serif;
   --nav-h:     62px;
   --radius:    10px;
@@ -146,10 +146,12 @@ body::after {
 
 .nav-logo {
   font-family: var(--font-h);
-  font-weight: 800; font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  font-weight: 900; font-size: 1.3rem;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
   color: var(--text); text-decoration: none;
   flex-shrink: 0;
+  line-height: 1;
 }
 .nav-logo .accent { color: var(--accent); }
 
@@ -263,10 +265,10 @@ body::after {
 }
 
 .section-title {
-  font-family: var(--font-h); font-weight: 800;
-  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  font-family: var(--font-h); font-weight: 900;
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  letter-spacing: -0.015em;
+  line-height: 1.0;
   margin-bottom: 2rem;
 }
 
@@ -301,9 +303,10 @@ hr.divider {
 .card-icon { font-size: 1.3rem; line-height: 1; }
 
 .card-title {
-  font-family: var(--font-h); font-weight: 700;
-  font-size: 1.05rem; color: var(--text);
-  letter-spacing: -0.01em;
+  font-family: var(--font-h); font-weight: 800;
+  font-size: 1.25rem; color: var(--text);
+  letter-spacing: -0.005em;
+  line-height: 1.1;
 }
 
 .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
@@ -407,7 +410,7 @@ footer {
   transform: translateY(10px); transition: transform 0.2s;
 }
 .modal-overlay.open .modal-box { transform: translateY(0); }
-.modal-box h3 { font-family: var(--font-h); font-weight: 700; font-size: 1.1rem; }
+.modal-box h3 { font-family: var(--font-h); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.005em; }
 .modal-box p { color: var(--muted); font-size: 0.85rem; }
 .modal-input {
   background: var(--surface); border: 1px solid var(--border2);
