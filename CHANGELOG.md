@@ -4,6 +4,20 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.8] — 2026-05-25
+
+### Changed
+- **Merged Game section into Blog** — the Community area now has a single unified Blog sub-page that holds gaming, photography, and personal posts
+- `pages/community-blog.html` — Pikmin Bloom post added at the top of the list with a new purple `.post-tag.game` modifier; existing City in Contrast entry preserved; i18n updated (EN / 繁中 / 简中) and Blog description rephrased to mention gaming, photography, and personal posts
+- `pages/community.html` — Game sub-page card removed from "Community Sections"; Blog card now spans the full row; related i18n keys (`gameTitle`, `gameDesc`) removed
+- `pages/post-pikmin-bloom.html` — back-link changed from "← Game" → "← Blog" and now points to `community-blog.html`; trilingual i18n updated to match
+- `README.md` — pages table, file-structure block, and "add posts" instructions updated; `community-game.html` row removed
+
+### Removed
+- `pages/community-game.html` — redundant listing page (no unique content; the Pikmin Bloom post itself is preserved in `pages/post-pikmin-bloom.html`)
+
+---
+
 ## [1.0.7] — 2026-05-25
 
 ### Added

@@ -19,15 +19,14 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `index.html` | `/` | Homepage with hero and navigation cards |
 | `pages/about.html` | `/pages/about.html` | About this website |
 | `pages/community.html` | `/pages/community.html` | YouTube + Discord overview |
-| `pages/community-game.html` | `/pages/community-game.html` | Game sub-page |
-| `pages/community-blog.html` | `/pages/community-blog.html` | Blog sub-page |
+| `pages/community-blog.html` | `/pages/community-blog.html` | Blog sub-page (gaming, photography, personal posts) |
 | `pages/shop.html` | `/pages/shop.html` | Shop (own + promoted products) |
 | `pages/freelance.html` | `/pages/freelance.html` | Freelance services |
 | `pages/programs.html` | `/pages/programs.html` | GitHub programs |
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
-| `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Game post: Let's Play Pikmin Bloom! |
+| `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! |
 
 ## File Structure
 
@@ -42,8 +41,7 @@ spacesquare/
 └── pages/
     ├── about.html
     ├── community.html
-    ├── community-game.html
-    ├── community-blog.html
+    ├── community-blog.html  # Unified blog (gaming, photography, personal)
     ├── shop.html
     ├── freelance.html
     ├── programs.html
@@ -69,8 +67,8 @@ To change the secret: replace `TOTP_SECRET` in `js/components.js` with a new bas
 In `pages/shop.html`, follow the HTML comment instructions to add product cards.
 Each product should have its own sub-page (e.g. `pages/product-item-name.html`).
 
-### 4. Add blog/game posts
-In `pages/community-blog.html` and `pages/community-game.html`, follow the comment instructions to add post list items.
+### 4. Add blog posts
+In `pages/community-blog.html`, add a new `<a class="post-item">` entry inside `.post-list` and a matching `tagP*` / `titleP*` / `dateP*` group inside `PAGE_TEXT`. Each post should have its own sub-page (e.g. `pages/post-slug.html`). Gaming, photography, and personal posts all live here — use the `.post-tag.game` modifier for purple game tags or the default teal for everything else.
 
 ### 5. Deploy to GitHub Pages
 Repository: [SpaceSquare640/My_Personal_Website](https://github.com/SpaceSquare640/My_Personal_Website)

@@ -27,6 +27,10 @@
       background: rgba(79,209,197,0.1); color: var(--accent2);
       border: 1px solid rgba(79,209,197,0.2); margin-bottom: 0.4rem;
     }
+    .post-tag.game {
+      background: rgba(124,110,255,0.12); color: var(--accent);
+      border-color: rgba(124,110,255,0.2);
+    }
     .post-title { font-family: var(--font-h); font-weight: 700; font-size: 0.95rem; }
     .post-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; margin-top: 2px; }
     .empty-state {
@@ -49,12 +53,19 @@
 
     <div class="posts-body">
       <div class="post-list">
+        <a class="post-item" href="post-pikmin-bloom.html">
+          <div>
+            <div class="post-tag game" id="tag-p2">Game · Pikmin Bloom</div>
+            <div class="post-title" id="title-p2">Let's Play Pikmin Bloom!</div>
+          </div>
+          <div class="post-date" id="date-p2">2026-05-25</div>
+        </a>
         <a class="post-item" href="post-city-contrast.html">
           <div>
             <div class="post-tag" id="tag-p1">Photography</div>
             <div class="post-title" id="title-p1">城市縫隙 · City in Contrast</div>
           </div>
-          <div class="post-date">2025-11-08</div>
+          <div class="post-date" id="date-p1">2025-11-08</div>
         </a>
       </div>
     </div>
@@ -66,9 +77,9 @@
   <script src="../js/components.js"></script>
   <script>
     const PAGE_TEXT = {
-      en:        { title: 'Blog',   desc: 'Announcements, updates, and personal posts.',   tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast' },
-      'zh-hant': { title: '部落格', desc: '公告、更新資訊及個人文章。',                   tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast' },
-      'zh-hans': { title: '博客',   desc: '公告、更新信息及个人文章。',                   tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast' },
+      en:        { title: 'Blog',   desc: 'Announcements, gaming, photography, and personal posts.', tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: 'Game · Pikmin Bloom', titleP2: "Let's Play Pikmin Bloom!",       dateP2: '2026-05-25' },
+      'zh-hant': { title: '部落格', desc: '公告、遊戲、攝影及個人文章。',                              tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '遊戲 · Pikmin Bloom', titleP2: '一起來玩 Pikmin Bloom！',         dateP2: '2026年5月25日' },
+      'zh-hans': { title: '博客',   desc: '公告、游戏、摄影及个人文章。',                              tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '游戏 · Pikmin Bloom', titleP2: '一起来玩 Pikmin Bloom！',         dateP2: '2026年5月25日' },
     };
     function applyPageText() {
       const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
@@ -76,6 +87,10 @@
       document.getElementById('desc').textContent     = p.desc;
       document.getElementById('tag-p1').textContent   = p.tagP1;
       document.getElementById('title-p1').textContent = p.titleP1;
+      document.getElementById('date-p1').textContent  = p.dateP1;
+      document.getElementById('tag-p2').textContent   = p.tagP2;
+      document.getElementById('title-p2').textContent = p.titleP2;
+      document.getElementById('date-p2').textContent  = p.dateP2;
     }
     initPage('community');
     applyPageText();

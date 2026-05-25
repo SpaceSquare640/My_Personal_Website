@@ -74,11 +74,10 @@
 
     /* Sub-pages */
     .sub-pages {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      display: grid; grid-template-columns: 1fr; gap: 1px;
       background: var(--border); border: 1px solid var(--border);
       border-radius: var(--radius-lg); overflow: hidden;
     }
-    @media(max-width:500px) { .sub-pages { grid-template-columns: 1fr; } }
 
     .sub-page-card {
       background: var(--bg2); padding: 1.75rem 2rem;
@@ -169,16 +168,10 @@
       <div>
         <h2 class="section-title" id="sub-title" style="font-size:1.25rem; margin-bottom:1.25rem;">Community Sections</h2>
         <div class="sub-pages">
-          <a class="sub-page-card" href="community-game.html">
-            <div class="sub-page-icon">🎮</div>
-            <div class="sub-page-title" id="game-title">Game</div>
-            <div class="sub-page-desc" id="game-desc">Gaming content, recommendations and session posts.</div>
-            <div class="sub-page-arrow">View →</div>
-          </a>
           <a class="sub-page-card" href="community-blog.html">
             <div class="sub-page-icon">📝</div>
             <div class="sub-page-title" id="blog-title">Blog</div>
-            <div class="sub-page-desc" id="blog-desc">Announcements, updates and personal posts.</div>
+            <div class="sub-page-desc" id="blog-desc">Announcements, gaming, photography, and personal posts.</div>
             <div class="sub-page-arrow">Read →</div>
           </a>
         </div>
@@ -204,8 +197,7 @@
         dcBody: 'If you would like to play games with us, join our Discord server now! We play Roblox and many other games, such as Apex Legends, GTA 5, Minecraft, REPO, and more. Click the link below to join the server and play together!',
         btnDc: 'Join Discord Server',
         subTitle: 'Community Sections',
-        gameTitle: 'Game', gameDesc: 'Gaming content, recommendations and session posts.',
-        blogTitle: 'Blog', blogDesc: 'Announcements, updates and personal posts.',
+        blogTitle: 'Blog', blogDesc: 'Announcements, gaming, photography, and personal posts.',
       },
       'zh-hant': {
         label: '社群', title: '加入社群',
@@ -218,8 +210,7 @@
         dcBody: '如果想與我們一起遊玩，立即加入我們的 Discord 伺服器！我們除了玩 Roblox，還玩許多其他遊戲，例如 Apex Legends、GTA 5、Minecraft、REPO 等。點擊下方連結加入伺服器一起玩吧！',
         btnDc: '加入 Discord 伺服器',
         subTitle: '社群分區',
-        gameTitle: '遊戲', gameDesc: '遊戲內容、推薦及對局記錄。',
-        blogTitle: '部落格', blogDesc: '公告、更新資訊及個人文章。',
+        blogTitle: '部落格', blogDesc: '公告、遊戲、攝影及個人文章。',
       },
       'zh-hans': {
         label: '社群', title: '加入社群',
@@ -232,8 +223,7 @@
         dcBody: '如果想与我们一起游玩，立即加入我们的 Discord 服务器！我们除了玩 Roblox，还玩许多其他游戏，例如 Apex Legends、GTA 5、Minecraft、REPO 等。点击下方链接加入服务器一起玩吧！',
         btnDc: '加入 Discord 服务器',
         subTitle: '社群分区',
-        gameTitle: '游戏', gameDesc: '游戏内容、推荐及对局记录。',
-        blogTitle: '博客', blogDesc: '公告、更新信息及个人文章。',
+        blogTitle: '博客', blogDesc: '公告、游戏、摄影及个人文章。',
       },
     };
 
@@ -252,8 +242,6 @@
       document.getElementById('dc-body').textContent     = p.dcBody;
       document.getElementById('btn-dc').textContent      = p.btnDc;
       document.getElementById('sub-title').textContent   = p.subTitle;
-      document.getElementById('game-title').textContent  = p.gameTitle;
-      document.getElementById('game-desc').textContent   = p.gameDesc;
       document.getElementById('blog-title').textContent  = p.blogTitle;
       document.getElementById('blog-desc').textContent   = p.blogDesc;
     }
