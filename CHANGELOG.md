@@ -4,6 +4,21 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.14] — 2026-05-26
+
+### Added
+- **Product icon folder convention** — `img/icon/product/` for square thumbnails (1:1, sized for the shop card grid) — separate from `img/shop/` which holds full-size product screenshots used in the on-page gallery
+- `img/icon/product/blox-fruits-account.jpg` — dedicated 1:1 icon for the Blox Fruits Account shop card (26 KB)
+- `README.md` — new "Product image layout" subsection under §3 documenting the icon-vs-screenshot folder split
+
+### Changed
+- `pages/shop.html` — Blox Fruits Account card thumbnail now points to `img/icon/product/blox-fruits-account.jpg` instead of the (16:9, mis-cropped) gallery shot
+
+### Fixed
+- Shop card thumbnail no longer gets mis-cropped — the 16:9 banner that was being squished into the 1:1 card slot is replaced by a properly-proportioned square icon
+
+---
+
 ## [1.0.13] — 2026-05-26
 
 ### Added

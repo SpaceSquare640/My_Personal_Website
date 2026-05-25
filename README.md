@@ -68,6 +68,10 @@ To change the secret: replace `TOTP_SECRET` in `js/components.js` with a new bas
 In `pages/shop.html`, follow the HTML comment instructions to add product cards.
 Each product should have its own sub-page (e.g. `pages/product-item-name.html`).
 
+**Product image layout**
+- `img/icon/product/<slug>.jpg` — **square thumbnail** shown on the shop card (1:1, ~400×400, < 200 KB)
+- `img/shop/<slug>-{1..N}.jpg` — **product detail screenshots** shown in the gallery on the product page (16:9 cropped, full-size lightbox on click)
+
 ### 4. Add blog posts
 In `pages/community-blog.html`, add a new `<a class="post-item">` entry inside `.post-list` and a matching `tagP*` / `titleP*` / `dateP*` group inside `PAGE_TEXT`. Each post should have its own sub-page (e.g. `pages/post-slug.html`). Gaming, photography, and personal posts all live here — use the `.post-tag.game` modifier for purple game tags or the default teal for everything else.
 
