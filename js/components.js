@@ -41,11 +41,31 @@ function buildNav(activeKey) {
     <div class="nav-menu">
       <ul class="nav-links">${links}</ul>
       <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark">
+          <span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>
+        </button>
         <div class="lang-switcher">${langBtns}</div>
       </div>
     </div>
   `;
 }
+
+// Theme: 'dark' (default) or 'light' — persisted in localStorage
+function applyTheme(theme) {
+  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  else document.documentElement.removeAttribute('data-theme');
+}
+function getTheme() {
+  return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+}
+function toggleTheme() {
+  const next = getTheme() === 'light' ? 'dark' : 'light';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+  document.dispatchEvent(new Event('themechange'));
+}
+// Apply on script load — runs before initPage so paint is correct
+applyTheme(getTheme());
 
 function toggleMobileNav() {
   const nav = document.getElementById('main-nav');
@@ -161,11 +181,27 @@ function buildResumeModal() {
   document.body.appendChild(el);
 }
 
+function buildScrollProgress() {
+  if (document.querySelector('.scroll-progress')) return;
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  const update = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (Math.max(0, Math.min(1, scrolled)) * 100) + '%';
+  };
+  document.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
 function initPage(activeKey) {
   initI18n();
   buildNav(activeKey);
   buildFooter();
   buildResumeModal();
+  buildScrollProgress();
 
   // Re-render nav/footer on lang change
   document.addEventListener('langchange', () => {

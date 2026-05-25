@@ -4,6 +4,29 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.11] — 2026-05-26
+
+### Added
+- **Light / Dark theme toggle** — default dark
+  - `css/main.css` — new `[data-theme="light"]` palette layered on top of the dark default; new theme-aware variables (`--nav-bg`, `--menu-bg`, `--noise-opacity`, `--ambient-glow`); smooth `transition` between palettes; `color-scheme` declared for native form/scrollbar colors
+  - `js/components.js` — `toggleTheme()`, `applyTheme()`, `getTheme()`; preference persisted in `localStorage` (`theme` = `light` / `dark`); applied at script load so the page paints in the correct theme on refresh
+  - Nav now shows a circular sun/moon button (next to the language switcher); icons swap with a spring-eased Y-translate; the button itself rotates slightly + scales on hover
+- **Motion polish — site-wide micro-interactions**
+  - Animated gradient on the hero `SpaceSquare` accent (4-stop, 250% background-size, gentle 8s ease loop)
+  - Card hover lift (translateY(-4px)) + purple glow + subtle border tint for `.card`, `.nav-card`, `.platform-card`, `.sub-page-card`, `.code-card`, `.stat-card`, `.post-item`
+  - Button sheen on hover (diagonal highlight sweep) + 1px lift; active-press returns to baseline
+  - Nav link underline-grow on hover and on `.active`
+  - Tag dot now pulses with a radiating ring (`box-shadow` expansion)
+  - **Scroll progress bar** at the top of every page — gradient bar (purple → teal) with soft glow, driven by JS scroll listener; built into `initPage()`
+  - All animations honor `@media (prefers-reduced-motion: reduce)`
+
+### Changed
+- `pages/product-bloxfruit-account.html` — **shop contact now uses WhatsApp instead of Discord**
+  - Both CTA buttons (hero price row + payment section) switched from `https://discord.gg/...` → `https://wa.me/85264001277`; label changed to **"WhatsApp +852 6400 1277"** in all three languages
+  - `id`s renamed `btn-discord-*` → `btn-whatsapp-*`; i18n key `btnDiscord` → `btnWhatsApp`
+
+---
+
 ## [1.0.10] — 2026-05-26
 
 ### Added
