@@ -1,14 +1,17 @@
 // Shared nav & footer renderer
 // Usage: call buildNav('home') and buildFooter() after DOM load
 
+// Relative path to site root — works whether the repo is at / or a subpath
+const _R = window.location.pathname.includes('/pages/') ? '..' : '.';
+
 const NAV_ITEMS = [
-  { key: 'home',      href: '/index.html',          i18n: 'nav.home' },
-  { key: 'about',     href: '/pages/about.html',     i18n: 'nav.about' },
-  { key: 'community', href: '/pages/community.html', i18n: 'nav.community' },
-  { key: 'shop',      href: '/pages/shop.html',      i18n: 'nav.shop' },
-  { key: 'freelance', href: '/pages/freelance.html', i18n: 'nav.freelance' },
-  { key: 'programs',  href: '/pages/programs.html',  i18n: 'nav.programs' },
-  { key: 'resume',    href: '#',                     i18n: 'nav.resume', locked: true },
+  { key: 'home',      href: `${_R}/index.html`,          i18n: 'nav.home' },
+  { key: 'about',     href: `${_R}/pages/about.html`,     i18n: 'nav.about' },
+  { key: 'community', href: `${_R}/pages/community.html`, i18n: 'nav.community' },
+  { key: 'shop',      href: `${_R}/pages/shop.html`,      i18n: 'nav.shop' },
+  { key: 'freelance', href: `${_R}/pages/freelance.html`, i18n: 'nav.freelance' },
+  { key: 'programs',  href: `${_R}/pages/programs.html`,  i18n: 'nav.programs' },
+  { key: 'resume',    href: '#',                          i18n: 'nav.resume', locked: true },
 ];
 
 function buildNav(activeKey) {
@@ -31,7 +34,7 @@ function buildNav(activeKey) {
   }).join('');
 
   nav.innerHTML = `
-    <a class="nav-logo" href="/index.html"><span class="accent">Space</span>Square</a>
+    <a class="nav-logo" href="${_R}/index.html"><span class="accent">Space</span>Square</a>
     <ul class="nav-links">${links}</ul>
     <div class="nav-right">
       <div class="lang-switcher">${langBtns}</div>
@@ -105,7 +108,7 @@ async function checkResumePwd() {
   const input = (document.getElementById('resume-pwd')?.value ?? '').trim();
   if (await verifyTOTP(input)) {
     closeResumeModal();
-    window.location.href = '/pages/resume.html';
+    window.location.href = `${_R}/pages/resume.html`;
   } else {
     document.getElementById('resume-error')?.classList.add('show');
     document.getElementById('resume-pwd')?.focus();

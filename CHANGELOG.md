@@ -4,6 +4,18 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.6] — 2026-05-25
+
+### Changed
+- `js/components.js` — Replaced all absolute nav/logo/resume paths (`/index.html`, `/pages/*`) with relative paths using `_R` prefix; site now works correctly whether deployed at root or a subpath (e.g. `/My_Personal_Website/`)
+- GitHub repo renamed from `SpaceSquare640.github.io` to `My_Personal_Website`
+- Live URL updated to **https://spacesquare640.github.io/My_Personal_Website/**
+
+### Added
+- `.gitignore` — excludes `.claude/` settings directory
+
+---
+
 ## [1.0.5] — 2026-05-25
 
 ### Deployment
