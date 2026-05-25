@@ -4,6 +4,23 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.13] — 2026-05-26
+
+### Added
+- **Blox Fruits Account — 4-photo gallery** with hover zoom + click-to-enlarge lightbox
+  - `img/shop/` — new directory for shop product images
+  - `img/shop/blox-fruits-account-1.jpg` — fighting styles / fruits / races progress (161 KB)
+  - `img/shop/blox-fruits-account-2.jpg` — listing banner "Sell HKD 700" (173 KB)
+  - `img/shop/blox-fruits-account-3.jpg` — gamepasses · permanent fruit · sword · gun summary (281 KB)
+  - `img/shop/blox-fruits-account-4.jpg` — in-game (Dragon / T-Rex / Dough / races V4 / Pale Scarf) (111 KB)
+  - `pages/product-bloxfruit-account.html`:
+    - new `.gallery-section` between hero and stats grid; 2×2 responsive grid → 1 column ≤600px
+    - `.gallery-item` with `aspect-ratio: 16/9`, `object-fit: cover`, hover scale 1.06, magnifier icon overlay
+    - native lightbox (no library) — click any image to open full-size on a blurred dark overlay; click again or press `Esc` to close; `loading="lazy"` on all images
+    - new trilingual i18n key `galLabel` ("Account Screenshots" / "帳號實機截圖" / "账号实机截图")
+
+---
+
 ## [1.0.12] — 2026-05-26
 
 ### Changed

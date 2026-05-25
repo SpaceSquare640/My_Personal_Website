@@ -35,6 +35,68 @@
     .big-price { font-family: var(--font-h); font-weight: 900; font-size: 2.5rem; color: var(--accent2); letter-spacing: -0.01em; }
     .buy-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
+    /* Gallery */
+    .gallery-section { margin-bottom: 2.5rem; }
+    .gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      aspect-ratio: 16 / 9;
+      cursor: zoom-in;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute; top: 10px; right: 10px;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.55);
+      color: #fff; font-size: 0.85rem;
+      border-radius: 50%;
+      opacity: 0; transition: opacity 0.25s;
+      backdrop-filter: blur(6px);
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 600;
+      background: rgba(5,5,12,0.92);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem; cursor: zoom-out;
+      animation: lbFade 0.18s ease;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.15); }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+
     /* Stats */
     .stats-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
@@ -131,8 +193,27 @@
         </div>
       </div>
 
+      <!-- Account Screenshots -->
+      <div class="gallery-section fade-up fade-up-1">
+        <div class="detail-section-title" id="gal-label">Account Screenshots</div>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="../img/shop/blox-fruits-account-1.jpg" alt="Blox Fruits Account — fighting styles, fruits, races progress" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="../img/shop/blox-fruits-account-2.jpg" alt="Blox Fruits Account — listing banner" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="../img/shop/blox-fruits-account-3.jpg" alt="Blox Fruits Account — gamepasses, fruits, weapons summary" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="../img/shop/blox-fruits-account-4.jpg" alt="Blox Fruits Account — Dragon, T-Rex, Dough, Pale Scarf, races V4" loading="lazy">
+          </div>
+        </div>
+      </div>
+
       <!-- Quick Stats -->
-      <div class="stats-grid fade-up fade-up-1">
+      <div class="stats-grid fade-up fade-up-2">
         <div class="stat-card">
           <div class="stat-label" id="stat-level-label">Level</div>
           <div class="stat-value">2618</div>
@@ -339,6 +420,12 @@
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" aria-label="Close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
   <footer id="main-footer"></footer>
 
   <script src="../js/i18n.js"></script>
@@ -369,6 +456,7 @@
         secTitle: 'Security Guarantee',
         secBody: 'Buyers may verify the account in-game before payment — all stats and inventory are available for inspection. The seller assists the full transfer process.',
         btnWhatsApp: 'WhatsApp +852 6400 1277', btnEmail: 'Send Email',
+        galLabel: 'Account Screenshots',
       },
       'zh-hant': {
         backLink: '← 返回商店',
@@ -394,6 +482,7 @@
         secTitle: '安全保障',
         secBody: '支援驗號：買家可即時進入遊戲查驗所有數據及背包，確認真實性後再付款。賣家全程協助移交。',
         btnWhatsApp: 'WhatsApp +852 6400 1277', btnEmail: '發送電郵',
+        galLabel: '帳號實機截圖',
       },
       'zh-hans': {
         backLink: '← 返回商店',
@@ -419,6 +508,7 @@
         secTitle: '安全保障',
         secBody: '支持验号：买家可即时进入游戏查验所有数据及背包，确认真实性后再付款。卖家全程协助移交。',
         btnWhatsApp: 'WhatsApp +852 6400 1277', btnEmail: '发送邮件',
+        galLabel: '账号实机截图',
       },
     };
 
@@ -460,7 +550,28 @@
       document.getElementById('btn-email-1').textContent      = p.btnEmail;
       document.getElementById('btn-whatsapp-2').textContent   = p.btnWhatsApp;
       document.getElementById('btn-email-2').textContent      = p.btnEmail;
+      document.getElementById('gal-label').textContent        = p.galLabel;
     }
+
+    // Lightbox — click any gallery item to zoom
+    function openLightbox(item) {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.id === 'lightbox-img') return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
 
     initPage('shop');
     applyPageText();
