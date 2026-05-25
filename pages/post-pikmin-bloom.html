@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Play Pikmin Bloom! — SpaceSquare Game</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .post-page { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--muted); font-size: 0.82rem; text-decoration: none;
+      margin-bottom: 2rem; transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* Header */
+    .post-header { margin-bottom: 2rem; }
+    .post-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+    .post-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 99px;
+      background: rgba(124,110,255,0.12); color: var(--accent);
+      border: 1px solid rgba(124,110,255,0.2);
+    }
+    .post-tag.teal {
+      background: rgba(79,209,197,0.1); color: var(--accent2);
+      border-color: rgba(79,209,197,0.2);
+    }
+    .post-title {
+      font-family: var(--font-h); font-weight: 800; font-size: 1.9rem;
+      line-height: 1.2; margin-bottom: 0.4rem;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    /* QR image */
+    .qr-wrap {
+      display: flex; justify-content: center; margin-bottom: 2rem;
+    }
+    .qr-img {
+      width: 100%; max-width: 380px;
+      border-radius: var(--radius-lg); border: 1px solid var(--border);
+      background: #fff; display: block;
+    }
+
+    /* Code cards */
+    .code-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media(max-width:480px) { .code-grid { grid-template-columns: 1fr; } }
+    .code-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    }
+    .code-label {
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .code-value {
+      font-family: var(--font-h); font-weight: 800; font-size: 1.35rem;
+      color: var(--accent2); letter-spacing: 0.04em;
+    }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 0.6rem; font-size: 0.75rem; color: var(--muted);
+      background: none; border: none; cursor: pointer; padding: 0;
+      transition: color var(--transition); font-family: var(--font-b);
+    }
+    .copy-btn:hover { color: var(--accent); }
+
+    /* Description */
+    .post-body {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+      color: var(--muted); font-size: 0.9rem; line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CTA */
+    .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="post-page">
+
+      <a class="back-link" href="community-game.html" id="back-link">← Game</a>
+
+      <!-- Header -->
+      <div class="post-header fade-up">
+        <div class="post-tags">
+          <span class="post-tag">Pikmin Bloom</span>
+          <span class="post-tag teal" id="tag-mobile">Mobile Game</span>
+        </div>
+        <h1 class="post-title" id="post-title">一起來玩 Pikmin Bloom！</h1>
+        <div class="post-meta">
+          <span>📅 <span id="meta-date">2026-05-25</span></span>
+          <span>📱 <span id="meta-platform">iOS / Android</span></span>
+        </div>
+      </div>
+
+      <!-- QR Card Image -->
+      <div class="qr-wrap fade-up fade-up-1">
+        <img class="qr-img"
+          src="../img/game/pikmin-bloom-invite.jpg"
+          alt="Pikmin Bloom — SpaceSquare friend invite QR code"
+          id="img-alt">
+      </div>
+
+      <!-- Friend Code + Invite Code -->
+      <div class="code-grid fade-up fade-up-1">
+        <div class="code-card">
+          <div class="code-label" id="label-friend">Friend Code</div>
+          <div class="code-value">1453 5828 7803</div>
+          <button class="copy-btn" onclick="copyText('145358287803', this)" id="btn-copy-friend">
+            📋 <span id="copy-friend-text">Copy</span>
+          </button>
+        </div>
+        <div class="code-card">
+          <div class="code-label" id="label-invite">Invite Code</div>
+          <div class="code-value">WDHYDVZFV</div>
+          <button class="copy-btn" onclick="copyText('WDHYDVZFV', this)" id="btn-copy-invite">
+            📋 <span id="copy-invite-text">Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="post-body fade-up fade-up-1">
+        <p id="body-zh">一起來玩 Pikmin Bloom！建立帳號時輸入我的邀請碼 <strong>WDHYDVZFV</strong>，即可獲得獎勵！也可以加我為好友，好友代碼：<strong>1453 5828 7803</strong>。</p>
+        <p id="body-en" style="margin-top:0.75rem;">Let's play Pikmin Bloom together! Enter my invite code <strong>WDHYDVZFV</strong> when creating your account to get a reward. You can also add me as a friend using friend code <strong>1453 5828 7803</strong>.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-row fade-up fade-up-1">
+        <a class="btn btn-primary" href="https://pikminbloom.onelink.me/pWSt/8r96nu04" target="_blank" id="btn-download">
+          Download Pikmin Bloom →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        backLink: '← Game',
+        tagMobile: 'Mobile Game',
+        postTitle: "Let's Play Pikmin Bloom!",
+        metaDate: '2026-05-25',
+        metaPlatform: 'iOS / Android',
+        imgAlt: 'Pikmin Bloom — SpaceSquare friend invite QR code',
+        labelFriend: 'Friend Code',
+        labelInvite: 'Invite Code',
+        copyText: 'Copy',
+        copiedText: 'Copied!',
+        bodyZh: '一起來玩 Pikmin Bloom！建立帳號時輸入我的邀請碼 WDHYDVZFV，即可獲得獎勵！也可以加我為好友，好友代碼：1453 5828 7803。',
+        bodyEn: "Let's play Pikmin Bloom together! Enter my invite code WDHYDVZFV when creating your account to get a reward. You can also add me as a friend using friend code 1453 5828 7803.",
+        btnDownload: 'Download Pikmin Bloom →',
+      },
+      'zh-hant': {
+        backLink: '← 遊戲',
+        tagMobile: '手機遊戲',
+        postTitle: '一起來玩 Pikmin Bloom！',
+        metaDate: '2026年5月25日',
+        metaPlatform: 'iOS / Android',
+        imgAlt: 'Pikmin Bloom — SpaceSquare 好友邀請 QR Code',
+        labelFriend: '好友代碼',
+        labelInvite: '邀請代碼',
+        copyText: '複製',
+        copiedText: '已複製！',
+        bodyZh: '一起來玩 Pikmin Bloom！建立帳號時輸入我的邀請碼 WDHYDVZFV，即可獲得獎勵！也可以加我為好友，好友代碼：1453 5828 7803。',
+        bodyEn: "Let's play Pikmin Bloom together! Enter my invite code WDHYDVZFV when creating your account to get a reward. You can also add me as a friend using friend code 1453 5828 7803.",
+        btnDownload: '下載 Pikmin Bloom →',
+      },
+      'zh-hans': {
+        backLink: '← 游戏',
+        tagMobile: '手机游戏',
+        postTitle: '一起来玩 Pikmin Bloom！',
+        metaDate: '2026年5月25日',
+        metaPlatform: 'iOS / Android',
+        imgAlt: 'Pikmin Bloom — SpaceSquare 好友邀请 QR Code',
+        labelFriend: '好友代码',
+        labelInvite: '邀请代码',
+        copyText: '复制',
+        copiedText: '已复制！',
+        bodyZh: '一起来玩 Pikmin Bloom！创建账号时输入我的邀请码 WDHYDVZFV，即可获得奖励！也可以加我为好友，好友代码：1453 5828 7803。',
+        bodyEn: "Let's play Pikmin Bloom together! Enter my invite code WDHYDVZFV when creating your account to get a reward. You can also add me as a friend using friend code 1453 5828 7803.",
+        btnDownload: '下载 Pikmin Bloom →',
+      },
+    };
+
+    // One-click copy with feedback
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const lang = getLang();
+        const copied = (PAGE_TEXT[lang] || PAGE_TEXT.en).copiedText;
+        const span = btn.querySelector('span');
+        const orig = span.textContent;
+        span.textContent = copied;
+        setTimeout(() => { span.textContent = orig; }, 1800);
+      });
+    }
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('back-link').textContent    = p.backLink;
+      document.getElementById('tag-mobile').textContent   = p.tagMobile;
+      document.getElementById('post-title').textContent   = p.postTitle;
+      document.getElementById('meta-date').textContent    = p.metaDate;
+      document.getElementById('meta-platform').textContent = p.metaPlatform;
+      document.getElementById('img-alt').alt              = p.imgAlt;
+      document.getElementById('label-friend').textContent = p.labelFriend;
+      document.getElementById('label-invite').textContent = p.labelInvite;
+      document.getElementById('copy-friend-text').textContent = p.copyText;
+      document.getElementById('copy-invite-text').textContent = p.copyText;
+      document.getElementById('body-zh').innerHTML = p.bodyZh.replace(/WDHYDVZFV/g, '<strong>WDHYDVZFV</strong>').replace(/1453 5828 7803/g, '<strong>1453 5828 7803</strong>');
+      document.getElementById('body-en').innerHTML = p.bodyEn.replace(/WDHYDVZFV/g, '<strong>WDHYDVZFV</strong>').replace(/1453 5828 7803/g, '<strong>1453 5828 7803</strong>');
+      document.getElementById('btn-download').textContent = p.btnDownload;
+    }
+
+    initPage('community');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

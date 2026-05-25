@@ -48,22 +48,24 @@
     </div>
 
     <div class="posts-body">
-      <div class="empty-state" id="empty">
-        <div style="font-size:2rem;margin-bottom:1rem;">🎮</div>
-        <p>No gaming posts yet. Check back soon!</p>
+      <div class="post-list">
+        <a class="post-item" href="post-pikmin-bloom.html">
+          <div>
+            <div class="post-tag" id="tag-pikmin">Pikmin Bloom</div>
+            <div class="post-title" id="title-pikmin">Let's Play Pikmin Bloom!</div>
+          </div>
+          <div class="post-date" id="date-pikmin">2026-05-25</div>
+        </a>
       </div>
       <!--
         HOW TO ADD A POST:
-        Replace the empty-state div with:
-        <div class="post-list">
-          <a class="post-item" href="post-SLUG.html">
-            <div>
-              <div class="post-tag">Roblox</div>
-              <div class="post-title">Post title here</div>
-            </div>
-            <div class="post-date">2026-01-01</div>
-          </a>
-        </div>
+        <a class="post-item" href="post-SLUG.html">
+          <div>
+            <div class="post-tag">Tag</div>
+            <div class="post-title" id="title-SLUG">Post title here</div>
+          </div>
+          <div class="post-date" id="date-SLUG">2026-01-01</div>
+        </a>
       -->
     </div>
   </div>
@@ -74,14 +76,17 @@
   <script src="../js/components.js"></script>
   <script>
     const PAGE_TEXT = {
-      en:        { title: 'Game',    desc: 'Gaming content, session highlights, and recommendations.' },
-      'zh-hant': { title: '遊戲',   desc: '遊戲內容、對局精選及推薦。' },
-      'zh-hans': { title: '游戏',   desc: '游戏内容、对局精选及推荐。' },
+      en:        { title: 'Game', desc: 'Gaming content, session highlights, and recommendations.', tagPikmin: 'Pikmin Bloom', titlePikmin: "Let's Play Pikmin Bloom!", datePikmin: '2026-05-25' },
+      'zh-hant': { title: '遊戲', desc: '遊戲內容、對局精選及推薦。',                               tagPikmin: 'Pikmin Bloom', titlePikmin: '一起來玩 Pikmin Bloom！',  datePikmin: '2026年5月25日' },
+      'zh-hans': { title: '游戏', desc: '游戏内容、对局精选及推荐。',                               tagPikmin: 'Pikmin Bloom', titlePikmin: '一起来玩 Pikmin Bloom！',  datePikmin: '2026年5月25日' },
     };
     function applyPageText() {
       const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
-      document.getElementById('title').textContent = p.title;
-      document.getElementById('desc').textContent  = p.desc;
+      document.getElementById('title').textContent       = p.title;
+      document.getElementById('desc').textContent        = p.desc;
+      document.getElementById('tag-pikmin').textContent  = p.tagPikmin;
+      document.getElementById('title-pikmin').textContent = p.titlePikmin;
+      document.getElementById('date-pikmin').textContent = p.datePikmin;
     }
     initPage('community');
     applyPageText();

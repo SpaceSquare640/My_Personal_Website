@@ -4,6 +4,19 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.7] — 2026-05-25
+
+### Added
+- `pages/post-pikmin-bloom.html` — Game post: Let's Play Pikmin Bloom!
+  - Friend code card (1453 5828 7803) + Invite code card (WDHYDVZFV) with one-click copy
+  - QR invite image served from `img/game/pikmin-bloom-invite.jpg`
+  - Download CTA linking to Pikmin Bloom app store page
+  - Full EN / 繁中 / 简中 i18n support
+- `img/game/` — New directory for game images
+- `pages/community-game.html` — Replaced empty state with Pikmin Bloom post list entry; full i18n for post tag, title, and date
+
+---
+
 ## [1.0.6] — 2026-05-25
 
 ### Changed

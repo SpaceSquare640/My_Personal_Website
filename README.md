@@ -27,6 +27,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
+| `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Game post: Let's Play Pikmin Bloom! |
 
 ## File Structure
 
