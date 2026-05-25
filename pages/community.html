@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .comm-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .comm-body {
+      max-width: 1080px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: flex; flex-direction: column; gap: 4rem;
+    }
+
+    /* Platform card */
+    .platform-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .platform-header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.75rem 2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .platform-icon {
+      font-size: 2rem; line-height: 1;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg3); border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .platform-info h2 {
+      font-family: var(--font-h); font-weight: 700; font-size: 1.1rem;
+    }
+    .platform-info p { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+
+    .platform-body {
+      padding: 2rem;
+      background: var(--bg2);
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .platform-body p {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.8;
+    }
+    .platform-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* Email block */
+    .email-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .email-block h4 {
+      font-size: 0.78rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .email-row {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem; margin-bottom: 0.4rem;
+    }
+    .email-row:last-child { margin-bottom: 0; }
+    .email-label { color: var(--muted); font-size: 0.78rem; min-width: 80px; }
+    .email-addr { color: var(--text); font-family: monospace; }
+    .email-addr a { color: var(--accent); text-decoration: none; }
+    .email-addr a:hover { text-decoration: underline; }
+
+    /* Sub-pages */
+    .sub-pages {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    @media(max-width:500px) { .sub-pages { grid-template-columns: 1fr; } }
+
+    .sub-page-card {
+      background: var(--bg2); padding: 1.75rem 2rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      text-decoration: none; color: inherit;
+      transition: background var(--transition);
+    }
+    .sub-page-card:hover { background: var(--bg3); }
+    .sub-page-icon { font-size: 1.3rem; }
+    .sub-page-title {
+      font-family: var(--font-h); font-weight: 700; font-size: 0.95rem;
+    }
+    .sub-page-desc { color: var(--muted); font-size: 0.82rem; }
+    .sub-page-arrow { color: var(--accent); font-size: 0.78rem; margin-top: auto; padding-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="comm-hero">
+      <p class="section-label" id="label">Community</p>
+      <h1 class="section-title" id="title">Join the Community</h1>
+      <p class="section-desc" id="desc">
+        Stay connected through YouTube and Discord. Gaming content, blog posts, and more.
+      </p>
+    </div>
+
+    <div class="comm-body">
+
+      <!-- YouTube -->
+      <div class="platform-card fade-up">
+        <div class="platform-header">
+          <div class="platform-icon">📺</div>
+          <div class="platform-info">
+            <h2>YouTube Channel</h2>
+            <p id="yt-sub-label">Gaming content · Subscribe for updates</p>
+          </div>
+        </div>
+        <div class="platform-body">
+          <p id="yt-body">
+            Hello everyone! I'm Space (SpaceSquare). I am a YouTuber from Hong Kong.
+            I upload videos from time to time, mainly focusing on gaming content.
+            If you are interested, please subscribe!
+            Also, remember to join my Discord server!
+          </p>
+          <div class="email-block">
+            <h4 id="contact-label">Contact</h4>
+            <div class="email-row">
+              <span class="email-label" id="primary-label">Primary</span>
+              <span class="email-addr"><a href="mailto:chin52696411@gmail.com">chin52696411@gmail.com</a></span>
+            </div>
+            <div class="email-row">
+              <span class="email-label" id="alt-label">Alternative</span>
+              <span class="email-addr"><a href="mailto:chin52696411@icloud.com">chin52696411@icloud.com</a></span>
+            </div>
+          </div>
+          <div class="platform-actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/channel/UChmwTSclAf-m1z5DemiakUQ" target="_blank" id="btn-yt">Visit YouTube Channel</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discord -->
+      <div class="platform-card fade-up fade-up-1">
+        <div class="platform-header">
+          <div class="platform-icon">💬</div>
+          <div class="platform-info">
+            <h2>Discord Community</h2>
+            <p id="dc-sub-label">Gaming · Chat · Have fun together</p>
+          </div>
+        </div>
+        <div class="platform-body">
+          <p id="dc-body">
+            If you would like to play games with us, join our Discord server now!
+            We play Roblox and many other games, such as Apex Legends, GTA 5, Minecraft, REPO, and more.
+            Click the link below to join the server and play together!
+          </p>
+          <div class="platform-actions">
+            <a class="btn btn-teal" href="https://discord.gg/KjUsGBFYwF" target="_blank" id="btn-dc">
+              Join Discord Server
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-pages -->
+      <div>
+        <h2 class="section-title" id="sub-title" style="font-size:1.25rem; margin-bottom:1.25rem;">Community Sections</h2>
+        <div class="sub-pages">
+          <a class="sub-page-card" href="community-game.html">
+            <div class="sub-page-icon">🎮</div>
+            <div class="sub-page-title" id="game-title">Game</div>
+            <div class="sub-page-desc" id="game-desc">Gaming content, recommendations and session posts.</div>
+            <div class="sub-page-arrow">View →</div>
+          </a>
+          <a class="sub-page-card" href="community-blog.html">
+            <div class="sub-page-icon">📝</div>
+            <div class="sub-page-title" id="blog-title">Blog</div>
+            <div class="sub-page-desc" id="blog-desc">Announcements, updates and personal posts.</div>
+            <div class="sub-page-arrow">Read →</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        label: 'Community', title: 'Join the Community',
+        desc: 'Stay connected through YouTube and Discord. Gaming content, blog posts, and more.',
+        ytSubLabel: 'Gaming content · Subscribe for updates',
+        ytBody: 'Hello everyone! I\'m Space (SpaceSquare). I am a YouTuber from Hong Kong. I upload videos from time to time, mainly focusing on gaming content. If you are interested, please subscribe! Also, remember to join my Discord server!',
+        contactLabel: 'Contact', primaryLabel: 'Primary', altLabel: 'Alternative',
+        btnYt: 'Visit YouTube Channel',
+        dcSubLabel: 'Gaming · Chat · Have fun together',
+        dcBody: 'If you would like to play games with us, join our Discord server now! We play Roblox and many other games, such as Apex Legends, GTA 5, Minecraft, REPO, and more. Click the link below to join the server and play together!',
+        btnDc: 'Join Discord Server',
+        subTitle: 'Community Sections',
+        gameTitle: 'Game', gameDesc: 'Gaming content, recommendations and session posts.',
+        blogTitle: 'Blog', blogDesc: 'Announcements, updates and personal posts.',
+      },
+      'zh-hant': {
+        label: '社群', title: '加入社群',
+        desc: '透過 YouTube 及 Discord 保持聯繫，包含遊戲內容、部落格文章等。',
+        ytSubLabel: '遊戲內容 · 訂閱以接收更新',
+        ytBody: '大家好！我是 Space（SpaceSquare），來自香港的 YouTuber。我不定期上傳影片，主要以遊戲內容為主。如果您有興趣，歡迎訂閱！同時也別忘了加入我的 Discord 伺服器！',
+        contactLabel: '聯絡方式', primaryLabel: '主要', altLabel: '備用',
+        btnYt: '前往 YouTube 頻道',
+        dcSubLabel: '遊戲 · 聊天 · 一起同樂',
+        dcBody: '如果想與我們一起遊玩，立即加入我們的 Discord 伺服器！我們除了玩 Roblox，還玩許多其他遊戲，例如 Apex Legends、GTA 5、Minecraft、REPO 等。點擊下方連結加入伺服器一起玩吧！',
+        btnDc: '加入 Discord 伺服器',
+        subTitle: '社群分區',
+        gameTitle: '遊戲', gameDesc: '遊戲內容、推薦及對局記錄。',
+        blogTitle: '部落格', blogDesc: '公告、更新資訊及個人文章。',
+      },
+      'zh-hans': {
+        label: '社群', title: '加入社群',
+        desc: '通过 YouTube 及 Discord 保持联系，包含游戏内容、博客文章等。',
+        ytSubLabel: '游戏内容 · 订阅以接收更新',
+        ytBody: '大家好！我是 Space（SpaceSquare），来自香港的 YouTuber。我不定期上传视频，主要以游戏内容为主。如果您有兴趣，欢迎订阅！同时也别忘了加入我的 Discord 服务器！',
+        contactLabel: '联系方式', primaryLabel: '主要', altLabel: '备用',
+        btnYt: '前往 YouTube 频道',
+        dcSubLabel: '游戏 · 聊天 · 一起同乐',
+        dcBody: '如果想与我们一起游玩，立即加入我们的 Discord 服务器！我们除了玩 Roblox，还玩许多其他游戏，例如 Apex Legends、GTA 5、Minecraft、REPO 等。点击下方链接加入服务器一起玩吧！',
+        btnDc: '加入 Discord 服务器',
+        subTitle: '社群分区',
+        gameTitle: '游戏', gameDesc: '游戏内容、推荐及对局记录。',
+        blogTitle: '博客', blogDesc: '公告、更新信息及个人文章。',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('label').textContent       = p.label;
+      document.getElementById('title').textContent       = p.title;
+      document.getElementById('desc').textContent        = p.desc;
+      document.getElementById('yt-sub-label').textContent = p.ytSubLabel;
+      document.getElementById('yt-body').textContent     = p.ytBody;
+      document.getElementById('contact-label').textContent = p.contactLabel;
+      document.getElementById('primary-label').textContent = p.primaryLabel;
+      document.getElementById('alt-label').textContent   = p.altLabel;
+      document.getElementById('btn-yt').textContent      = p.btnYt;
+      document.getElementById('dc-sub-label').textContent = p.dcSubLabel;
+      document.getElementById('dc-body').textContent     = p.dcBody;
+      document.getElementById('btn-dc').textContent      = p.btnDc;
+      document.getElementById('sub-title').textContent   = p.subTitle;
+      document.getElementById('game-title').textContent  = p.gameTitle;
+      document.getElementById('game-desc').textContent   = p.gameDesc;
+      document.getElementById('blog-title').textContent  = p.blogTitle;
+      document.getElementById('blog-desc').textContent   = p.blogDesc;
+    }
+
+    initPage('community');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

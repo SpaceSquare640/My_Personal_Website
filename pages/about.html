@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .about-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 800px; margin: 0 auto;
+    }
+    .about-body {
+      max-width: 800px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: flex; flex-direction: column; gap: 2.5rem;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+    }
+    .about-card h3 {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 1rem; margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    .about-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="about-hero">
+      <p class="section-label" id="label">About</p>
+      <h1 class="section-title" id="title">About This Website</h1>
+      <p class="section-desc" id="desc">
+        This is my personal website. I will post anything here.
+      </p>
+    </div>
+
+    <div class="about-body">
+      <div class="about-card">
+        <h3 id="what-title">What is this site?</h3>
+        <p id="what-body">
+          This is the personal website of SpaceSquare — a Hong Kong-based YouTuber and content creator.
+          Here you will find everything in one place: community links, a shop, freelance services, personal projects, and more.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3 id="find-title">What can you find here?</h3>
+        <p id="find-body">
+          You can browse my YouTube channel and Discord community, shop for products I sell or promote,
+          hire me for video editing or advertising services, check out my open-source programs on GitHub,
+          and read my blog posts and gaming content.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3 id="lang-title">Languages</h3>
+        <p id="lang-body">
+          This website is available in English (default), Traditional Chinese, and Simplified Chinese.
+          All content is written in formal language. You may switch languages using the buttons in the navigation bar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        label: 'About', title: 'About This Website',
+        desc: 'This is my personal website. I will post anything here.',
+        whatTitle: 'What is this site?',
+        whatBody: 'This is the personal website of SpaceSquare — a Hong Kong-based YouTuber and content creator. Here you will find everything in one place: community links, a shop, freelance services, personal projects, and more.',
+        findTitle: 'What can you find here?',
+        findBody: 'You can browse my YouTube channel and Discord community, shop for products I sell or promote, hire me for video editing or advertising services, check out my open-source programs on GitHub, and read my blog posts and gaming content.',
+        langTitle: 'Languages',
+        langBody: 'This website is available in English (default), Traditional Chinese, and Simplified Chinese. All content is written in formal language. You may switch languages using the buttons in the navigation bar.',
+      },
+      'zh-hant': {
+        label: '關於', title: '關於本站',
+        desc: '這是我的個人網站，我將在此分享各種內容。',
+        whatTitle: '本站是什麼？',
+        whatBody: '這是 SpaceSquare 的個人網站——一位來自香港的 YouTuber 及內容創作者。您可以在此找到所有相關資訊：社群連結、網店、接案服務、個人程式專案等。',
+        findTitle: '您能在這裡找到什麼？',
+        findBody: '您可以瀏覽我的 YouTube 頻道及 Discord 社群、選購我自售或代售的商品、委託我提供影片剪輯或廣告代理服務、查看我在 GitHub 上的開源專案，以及閱讀我的部落格文章與遊戲相關內容。',
+        langTitle: '語言',
+        langBody: '本網站提供英文（預設）、繁體中文及簡體中文三種語言版本，所有內容均採用書面語撰寫。您可透過導覽列上的按鈕切換語言。',
+      },
+      'zh-hans': {
+        label: '关于', title: '关于本站',
+        desc: '这是我的个人网站，我将在此分享各种内容。',
+        whatTitle: '本站是什么？',
+        whatBody: '这是 SpaceSquare 的个人网站——一位来自香港的 YouTuber 及内容创作者。您可以在此找到所有相关信息：社群链接、网店、接案服务、个人程序项目等。',
+        findTitle: '您能在这里找到什么？',
+        findBody: '您可以浏览我的 YouTube 频道及 Discord 社群、选购我自售或代售的商品、委托我提供视频剪辑或广告代理服务、查看我在 GitHub 上的开源项目，以及阅读我的博客文章与游戏相关内容。',
+        langTitle: '语言',
+        langBody: '本网站提供英文（默认）、繁体中文及简体中文三种语言版本，所有内容均采用书面语撰写。您可通过导航栏上的按钮切换语言。',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('label').textContent    = p.label;
+      document.getElementById('title').textContent    = p.title;
+      document.getElementById('desc').textContent     = p.desc;
+      document.getElementById('what-title').textContent = p.whatTitle;
+      document.getElementById('what-body').textContent  = p.whatBody;
+      document.getElementById('find-title').textContent = p.findTitle;
+      document.getElementById('find-body').textContent  = p.findBody;
+      document.getElementById('lang-title').textContent = p.langTitle;
+      document.getElementById('lang-body').textContent  = p.langBody;
+    }
+
+    initPage('about');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

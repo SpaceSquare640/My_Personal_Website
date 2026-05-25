@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blox Fruits Account — SpaceSquare Shop</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .product-page { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; color: var(--muted); text-decoration: none;
+      margin-bottom: 2.5rem; transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* Hero */
+    .product-hero { margin-bottom: 2.5rem; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent2); background: rgba(79,209,197,0.1);
+      border: 1px solid rgba(79,209,197,0.25);
+      padding: 3px 10px; border-radius: 99px; margin-bottom: 1rem;
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+    .product-title {
+      font-family: var(--font-h); font-weight: 800; font-size: 2rem;
+      line-height: 1.2; margin-bottom: 0.5rem;
+    }
+    .product-subtitle { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
+    .price-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .big-price { font-family: var(--font-h); font-weight: 800; font-size: 2rem; color: var(--accent2); }
+    .buy-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* Stats */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 0.75rem; margin-bottom: 2.5rem;
+    }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.25rem;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
+    .stat-value { font-family: var(--font-h); font-weight: 700; font-size: 1.05rem; }
+
+    /* Detail sections */
+    .detail-section { margin-bottom: 2rem; }
+    .detail-section-title {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500;
+      padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .item-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .item-row {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.85rem 1.1rem;
+    }
+    .item-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .item-info { flex: 1; }
+    .item-name { font-weight: 500; font-size: 0.9rem; }
+    .item-meta { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+    .item-badge {
+      font-size: 0.68rem; padding: 2px 7px; border-radius: 99px;
+      background: rgba(124,110,255,0.12); border: 1px solid rgba(124,110,255,0.25);
+      color: var(--accent); flex-shrink: 0; align-self: center;
+    }
+    .item-badge.teal {
+      background: rgba(79,209,197,0.1); border-color: rgba(79,209,197,0.25); color: var(--accent2);
+    }
+
+    /* Progress grid */
+    .progress-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 0.75rem;
+    }
+    .progress-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.25rem;
+    }
+    .progress-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .progress-value { font-family: var(--font-h); font-weight: 700; font-size: 1rem; }
+
+    /* Payment */
+    .payment-box {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+    }
+    .payment-box h3 { font-family: var(--font-h); font-weight: 700; font-size: 1rem; margin-bottom: 1rem; }
+    .payment-methods { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .pay-pill {
+      background: var(--surface); border: 1px solid var(--border2);
+      padding: 4px 12px; border-radius: 99px; font-size: 0.82rem;
+    }
+    .payment-box p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+    .security-note {
+      background: rgba(79,209,197,0.05); border: 1px solid rgba(79,209,197,0.2);
+      border-radius: var(--radius); padding: 1rem 1.25rem;
+      font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 1rem;
+    }
+    .security-note strong { color: var(--accent2); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="product-page">
+
+      <a class="back-link" href="shop.html" id="back-link">← Back to Shop</a>
+
+      <!-- Hero -->
+      <div class="product-hero fade-up">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">Available</span>
+        </div>
+        <h1 class="product-title" id="prod-title">Blox Fruits Account</h1>
+        <p class="product-subtitle" id="prod-subtitle">Level 2618 · Angel V4 · 6.7M Bounty · 10 Permanent Fruits</p>
+        <div class="price-row">
+          <span class="big-price">HKD 700</span>
+          <div class="buy-btns">
+            <a class="btn btn-teal" href="https://discord.gg/KjUsGBFYwF" target="_blank" id="btn-discord-1">Contact on Discord</a>
+            <a class="btn btn-ghost" href="mailto:chin52696411@gmail.com" id="btn-email-1">Send Email</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="stats-grid fade-up fade-up-1">
+        <div class="stat-card">
+          <div class="stat-label" id="stat-level-label">Level</div>
+          <div class="stat-value">2618</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" id="stat-bounty-label">Bounty</div>
+          <div class="stat-value">6.7M</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" id="stat-race-label">Race</div>
+          <div class="stat-value">Angel V4</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" id="stat-class-label">Subclass</div>
+          <div class="stat-value" id="stat-class-value">Shipwright</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Beli</div>
+          <div class="stat-value">21M</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Fragments</div>
+          <div class="stat-value">1,700</div>
+        </div>
+      </div>
+
+      <!-- Gamepasses -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="sec-pass">Gamepasses (5)</div>
+        <div class="item-list">
+          <div class="item-row">
+            <span class="item-icon">⚔️</span>
+            <div class="item-info">
+              <div class="item-name">Dark Blade</div>
+              <div class="item-meta" id="pass-darkblade-meta">Exclusive sword gamepass</div>
+            </div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">💰</span>
+            <div class="item-info"><div class="item-name">2× Money</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🎯</span>
+            <div class="item-info"><div class="item-name">2× Mastery</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🎁</span>
+            <div class="item-info"><div class="item-name">2× Boss Drops</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">⛵</span>
+            <div class="item-info"><div class="item-name">Fast Boats</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Permanent Fruits -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="sec-fruits">Permanent Fruits (10 / 44)</div>
+        <div class="item-list">
+          <div class="item-row">
+            <span class="item-icon">🐉</span>
+            <div class="item-info">
+              <div class="item-name">Dragon</div>
+              <div class="item-meta" id="fruit-dragon-meta">Mastery 600 · Can Transform · Can M1</div>
+            </div>
+            <span class="item-badge teal" id="badge-max">Max</span>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🍩</span>
+            <div class="item-info">
+              <div class="item-name">Dough</div>
+            </div>
+            <span class="item-badge teal" id="badge-awakened-1">Awakened</span>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🦖</span>
+            <div class="item-info"><div class="item-name">T-Rex</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🔮</span>
+            <div class="item-info"><div class="item-name">Portal</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">☯️</span>
+            <div class="item-info"><div class="item-name">Buddha</div></div>
+            <span class="item-badge teal" id="badge-awakened-2">Awakened</span>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🌋</span>
+            <div class="item-info"><div class="item-name">Magma</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">❄️</span>
+            <div class="item-info"><div class="item-name">Ice</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🔥</span>
+            <div class="item-info"><div class="item-name">Flame</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">⚡</span>
+            <div class="item-info"><div class="item-name">Blade</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🚀</span>
+            <div class="item-info"><div class="item-name">Rocket</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weapons -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="sec-weapons">Weapons & Mastery</div>
+        <div class="item-list">
+          <div class="item-row">
+            <span class="item-icon">⚔️</span>
+            <div class="item-info">
+              <div class="item-name">Cursed Dual Katana (CDK)</div>
+              <div class="item-meta">Mastery 600</div>
+            </div>
+            <span class="item-badge teal" id="badge-max-cdk">Max</span>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🗡️</span>
+            <div class="item-info">
+              <div class="item-name">True Triple Katana (TTK)</div>
+              <div class="item-meta">Mastery 600</div>
+            </div>
+            <span class="item-badge teal" id="badge-max-ttk">Max</span>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🌙</span>
+            <div class="item-info"><div class="item-name">Hallow Scythe</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">⚓</span>
+            <div class="item-info"><div class="item-name">Shark Anchor</div></div>
+          </div>
+          <div class="item-row">
+            <span class="item-icon">🎸</span>
+            <div class="item-info">
+              <div class="item-name">Soul Guitar</div>
+              <div class="item-meta">Mastery 369</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abilities & Progress -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="sec-abilities">Abilities & Progress</div>
+        <div class="progress-grid">
+          <div class="progress-card">
+            <div class="progress-label" id="prog-obs-label">Observation</div>
+            <div class="progress-value" id="prog-obs-value">Max Level</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label" id="prog-fs-label">Fighting Styles</div>
+            <div class="progress-value">11 / 11</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label" id="prog-pf-label">Perm Fruits Owned</div>
+            <div class="progress-value">10 / 44</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label" id="prog-rv4-label">Races V4 Awakened</div>
+            <div class="progress-value">4 / 7</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label" id="prog-re-label">Races Evolved</div>
+            <div class="progress-value">6 / 7</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-label" id="prog-sea-label">Sea Events Cleared</div>
+            <div class="progress-value">532</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="sec-payment">Price & Payment</div>
+        <div class="payment-box">
+          <h3 id="pay-title">HKD 700 — Payment Methods</h3>
+          <div class="payment-methods">
+            <span class="pay-pill">FPS 轉數快</span>
+            <span class="pay-pill">AlipayHK</span>
+            <span class="pay-pill">WeChat Pay HK</span>
+            <span class="pay-pill">Octopus</span>
+          </div>
+          <p id="pay-process">After payment, the seller provides account credentials and an e-receipt immediately. Full assistance is provided to change the email and security settings so the account permanently and securely belongs to you.</p>
+          <div class="security-note">
+            <strong id="sec-title">Security Guarantee</strong><br>
+            <span id="sec-body">Buyers may verify the account in-game before payment — all stats and inventory are available for inspection. The seller assists the full transfer process.</span>
+          </div>
+        </div>
+        <div class="buy-btns" style="margin-top:1.25rem;">
+          <a class="btn btn-teal" href="https://discord.gg/KjUsGBFYwF" target="_blank" id="btn-discord-2">Contact on Discord</a>
+          <a class="btn btn-ghost" href="mailto:chin52696411@gmail.com" id="btn-email-2">Send Email</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        backLink: '← Back to Shop',
+        statusText: 'Available',
+        prodTitle: 'Blox Fruits Account',
+        prodSubtitle: 'Level 2618 · Angel V4 · 6.7M Bounty · 10 Permanent Fruits',
+        statLevelLabel: 'Level', statBountyLabel: 'Bounty',
+        statRaceLabel: 'Race', statClassLabel: 'Subclass', statClassValue: 'Shipwright',
+        secPass: 'Gamepasses (5)',
+        passDarkbladeMeta: 'Exclusive sword gamepass',
+        secFruits: 'Permanent Fruits (10 / 44)',
+        fruitDragonMeta: 'Mastery 600 · Can Transform · Can M1',
+        badgeMax: 'Max', badgeAwakened: 'Awakened',
+        secWeapons: 'Weapons & Mastery',
+        secAbilities: 'Abilities & Progress',
+        progObsLabel: 'Observation', progObsValue: 'Max Level',
+        progFsLabel: 'Fighting Styles', progPfLabel: 'Perm Fruits Owned',
+        progRv4Label: 'Races V4 Awakened', progReLabel: 'Races Evolved',
+        progSeaLabel: 'Sea Events Cleared',
+        secPayment: 'Price & Payment',
+        payTitle: 'HKD 700 — Payment Methods',
+        payProcess: 'After payment, the seller provides account credentials and an e-receipt immediately. Full assistance is provided to change the email and security settings so the account permanently and securely belongs to you.',
+        secTitle: 'Security Guarantee',
+        secBody: 'Buyers may verify the account in-game before payment — all stats and inventory are available for inspection. The seller assists the full transfer process.',
+        btnDiscord: 'Contact on Discord', btnEmail: 'Send Email',
+      },
+      'zh-hant': {
+        backLink: '← 返回商店',
+        statusText: '有貨',
+        prodTitle: 'Blox Fruits 帳號',
+        prodSubtitle: '等級 2618 · Angel V4 · 賞金 6.7M · 10 永久果實',
+        statLevelLabel: '等級', statBountyLabel: '賞金',
+        statRaceLabel: '種族', statClassLabel: '職業', statClassValue: '造船師',
+        secPass: '付費通行證（5 個）',
+        passDarkbladeMeta: '限定劍通行證',
+        secFruits: '永久果實（10 / 44）',
+        fruitDragonMeta: '熟練度 600 · 可變身 · 可普攻',
+        badgeMax: '滿熟練', badgeAwakened: '已覺醒',
+        secWeapons: '武器與熟練度',
+        secAbilities: '能力與成就',
+        progObsLabel: '見聞色', progObsValue: '已滿級',
+        progFsLabel: '格鬥流派', progPfLabel: '擁有永久果實',
+        progRv4Label: '種族 V4 覺醒', progReLabel: '種族進化',
+        progSeaLabel: '海上事件完成',
+        secPayment: '售價與支付方式',
+        payTitle: 'HKD 700 — 支付方式',
+        payProcess: '買家付款後，賣家即時提供帳號資料及電子收據，並全程協助更改 Email 及安全性設定，確保帳號永久且安全歸屬買家。',
+        secTitle: '安全保障',
+        secBody: '支援驗號：買家可即時進入遊戲查驗所有數據及背包，確認真實性後再付款。賣家全程協助移交。',
+        btnDiscord: '透過 Discord 聯絡', btnEmail: '發送電郵',
+      },
+      'zh-hans': {
+        backLink: '← 返回商店',
+        statusText: '有货',
+        prodTitle: 'Blox Fruits 帐号',
+        prodSubtitle: '等级 2618 · Angel V4 · 赏金 6.7M · 10 永久果实',
+        statLevelLabel: '等级', statBountyLabel: '赏金',
+        statRaceLabel: '种族', statClassLabel: '职业', statClassValue: '造船师',
+        secPass: '付费通行证（5 个）',
+        passDarkbladeMeta: '限定剑通行证',
+        secFruits: '永久果实（10 / 44）',
+        fruitDragonMeta: '熟练度 600 · 可变身 · 可普攻',
+        badgeMax: '满熟练', badgeAwakened: '已觉醒',
+        secWeapons: '武器与熟练度',
+        secAbilities: '能力与成就',
+        progObsLabel: '见闻色', progObsValue: '已满级',
+        progFsLabel: '格斗流派', progPfLabel: '拥有永久果实',
+        progRv4Label: '种族 V4 觉醒', progReLabel: '种族进化',
+        progSeaLabel: '海上事件完成',
+        secPayment: '售价与支付方式',
+        payTitle: 'HKD 700 — 支付方式',
+        payProcess: '买家付款后，卖家即时提供账号资料及电子收据，并全程协助更改邮箱及安全设定，确保账号永久且安全归属买家。',
+        secTitle: '安全保障',
+        secBody: '支持验号：买家可即时进入游戏查验所有数据及背包，确认真实性后再付款。卖家全程协助移交。',
+        btnDiscord: '通过 Discord 联系', btnEmail: '发送邮件',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('back-link').textContent        = p.backLink;
+      document.getElementById('status-text').textContent      = p.statusText;
+      document.getElementById('prod-title').textContent       = p.prodTitle;
+      document.getElementById('prod-subtitle').textContent    = p.prodSubtitle;
+      document.getElementById('stat-level-label').textContent = p.statLevelLabel;
+      document.getElementById('stat-bounty-label').textContent= p.statBountyLabel;
+      document.getElementById('stat-race-label').textContent  = p.statRaceLabel;
+      document.getElementById('stat-class-label').textContent = p.statClassLabel;
+      document.getElementById('stat-class-value').textContent = p.statClassValue;
+      document.getElementById('sec-pass').textContent         = p.secPass;
+      document.getElementById('pass-darkblade-meta').textContent = p.passDarkbladeMeta;
+      document.getElementById('sec-fruits').textContent       = p.secFruits;
+      document.getElementById('fruit-dragon-meta').textContent= p.fruitDragonMeta;
+      document.getElementById('badge-max').textContent        = p.badgeMax;
+      document.getElementById('badge-max-cdk').textContent    = p.badgeMax;
+      document.getElementById('badge-max-ttk').textContent    = p.badgeMax;
+      document.getElementById('badge-awakened-1').textContent = p.badgeAwakened;
+      document.getElementById('badge-awakened-2').textContent = p.badgeAwakened;
+      document.getElementById('sec-weapons').textContent      = p.secWeapons;
+      document.getElementById('sec-abilities').textContent    = p.secAbilities;
+      document.getElementById('prog-obs-label').textContent   = p.progObsLabel;
+      document.getElementById('prog-obs-value').textContent   = p.progObsValue;
+      document.getElementById('prog-fs-label').textContent    = p.progFsLabel;
+      document.getElementById('prog-pf-label').textContent    = p.progPfLabel;
+      document.getElementById('prog-rv4-label').textContent   = p.progRv4Label;
+      document.getElementById('prog-re-label').textContent    = p.progReLabel;
+      document.getElementById('prog-sea-label').textContent   = p.progSeaLabel;
+      document.getElementById('sec-payment').textContent      = p.secPayment;
+      document.getElementById('pay-title').textContent        = p.payTitle;
+      document.getElementById('pay-process').textContent      = p.payProcess;
+      document.getElementById('sec-title').textContent        = p.secTitle;
+      document.getElementById('sec-body').textContent         = p.secBody;
+      document.getElementById('btn-discord-1').textContent    = p.btnDiscord;
+      document.getElementById('btn-email-1').textContent      = p.btnEmail;
+      document.getElementById('btn-discord-2').textContent    = p.btnDiscord;
+      document.getElementById('btn-email-2').textContent      = p.btnEmail;
+    }
+
+    initPage('shop');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

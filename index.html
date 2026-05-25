@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpaceSquare</title>
+  <meta name="description" content="SpaceSquare — Hong Kong creator. YouTube, Discord, Shop and more.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem 5rem;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin: 1.5rem 0 0;
+    }
+    .hero h1 .accent { color: var(--accent); }
+
+    .hero-greeting {
+      font-family: var(--font-h);
+      font-weight: 500;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-sub {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 440px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      margin-top: 2.25rem;
+      display: flex; gap: 0.75rem;
+      flex-wrap: wrap; justify-content: center;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+      color: var(--muted); font-size: 0.72rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      animation: bob 2.5s ease infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(5px); }
+    }
+
+    /* Nav grid */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    @media(max-width:640px) {
+      .nav-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:400px) {
+      .nav-grid { grid-template-columns: 1fr; }
+    }
+
+    .nav-card {
+      background: var(--bg2);
+      padding: 2rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      transition: background var(--transition);
+      text-decoration: none; color: inherit;
+    }
+    .nav-card:hover { background: var(--bg3); }
+    .nav-card:hover .nav-card-arrow { color: var(--accent-h); }
+
+    .nav-card-icon { font-size: 1.6rem; line-height: 1; }
+    .nav-card-title {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 1rem; color: var(--text);
+    }
+    .nav-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .nav-card-arrow {
+      margin-top: auto; padding-top: 0.75rem;
+      font-size: 0.78rem; color: var(--accent);
+      transition: color var(--transition);
+    }
+    .nav-card-locked {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.68rem; color: var(--red);
+      background: rgba(255,95,109,0.1);
+      border: 1px solid rgba(255,95,109,0.2);
+      padding: 2px 7px; border-radius: 99px;
+      margin-top: 0.25rem; width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid-overlay"></div>
+
+      <div class="tag fade-up">
+        <span class="tag-dot"></span>
+        <span id="hero-tag">Hong Kong Creator</span>
+      </div>
+
+      <p class="hero-greeting fade-up fade-up-1" id="hero-greeting">Hi guys!</p>
+      <h1 class="fade-up fade-up-1">I'm <span class="accent">SpaceSquare</span></h1>
+      <p class="hero-sub fade-up fade-up-2" id="hero-sub">
+        Welcome to my personal website.
+      </p>
+      <div class="hero-actions fade-up fade-up-3">
+        <a class="btn btn-primary" href="pages/community.html" id="btn-community">Community</a>
+        <a class="btn btn-ghost" href="pages/shop.html" id="btn-shop">Shop</a>
+      </div>
+
+      <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- NAVIGATION CARDS -->
+    <section class="section">
+      <p class="section-label" id="nav-label">Navigation</p>
+      <h2 class="section-title" id="nav-title">What would you like to explore?</h2>
+
+      <div class="nav-grid">
+        <a class="nav-card" href="pages/about.html">
+          <div class="nav-card-icon">🌐</div>
+          <div class="nav-card-title" id="card-about-title">About This Website</div>
+          <div class="nav-card-desc" id="card-about-desc">Learn what this site is about and what you can find here.</div>
+          <div class="nav-card-arrow">Read more →</div>
+        </a>
+        <a class="nav-card" href="pages/community.html">
+          <div class="nav-card-icon">📺</div>
+          <div class="nav-card-title" id="card-community-title">Community</div>
+          <div class="nav-card-desc" id="card-community-desc">YouTube channel, Discord server, gaming posts and blog.</div>
+          <div class="nav-card-arrow">Explore →</div>
+        </a>
+        <a class="nav-card" href="pages/shop.html">
+          <div class="nav-card-icon">🛍️</div>
+          <div class="nav-card-title" id="card-shop-title">Shop</div>
+          <div class="nav-card-desc" id="card-shop-desc">Browse my own products and items promoted on behalf of others.</div>
+          <div class="nav-card-arrow">Shop now →</div>
+        </a>
+        <a class="nav-card" href="pages/freelance.html">
+          <div class="nav-card-icon">🎬</div>
+          <div class="nav-card-title" id="card-fl-title">Freelance Jobs</div>
+          <div class="nav-card-desc" id="card-fl-desc">Video editing with subtitles and music, plus shop advertising.</div>
+          <div class="nav-card-arrow">Hire me →</div>
+        </a>
+        <a class="nav-card" href="pages/programs.html">
+          <div class="nav-card-icon">💻</div>
+          <div class="nav-card-title" id="card-prog-title">My Programs</div>
+          <div class="nav-card-desc" id="card-prog-desc">Open-source projects and tools on GitHub.</div>
+          <div class="nav-card-arrow">View on GitHub →</div>
+        </a>
+        <a class="nav-card" href="#" onclick="openResumeModal(event)">
+          <div class="nav-card-icon">📄</div>
+          <div class="nav-card-title" id="card-resume-title">Résumé</div>
+          <div class="nav-card-desc" id="card-resume-desc">Password-protected. Available upon request.</div>
+          <div class="nav-card-locked">🔒 Private</div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        tag: 'Hong Kong Creator',
+        greeting: 'Hi guys!',
+        sub: 'Welcome to my personal website.',
+        navLabel: 'Navigation',
+        navTitle: 'What would you like to explore?',
+        btnCommunity: 'Community', btnShop: 'Shop',
+        aboutTitle: 'About This Website', aboutDesc: 'Learn what this site is about and what you can find here.',
+        communityTitle: 'Community', communityDesc: 'YouTube channel, Discord server, gaming posts and blog.',
+        shopTitle: 'Shop', shopDesc: 'Browse my own products and items promoted on behalf of others.',
+        flTitle: 'Freelance Jobs', flDesc: 'Video editing with subtitles and music, plus shop advertising.',
+        progTitle: 'My Programs', progDesc: 'Open-source projects and tools on GitHub.',
+        resumeTitle: 'Résumé', resumeDesc: 'Password-protected. Available upon request.',
+      },
+      'zh-hant': {
+        tag: '香港創作者',
+        greeting: '大家好！',
+        sub: '歡迎來到我的個人網站。',
+        navLabel: '網頁目錄',
+        navTitle: '您想探索什麼？',
+        btnCommunity: '社群', btnShop: '網店',
+        aboutTitle: '關於本站', aboutDesc: '了解本站的定位與您能在此找到的內容。',
+        communityTitle: '社群', communityDesc: 'YouTube 頻道、Discord 伺服器、遊戲貼文與部落格。',
+        shopTitle: '網店', shopDesc: '瀏覽我的自售商品及代售商品。',
+        flTitle: '接案服務', flDesc: '影片剪輯（含字幕與音樂）及網店廣告代理。',
+        progTitle: '我的程式', progDesc: '托管於 GitHub 的開源專案與工具。',
+        resumeTitle: '履歷', resumeDesc: '受密碼保護，如需查閱請聯絡我。',
+      },
+      'zh-hans': {
+        tag: '香港创作者',
+        greeting: '大家好！',
+        sub: '欢迎来到我的个人网站。',
+        navLabel: '网页目录',
+        navTitle: '您想探索什么？',
+        btnCommunity: '社群', btnShop: '网店',
+        aboutTitle: '关于本站', aboutDesc: '了解本站的定位与您能在此找到的内容。',
+        communityTitle: '社群', communityDesc: 'YouTube 频道、Discord 服务器、游戏帖子与博客。',
+        shopTitle: '网店', shopDesc: '浏览我的自售商品及代售商品。',
+        flTitle: '接案服务', flDesc: '视频剪辑（含字幕与音乐）及网店广告代理。',
+        progTitle: '我的程序', progDesc: '托管于 GitHub 的开源项目与工具。',
+        resumeTitle: '简历', resumeDesc: '受密码保护，如需查阅请联系我。',
+      },
+    };
+
+    function applyPageText() {
+      const lang = getLang();
+      const p = PAGE_TEXT[lang] || PAGE_TEXT.en;
+      document.getElementById('hero-tag').textContent     = p.tag;
+      document.getElementById('hero-greeting').textContent = p.greeting;
+      document.getElementById('hero-sub').textContent     = p.sub;
+      document.getElementById('nav-label').textContent    = p.navLabel;
+      document.getElementById('nav-title').textContent    = p.navTitle;
+      document.getElementById('btn-community').textContent = p.btnCommunity;
+      document.getElementById('btn-shop').textContent     = p.btnShop;
+      document.getElementById('card-about-title').textContent     = p.aboutTitle;
+      document.getElementById('card-about-desc').textContent      = p.aboutDesc;
+      document.getElementById('card-community-title').textContent = p.communityTitle;
+      document.getElementById('card-community-desc').textContent  = p.communityDesc;
+      document.getElementById('card-shop-title').textContent      = p.shopTitle;
+      document.getElementById('card-shop-desc').textContent       = p.shopDesc;
+      document.getElementById('card-fl-title').textContent        = p.flTitle;
+      document.getElementById('card-fl-desc').textContent         = p.flDesc;
+      document.getElementById('card-prog-title').textContent      = p.progTitle;
+      document.getElementById('card-prog-desc').textContent       = p.progDesc;
+      document.getElementById('card-resume-title').textContent    = p.resumeTitle;
+      document.getElementById('card-resume-desc').textContent     = p.resumeDesc;
+    }
+
+    initPage('home');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

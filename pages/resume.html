@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    /* Page hidden until unlocked */
+    .resume-content { display: none; }
+    .resume-content.unlocked { display: block; }
+
+    .gate {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .gate-box {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      width: 360px; max-width: 100%;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      text-align: center;
+    }
+    .gate-icon { font-size: 2.5rem; }
+    .gate-box h2 { font-family: var(--font-h); font-weight: 700; }
+    .gate-box p { color: var(--muted); font-size: 0.875rem; }
+    .gate-input {
+      background: var(--surface); border: 1px solid var(--border2);
+      color: var(--text); font-family: var(--font-b); font-size: 0.9rem;
+      padding: 10px 14px; border-radius: var(--radius); width: 100%;
+      outline: none; transition: border-color 0.2s; text-align: left;
+    }
+    .gate-input:focus { border-color: var(--accent); }
+    .gate-error { color: var(--red); font-size: 0.8rem; display: none; }
+    .gate-error.show { display: block; }
+
+    /* Resume content styles */
+    .resume-hero { padding: 5rem 2rem 3rem; max-width: 820px; margin: 0 auto; }
+    .resume-body { max-width: 820px; margin: 0 auto; padding: 0 2rem 5rem; display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .cv-section { display: flex; flex-direction: column; gap: 1rem; }
+    .cv-section-title {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500;
+      padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+    }
+
+    .cv-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .cv-item-title { font-family: var(--font-h); font-weight: 700; font-size: 0.95rem; }
+    .cv-item-sub { color: var(--muted); font-size: 0.82rem; }
+    .cv-item-body { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-top: 0.25rem; }
+
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-pill {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 4px 12px;
+      font-size: 0.82rem; color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page" id="page-wrap">
+
+    <!-- Gate (shown when locked) -->
+    <div class="gate" id="gate">
+      <div class="gate-box">
+        <div class="gate-icon">🔒</div>
+        <h2 id="gate-title">Private Page</h2>
+        <p id="gate-desc">Open your authenticator app and enter the 6-digit code.</p>
+        <input class="gate-input" type="text" inputmode="numeric" maxlength="6"
+          id="gate-pwd" placeholder="000000" autocomplete="one-time-code"
+          onkeydown="if(event.key==='Enter')checkGate()">
+        <p class="gate-error" id="gate-error">Invalid code. Please try again.</p>
+        <button class="btn btn-primary" onclick="checkGate()" id="gate-btn">Verify</button>
+      </div>
+    </div>
+
+    <!-- Actual resume content (shown after unlock) -->
+    <div class="resume-content" id="resume-content">
+      <div class="resume-hero">
+        <p class="section-label">Résumé</p>
+        <h1 class="section-title" id="r-title">SpaceSquare</h1>
+        <p class="section-desc" id="r-desc">Form 4 student based in Hong Kong.</p>
+      </div>
+
+      <div class="resume-body">
+
+        <!-- Education -->
+        <div class="cv-section">
+          <div class="cv-section-title" id="edu-label">Education</div>
+          <div class="cv-item">
+            <div class="cv-item-title" id="edu-school">Secondary School, Hong Kong</div>
+            <div class="cv-item-sub" id="edu-year">Currently enrolled · Form 4</div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="cv-section">
+          <div class="cv-section-title" id="skills-label">Skills</div>
+          <div class="cv-item">
+            <div class="cv-item-title">Canva</div>
+            <div class="cv-item-body" id="skill-canva">Basic and some advanced features. Capable of producing posters, social media graphics, and simple presentations.</div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-title">DaVinci Resolve</div>
+            <div class="cv-item-body" id="skill-davinci">Basic and some advanced features. Capable of video editing including cuts, colour grading, subtitles, and music synchronisation.</div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-title" id="skill-photo-title">Photography</div>
+            <div class="cv-item-body" id="skill-photo">Foundational photography skills including composition, lighting, and basic editing.</div>
+          </div>
+        </div>
+
+        <!-- Other -->
+        <div class="cv-section">
+          <div class="cv-section-title" id="other-label">Other Activities</div>
+          <div class="cv-item">
+            <div class="cv-item-title">YouTube — SpaceSquare</div>
+            <div class="cv-item-body" id="other-yt">Content creator focused on gaming. Responsible for filming, editing, and publishing video content independently.</div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-title">Discord Community</div>
+            <div class="cv-item-body" id="other-dc">Administrator and founder of a gaming Discord community server. Responsible for community management and moderation.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    async function checkGate() {
+      const val = document.getElementById('gate-pwd').value.trim();
+      if (await verifyTOTP(val)) {
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('resume-content').classList.add('unlocked');
+      } else {
+        document.getElementById('gate-error').classList.add('show');
+        document.getElementById('gate-pwd').focus();
+      }
+    }
+
+    const PAGE_TEXT = {
+      en: {
+        gateTitle: 'Private Page', gateDesc: 'Open your authenticator app and enter the 6-digit code.', gateBtn: 'Verify',
+        gateError: 'Invalid code. Please try again.',
+        rTitle: 'SpaceSquare', rDesc: 'Form 4 student based in Hong Kong.',
+        eduLabel: 'Education', eduSchool: 'Secondary School, Hong Kong', eduYear: 'Currently enrolled · Form 4',
+        skillsLabel: 'Skills',
+        skillCanva: 'Basic and some advanced features. Capable of producing posters, social media graphics, and simple presentations.',
+        skillDavinci: 'Basic and some advanced features. Capable of video editing including cuts, colour grading, subtitles, and music synchronisation.',
+        skillPhotoTitle: 'Photography', skillPhoto: 'Foundational photography skills including composition, lighting, and basic editing.',
+        otherLabel: 'Other Activities',
+        otherYt: 'Content creator focused on gaming. Responsible for filming, editing, and publishing video content independently.',
+        otherDc: 'Administrator and founder of a gaming Discord community server. Responsible for community management and moderation.',
+      },
+      'zh-hant': {
+        gateTitle: '私人頁面', gateDesc: '請開啟驗證器應用程式並輸入 6 位數驗證碼。', gateBtn: '驗證',
+        gateError: '驗證碼無效，請再試一次。',
+        rTitle: 'SpaceSquare', rDesc: '香港中四在讀學生。',
+        eduLabel: '學歷', eduSchool: '香港中學', eduYear: '在讀中 · 中四',
+        skillsLabel: '技能',
+        skillCanva: '具備基礎及部分進階功能，能製作海報、社交媒體圖像及簡單簡報。',
+        skillDavinci: '具備基礎及部分進階功能，能進行影片剪輯，包括剪接、色彩調整、字幕製作及音樂同步。',
+        skillPhotoTitle: '攝影', skillPhoto: '具備基礎攝影技術，包括構圖、光線運用及基本後期編輯。',
+        otherLabel: '其他活動',
+        otherYt: '以遊戲為主題的內容創作者，獨立負責影片拍攝、剪輯及發布。',
+        otherDc: 'Discord 遊戲社群伺服器的建立者及管理員，負責社群管理及日常維護。',
+      },
+      'zh-hans': {
+        gateTitle: '私人页面', gateDesc: '请打开验证器应用程序并输入 6 位数验证码。', gateBtn: '验证',
+        gateError: '验证码无效，请再试一次。',
+        rTitle: 'SpaceSquare', rDesc: '香港中四在读学生。',
+        eduLabel: '学历', eduSchool: '香港中学', eduYear: '在读中 · 中四',
+        skillsLabel: '技能',
+        skillCanva: '具备基础及部分进阶功能，能制作海报、社交媒体图像及简单演示文稿。',
+        skillDavinci: '具备基础及部分进阶功能，能进行视频剪辑，包括剪接、色彩调整、字幕制作及音乐同步。',
+        skillPhotoTitle: '摄影', skillPhoto: '具备基础摄影技术，包括构图、光线运用及基本后期编辑。',
+        otherLabel: '其他活动',
+        otherYt: '以游戏为主题的内容创作者，独立负责视频拍摄、剪辑及发布。',
+        otherDc: 'Discord 游戏社群服务器的创建者及管理员，负责社群管理及日常维护。',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('gate-title').textContent    = p.gateTitle;
+      document.getElementById('gate-desc').textContent     = p.gateDesc;
+      document.getElementById('gate-btn').textContent      = p.gateBtn;
+      document.getElementById('gate-error').textContent    = p.gateError;
+      document.getElementById('r-title').textContent       = p.rTitle;
+      document.getElementById('r-desc').textContent        = p.rDesc;
+      document.getElementById('edu-label').textContent     = p.eduLabel;
+      document.getElementById('edu-school').textContent    = p.eduSchool;
+      document.getElementById('edu-year').textContent      = p.eduYear;
+      document.getElementById('skills-label').textContent  = p.skillsLabel;
+      document.getElementById('skill-canva').textContent   = p.skillCanva;
+      document.getElementById('skill-davinci').textContent = p.skillDavinci;
+      document.getElementById('skill-photo-title').textContent = p.skillPhotoTitle;
+      document.getElementById('skill-photo').textContent   = p.skillPhoto;
+      document.getElementById('other-label').textContent   = p.otherLabel;
+      document.getElementById('other-yt').textContent      = p.otherYt;
+      document.getElementById('other-dc').textContent      = p.otherDc;
+    }
+
+    initPage('resume');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

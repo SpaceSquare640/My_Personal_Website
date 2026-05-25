@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .fl-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .fl-body {
+      max-width: 1080px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .service-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      display: flex; align-items: flex-start; gap: 1.25rem;
+    }
+    .service-num {
+      font-family: var(--font-h); font-weight: 800;
+      font-size: 2rem; color: var(--accent);
+      opacity: 0.5; line-height: 1; flex-shrink: 0;
+    }
+    .service-header-info h2 {
+      font-family: var(--font-h); font-weight: 700; font-size: 1.1rem;
+    }
+    .service-header-info p { color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
+    .service-body {
+      background: var(--bg2); padding: 2rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .service-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+    .service-detail {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+    }
+    .service-detail-label {
+      font-size: 0.72rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .service-detail-val {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 1.1rem; color: var(--accent2);
+    }
+    .contact-note {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+      color: var(--muted); font-size: 0.88rem; line-height: 1.75;
+    }
+    .contact-note a { color: var(--accent); text-decoration: none; }
+    .contact-note a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="fl-hero">
+      <p class="section-label">Freelance</p>
+      <h1 class="section-title" id="title">Freelance Jobs</h1>
+      <p class="section-desc" id="desc">
+        Available for video editing and shop advertising services. Feel free to contact me.
+      </p>
+    </div>
+
+    <div class="fl-body">
+
+      <!-- Service 1 -->
+      <div class="service-card fade-up">
+        <div class="service-header">
+          <div class="service-num">01</div>
+          <div class="service-header-info">
+            <h2 id="s1-title">Video Editing</h2>
+            <p id="s1-sub">Subtitles · Music · Basic to intermediate cuts</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <p id="s1-body">
+            I provide video editing services including basic cuts, subtitle overlay, and background music addition.
+            Suitable for YouTube videos, short clips, and social media content.
+          </p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div class="service-detail">
+              <div class="service-detail-label" id="s1-tool-label">Tools used</div>
+              <div class="service-detail-val">DaVinci Resolve</div>
+            </div>
+            <div class="service-detail">
+              <div class="service-detail-label" id="s1-inc-label">Includes</div>
+              <div class="service-detail-val" id="s1-inc-val">Cuts · Subtitles · Music</div>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="mailto:chin52696411@gmail.com?subject=Freelance: Video Editing" id="btn-s1">
+            Contact for Pricing →
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card fade-up fade-up-1">
+        <div class="service-header">
+          <div class="service-num">02</div>
+          <div class="service-header-info">
+            <h2 id="s2-title">Shop Advertising</h2>
+            <p id="s2-sub">No upfront fee · 15% commission on sales</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <p id="s2-body">
+            I can promote your products on my website's shop page. There is no upfront advertising fee.
+            If a customer purchases your product through my referral, a 15% commission will be charged on the sale.
+          </p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div class="service-detail">
+              <div class="service-detail-label" id="s2-fee-label">Upfront fee</div>
+              <div class="service-detail-val" id="s2-fee-val">Free</div>
+            </div>
+            <div class="service-detail">
+              <div class="service-detail-label" id="s2-comm-label">Commission</div>
+              <div class="service-detail-val">15%</div>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="mailto:chin52696411@gmail.com?subject=Freelance: Shop Advertising" id="btn-s2">
+            Contact to Advertise →
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact note -->
+      <div class="contact-note fade-up fade-up-2" id="contact-note">
+        For all enquiries, please contact me at
+        <a href="mailto:chin52696411@gmail.com">chin52696411@gmail.com</a>
+        or via the Discord server. I will respond as soon as possible.
+      </div>
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        title: 'Freelance Jobs',
+        desc: 'Available for video editing and shop advertising services. Feel free to contact me.',
+        s1Title: 'Video Editing', s1Sub: 'Subtitles · Music · Basic to intermediate cuts',
+        s1Body: 'I provide video editing services including basic cuts, subtitle overlay, and background music addition. Suitable for YouTube videos, short clips, and social media content.',
+        s1ToolLabel: 'Tools used', s1IncLabel: 'Includes', s1IncVal: 'Cuts · Subtitles · Music',
+        btnS1: 'Contact for Pricing →',
+        s2Title: 'Shop Advertising', s2Sub: 'No upfront fee · 15% commission on sales',
+        s2Body: 'I can promote your products on my website\'s shop page. There is no upfront advertising fee. If a customer purchases your product through my referral, a 15% commission will be charged on the sale.',
+        s2FeeLabel: 'Upfront fee', s2FeeVal: 'Free', s2CommLabel: 'Commission',
+        btnS2: 'Contact to Advertise →',
+        contactNote: 'For all enquiries, please contact me at chin52696411@gmail.com or via the Discord server. I will respond as soon as possible.',
+      },
+      'zh-hant': {
+        title: '接案服務',
+        desc: '提供影片剪輯及網店廣告代理服務，歡迎聯絡查詢。',
+        s1Title: '影片剪輯', s1Sub: '字幕 · 音樂 · 基礎至中階剪輯',
+        s1Body: '提供影片剪輯服務，包括基礎剪接、字幕疊加及背景音樂添加，適用於 YouTube 影片、短片及社交媒體內容。',
+        s1ToolLabel: '使用工具', s1IncLabel: '服務範圍', s1IncVal: '剪接 · 字幕 · 音樂',
+        btnS1: '聯絡查詢收費 →',
+        s2Title: '網店廣告代理', s2Sub: '無需預付廣告費 · 15% 分銷佣金',
+        s2Body: '我可在本站的網店頁面為您的商品進行推廣，無需預付廣告費。若有客戶透過我的推薦購買您的商品，將收取成交金額 15% 的佣金。',
+        s2FeeLabel: '預付費用', s2FeeVal: '免費', s2CommLabel: '佣金比例',
+        btnS2: '聯絡合作推廣 →',
+        contactNote: '如有任何查詢，請發送電子郵件至 chin52696411@gmail.com 或透過 Discord 伺服器聯絡我，我將盡快回覆。',
+      },
+      'zh-hans': {
+        title: '接案服务',
+        desc: '提供视频剪辑及网店广告代理服务，欢迎联系咨询。',
+        s1Title: '视频剪辑', s1Sub: '字幕 · 音乐 · 基础至中阶剪辑',
+        s1Body: '提供视频剪辑服务，包括基础剪接、字幕叠加及背景音乐添加，适用于 YouTube 视频、短片及社交媒体内容。',
+        s1ToolLabel: '使用工具', s1IncLabel: '服务范围', s1IncVal: '剪接 · 字幕 · 音乐',
+        btnS1: '联系咨询收费 →',
+        s2Title: '网店广告代理', s2Sub: '无需预付广告费 · 15% 分销佣金',
+        s2Body: '我可在本站的网店页面为您的商品进行推广，无需预付广告费。若有客户通过我的推荐购买您的商品，将收取成交金额 15% 的佣金。',
+        s2FeeLabel: '预付费用', s2FeeVal: '免费', s2CommLabel: '佣金比例',
+        btnS2: '联系合作推广 →',
+        contactNote: '如有任何咨询，请发送电子邮件至 chin52696411@gmail.com 或通过 Discord 服务器联系我，我将尽快回复。',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('title').textContent       = p.title;
+      document.getElementById('desc').textContent        = p.desc;
+      document.getElementById('s1-title').textContent    = p.s1Title;
+      document.getElementById('s1-sub').textContent      = p.s1Sub;
+      document.getElementById('s1-body').textContent     = p.s1Body;
+      document.getElementById('s1-tool-label').textContent = p.s1ToolLabel;
+      document.getElementById('s1-inc-label').textContent  = p.s1IncLabel;
+      document.getElementById('s1-inc-val').textContent    = p.s1IncVal;
+      document.getElementById('btn-s1').textContent      = p.btnS1;
+      document.getElementById('s2-title').textContent    = p.s2Title;
+      document.getElementById('s2-sub').textContent      = p.s2Sub;
+      document.getElementById('s2-body').textContent     = p.s2Body;
+      document.getElementById('s2-fee-label').textContent = p.s2FeeLabel;
+      document.getElementById('s2-fee-val').textContent   = p.s2FeeVal;
+      document.getElementById('s2-comm-label').textContent = p.s2CommLabel;
+      document.getElementById('btn-s2').textContent      = p.btnS2;
+      document.getElementById('contact-note').innerHTML  =
+        p.contactNote.replace('chin52696411@gmail.com',
+          '<a href="mailto:chin52696411@gmail.com">chin52696411@gmail.com</a>');
+    }
+
+    initPage('freelance');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

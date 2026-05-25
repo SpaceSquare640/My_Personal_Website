@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City in Contrast — SpaceSquare Blog</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .post-page { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--muted); font-size: 0.82rem; text-decoration: none;
+      margin-bottom: 2rem; transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* Post header */
+    .post-header { margin-bottom: 2rem; }
+    .post-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+    .post-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 99px;
+      background: rgba(79,209,197,0.1); color: var(--accent2);
+      border: 1px solid rgba(79,209,197,0.2);
+    }
+    .post-tag.purple {
+      background: rgba(124,110,255,0.1); color: var(--accent);
+      border-color: rgba(124,110,255,0.2);
+    }
+    .post-title-zh {
+      font-family: var(--font-h); font-weight: 800; font-size: 2.2rem;
+      line-height: 1.15; letter-spacing: 0.02em;
+    }
+    .post-title-en {
+      font-family: var(--font-h); font-weight: 500; font-size: 1.1rem;
+      color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.04em;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+      margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .post-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* Photo */
+    .post-photo {
+      width: 100%; border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      display: block; margin-bottom: 1.25rem;
+      background: var(--bg3);
+    }
+    .photo-caption {
+      text-align: center; color: var(--muted); font-size: 0.8rem;
+      margin-bottom: 2.5rem; line-height: 1.6;
+    }
+
+    /* Post body */
+    .post-body {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+      color: var(--muted); font-size: 0.9rem; line-height: 1.9;
+    }
+    .post-body p + p { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="post-page">
+
+      <a class="back-link" href="community-blog.html" id="back-link">← Blog</a>
+
+      <!-- Header -->
+      <div class="post-header fade-up">
+        <div class="post-tags">
+          <span class="post-tag" id="tag-photo">Photography</span>
+          <span class="post-tag purple" id="tag-comp">Competition</span>
+        </div>
+        <div class="post-title-zh" id="title-zh">城市縫隙</div>
+        <div class="post-title-en" id="title-en">City in Contrast</div>
+        <div class="post-meta">
+          <span>📅 <span id="meta-date">2025-11-08 · Saturday · 15:48</span></span>
+          <span>📱 <span id="meta-device">Mobile Street Photography</span></span>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="fade-up fade-up-1">
+        <img class="post-photo"
+          src="../img/blog/city-contrast.jpg"
+          alt="City in Contrast — Hong Kong street photography"
+          id="photo-alt">
+        <p class="photo-caption" id="photo-caption">
+          城市縫隙 · City in Contrast &nbsp;|&nbsp; 2025.11.08 15:48
+        </p>
+      </div>
+
+      <!-- Body -->
+      <div class="post-body fade-up fade-up-1">
+        <p id="body-p1">
+          手機街拍參賽作品。在香港街頭捕捉城市的層次與對比——舊式唐樓、竹棚、現代玻璃幕牆，新舊並存於同一視框之中。
+        </p>
+        <p id="body-p2">
+          A competition entry for mobile street photography. Taken at a Hong Kong intersection, the frame contrasts aged tenement blocks wrapped in bamboo scaffolding against a sleek modern glass tower — old and new sharing the same sky.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        backLink: '← Blog',
+        tagPhoto: 'Photography', tagComp: 'Competition',
+        titleZh: '城市縫隙', titleEn: 'City in Contrast',
+        metaDate: '2025-11-08 · Saturday · 15:48',
+        metaDevice: 'Mobile Street Photography',
+        photoCaption: 'City in Contrast  |  2025.11.08 15:48',
+        photoAlt: 'City in Contrast — Hong Kong street photography',
+        bodyP1: 'A competition entry for mobile street photography. Taken at a Hong Kong intersection, the frame contrasts aged tenement blocks wrapped in bamboo scaffolding against a sleek modern glass tower — old and new sharing the same sky.',
+        bodyP2: '',
+      },
+      'zh-hant': {
+        backLink: '← 部落格',
+        tagPhoto: '攝影', tagComp: '比賽作品',
+        titleZh: '城市縫隙', titleEn: 'City in Contrast',
+        metaDate: '2025年11月8日 · 星期六 · 15:48',
+        metaDevice: '手機街拍',
+        photoCaption: '城市縫隙 · City in Contrast  |  2025.11.08 15:48',
+        photoAlt: '城市縫隙 — 香港街頭攝影',
+        bodyP1: '手機街拍參賽作品。在香港街頭捕捉城市的層次與對比——舊式唐樓、竹棚、現代玻璃幕牆，新舊並存於同一視框之中。',
+        bodyP2: 'A competition entry for mobile street photography. Taken at a Hong Kong intersection, the frame contrasts aged tenement blocks wrapped in bamboo scaffolding against a sleek modern glass tower — old and new sharing the same sky.',
+      },
+      'zh-hans': {
+        backLink: '← 博客',
+        tagPhoto: '摄影', tagComp: '比赛作品',
+        titleZh: '城市缝隙', titleEn: 'City in Contrast',
+        metaDate: '2025年11月8日 · 星期六 · 15:48',
+        metaDevice: '手机街拍',
+        photoCaption: '城市缝隙 · City in Contrast  |  2025.11.08 15:48',
+        photoAlt: '城市缝隙 — 香港街头摄影',
+        bodyP1: '手机街拍参赛作品。在香港街头捕捉城市的层次与对比——旧式唐楼、竹棚、现代玻璃幕墙，新旧并存于同一视框之中。',
+        bodyP2: 'A competition entry for mobile street photography. Taken at a Hong Kong intersection, the frame contrasts aged tenement blocks wrapped in bamboo scaffolding against a sleek modern glass tower — old and new sharing the same sky.',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('back-link').textContent    = p.backLink;
+      document.getElementById('tag-photo').textContent    = p.tagPhoto;
+      document.getElementById('tag-comp').textContent     = p.tagComp;
+      document.getElementById('title-zh').textContent     = p.titleZh;
+      document.getElementById('title-en').textContent     = p.titleEn;
+      document.getElementById('meta-date').textContent    = p.metaDate;
+      document.getElementById('meta-device').textContent  = p.metaDevice;
+      document.getElementById('photo-caption').textContent = p.photoCaption;
+      document.getElementById('photo-alt').alt            = p.photoAlt;
+      document.getElementById('body-p1').textContent      = p.bodyP1;
+      const p2 = document.getElementById('body-p2');
+      p2.textContent = p.bodyP2;
+      p2.style.display = p.bodyP2 ? '' : 'none';
+    }
+
+    initPage('community');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .shop-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .shop-body {
+      max-width: 1080px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: flex; flex-direction: column; gap: 4rem;
+    }
+    .shop-section-label {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 1rem; font-weight: 500;
+    }
+    /* Product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition), background var(--transition);
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover {
+      border-color: var(--border2);
+      background: var(--surface2);
+    }
+    .product-img {
+      width: 100%; aspect-ratio: 1;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-info { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+    .product-name {
+      font-family: var(--font-h); font-weight: 700; font-size: 0.95rem;
+    }
+    .product-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.55; flex: 1; }
+    .product-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 0.75rem; padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .product-price {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 1rem; color: var(--accent2);
+    }
+    .product-arrow { font-size: 0.78rem; color: var(--accent); }
+
+    /* Empty state */
+    .empty-state {
+      background: var(--surface); border: 1px dashed var(--border2);
+      border-radius: var(--radius-lg); padding: 3rem 2rem;
+      text-align: center; color: var(--muted);
+    }
+    .empty-state p { font-size: 0.88rem; line-height: 1.8; }
+
+    /* Promoted badge */
+    .promoted-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.65rem; color: var(--accent);
+      background: rgba(124,110,255,0.1);
+      border: 1px solid rgba(124,110,255,0.2);
+      padding: 2px 7px; border-radius: 99px;
+      margin-bottom: 0.4rem; width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="shop-hero">
+      <p class="section-label">Shop</p>
+      <h1 class="section-title" id="title">Shop</h1>
+      <p class="section-desc" id="desc">
+        Browse my own products and items promoted on behalf of others.
+      </p>
+    </div>
+
+    <div class="shop-body">
+
+      <!-- Own products -->
+      <div>
+        <p class="shop-section-label" id="own-label">My Own Products</p>
+        <div class="product-grid">
+          <a class="product-card" href="product-bloxfruit-account.html">
+            <div class="product-img">🎮</div>
+            <div class="product-info">
+              <div class="product-name" id="p1-name">Blox Fruits Account</div>
+              <div class="product-desc" id="p1-desc">Lv.2618 · Angel V4 · 6.7M Bounty · 10 Perm Fruits · Dragon, Dough, T-Rex · CDK + TTK</div>
+              <div class="product-footer">
+                <span class="product-price">HKD 700</span>
+                <span class="product-arrow">View →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" style="margin:0;">
+
+      <!-- Promoted products -->
+      <div>
+        <p class="shop-section-label" id="promo-label">Promoted Products</p>
+        <div class="empty-state">
+          <div style="font-size:2rem; margin-bottom:1rem;">📢</div>
+          <p id="promo-empty">
+            No promoted products at the moment.<br>
+            Interested in promoting your product here? Check the <a href="freelance.html" style="color:var(--accent);">Freelance</a> page.
+          </p>
+        </div>
+        <!--
+          HOW TO ADD A PROMOTED PRODUCT:
+          <div class="product-grid">
+            <a class="product-card" href="product-SLUG.html">
+              <div class="product-img">🖼️</div>
+              <div class="product-info">
+                <div class="promoted-badge">★ Promoted</div>
+                <div class="product-name">Product Name</div>
+                <div class="product-desc">Description.</div>
+                <div class="product-footer">
+                  <span class="product-price">HKD 200</span>
+                  <span class="product-arrow">View →</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        -->
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        title: 'Shop', desc: 'Browse my own products and items promoted on behalf of others.',
+        ownLabel: 'My Own Products',
+        p1Name: 'Blox Fruits Account',
+        p1Desc: 'Lv.2618 · Angel V4 · 6.7M Bounty · 10 Perm Fruits · Dragon, Dough, T-Rex · CDK + TTK',
+        promoLabel: 'Promoted Products',
+        promoEmpty: 'No promoted products at the moment.',
+      },
+      'zh-hant': {
+        title: '網店', desc: '瀏覽我的自售商品及代售商品。',
+        ownLabel: '自售商品',
+        p1Name: 'Blox Fruits 帳號',
+        p1Desc: '2618等 · Angel V4 · 賞金6.7M · 10永久果實 · 龍·麵糰·暴龍 · CDK + TTK',
+        promoLabel: '代售商品',
+        promoEmpty: '目前暫無代售商品。',
+      },
+      'zh-hans': {
+        title: '网店', desc: '浏览我的自售商品及代售商品。',
+        ownLabel: '自售商品',
+        p1Name: 'Blox Fruits 帐号',
+        p1Desc: '2618等 · Angel V4 · 赏金6.7M · 10永久果实 · 龙·面团·暴龙 · CDK + TTK',
+        promoLabel: '代售商品',
+        promoEmpty: '目前暂无代售商品。',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('title').textContent       = p.title;
+      document.getElementById('desc').textContent        = p.desc;
+      document.getElementById('own-label').textContent   = p.ownLabel;
+      document.getElementById('p1-name').textContent     = p.p1Name;
+      document.getElementById('p1-desc').textContent     = p.p1Desc;
+      document.getElementById('promo-label').textContent = p.promoLabel;
+      document.getElementById('promo-empty').innerHTML   =
+        p.promoEmpty + (getLang() === 'en'
+          ? '<br>Interested in promoting your product here? Check the <a href="freelance.html" style="color:var(--accent);">Freelance</a> page.'
+          : getLang() === 'zh-hant'
+          ? '<br>有意在此推廣您的商品？請查閱<a href="freelance.html" style="color:var(--accent);">接案服務</a>頁面。'
+          : '<br>有意在此推广您的商品？请查阅<a href="freelance.html" style="color:var(--accent);">接案服务</a>页面。');
+    }
+
+    initPage('shop');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

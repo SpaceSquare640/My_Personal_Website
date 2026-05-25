@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — SpaceSquare Community</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .sub-hero { padding: 5rem 2rem 3rem; max-width: 1080px; margin: 0 auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--muted); font-size: 0.82rem; text-decoration: none;
+      margin-bottom: 1.5rem; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+    .posts-body { max-width: 1080px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .post-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .post-item {
+      background: var(--bg2); padding: 1.5rem 2rem;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+      text-decoration: none; color: inherit; transition: background 0.2s;
+    }
+    .post-item:hover { background: var(--bg3); }
+    .post-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 99px;
+      background: rgba(79,209,197,0.1); color: var(--accent2);
+      border: 1px solid rgba(79,209,197,0.2); margin-bottom: 0.4rem;
+    }
+    .post-title { font-family: var(--font-h); font-weight: 700; font-size: 0.95rem; }
+    .post-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; margin-top: 2px; }
+    .empty-state {
+      background: var(--surface); border: 1px dashed var(--border2);
+      border-radius: var(--radius-lg); padding: 3rem 2rem;
+      text-align: center; color: var(--muted); font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="sub-hero">
+      <a class="back-link" href="community.html">← Community</a>
+      <p class="section-label">Community · Blog</p>
+      <h1 class="section-title" id="title">Blog</h1>
+      <p class="section-desc" id="desc">Announcements, updates, and personal posts.</p>
+    </div>
+
+    <div class="posts-body">
+      <div class="post-list">
+        <a class="post-item" href="post-city-contrast.html">
+          <div>
+            <div class="post-tag" id="tag-p1">Photography</div>
+            <div class="post-title" id="title-p1">城市縫隙 · City in Contrast</div>
+          </div>
+          <div class="post-date">2025-11-08</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en:        { title: 'Blog',   desc: 'Announcements, updates, and personal posts.',   tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast' },
+      'zh-hant': { title: '部落格', desc: '公告、更新資訊及個人文章。',                   tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast' },
+      'zh-hans': { title: '博客',   desc: '公告、更新信息及个人文章。',                   tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast' },
+    };
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('title').textContent    = p.title;
+      document.getElementById('desc').textContent     = p.desc;
+      document.getElementById('tag-p1').textContent   = p.tagP1;
+      document.getElementById('title-p1').textContent = p.titleP1;
+    }
+    initPage('community');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>
