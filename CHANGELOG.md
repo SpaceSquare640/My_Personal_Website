@@ -4,6 +4,17 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.18] — 2026-05-26
+
+### Changed
+- **Firefighting Simulator: Ignite — promotional pricing removed** (取消優惠價). Plans now show their regular prices only:
+  - Plan A · Standard: **HK$148** (previously HK$148 strikethrough → HK$138)
+  - Plan B · Deluxe: **HK$218** (previously HK$218 strikethrough → HK$208)
+- `pages/product-firefighting-simulator-ignite.html` — removed `.plan-price-orig` strikethrough span + `.plan-save` "Save HK$10" tag from both plan cards; cleaned up corresponding `planASave` / `planBSave` i18n keys and `applyPageText` wiring for all three languages
+- `pages/shop.html` — product card price strap updated **From HKD 138 → From HKD 148** in EN / 繁中 / 简中
+
+---
+
 ## [1.0.17] — 2026-05-26
 
 ### Added
