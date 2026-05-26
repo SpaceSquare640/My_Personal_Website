@@ -4,6 +4,25 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.16] — 2026-05-26
+
+### Fixed — Bug Report 2026-05-26
+- **Bug 1 · Light mode "Shop" hero button nearly invisible** — `[data-theme="light"] .btn-ghost` now uses an explicit darker border (`rgba(15,15,30,0.32)`, hover `0.55`) so the button is clearly outlined against the near-white hero background
+- **Bug 2 · Nav links low contrast in light mode** — nav links in light mode now render in `#2e2e44` (was `var(--muted)` = medium gray); hover/active states tinted with `rgba(90,77,219,0.08)` for clear feedback
+- **Bug 3 · Shop card image cropped** — `.product-img` aspect-ratio changed from `1` to `16 / 9` (option B); the 480×270 icon now displays uncropped, full "Roblox Account" text visible
+- **Bug 4 · Card CTA arrows + 🔒 badge not translated** — added IDs to all six `.nav-card-arrow` + the `.nav-card-locked` badge on `index.html`; added 6 new keys to `PAGE_TEXT` (`arrowRead`, `arrowExplore`, `arrowShop`, `arrowHire`, `arrowGithub`, `lockedBadge`) × 3 languages; wired in `applyPageText()`
+- **Bug 5 · "Scroll" not translated** — added `id="scroll-hint"`; new `scroll` key in `PAGE_TEXT` translated as 向下捲動 / 向下滚动
+- **Bug 6 · Light-mode hero washed out** — added a soft purple→teal radial gradient backdrop only under `[data-theme="light"] .hero`; retuned `.hero h1 .accent` drop-shadow with two stacked filters for light backgrounds; `.hero-greeting` + `.hero-sub` now render in `#3a3a4e` in light mode for better contrast
+
+### Not reproduced
+- **Bug 7 · Console "message channel closed" exceptions** — dismissed as third-party browser-extension noise (classic `chrome.runtime.sendMessage` async leak). Confirmed no scripts on the site (`i18n.js`, `components.js`, page-level inline scripts) use `chrome.runtime`, `runtime.onMessage`, or async message channels
+
+### Changed
+- `css/main.css` light theme — `--muted` darkened from `#5c5c70` → `#424256` (better readability on white); `--border2` bumped from `0.14α` → `0.22α`; `--dim` darkened from `#c4c4d6` → `#b0b0c4`; `--nav-bg` opacity raised from `0.78` → `0.82`; `--ambient-glow` slightly stronger
+- These global light-theme tweaks also improve readability of muted text on the footer, post lists, and product page
+
+---
+
 ## [1.0.15] — 2026-05-26
 
 ### Added

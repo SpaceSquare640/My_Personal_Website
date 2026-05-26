@@ -168,7 +168,7 @@
         <a class="btn btn-ghost" href="pages/shop.html" id="btn-shop">Shop</a>
       </div>
 
-      <div class="scroll-hint">Scroll</div>
+      <div class="scroll-hint" id="scroll-hint">Scroll</div>
     </section>
 
     <hr class="divider">
@@ -183,37 +183,37 @@
           <div class="nav-card-icon">🌐</div>
           <div class="nav-card-title" id="card-about-title">About This Website</div>
           <div class="nav-card-desc" id="card-about-desc">Learn what this site is about and what you can find here.</div>
-          <div class="nav-card-arrow">Read more →</div>
+          <div class="nav-card-arrow" id="card-about-arrow">Read more →</div>
         </a>
         <a class="nav-card" href="pages/community.html">
           <div class="nav-card-icon">📺</div>
           <div class="nav-card-title" id="card-community-title">Community</div>
           <div class="nav-card-desc" id="card-community-desc">YouTube channel, Discord server, gaming posts and blog.</div>
-          <div class="nav-card-arrow">Explore →</div>
+          <div class="nav-card-arrow" id="card-community-arrow">Explore →</div>
         </a>
         <a class="nav-card" href="pages/shop.html">
           <div class="nav-card-icon">🛍️</div>
           <div class="nav-card-title" id="card-shop-title">Shop</div>
           <div class="nav-card-desc" id="card-shop-desc">Browse my own products and items promoted on behalf of others.</div>
-          <div class="nav-card-arrow">Shop now →</div>
+          <div class="nav-card-arrow" id="card-shop-arrow">Shop now →</div>
         </a>
         <a class="nav-card" href="pages/freelance.html">
           <div class="nav-card-icon">🎬</div>
           <div class="nav-card-title" id="card-fl-title">Freelance Jobs</div>
           <div class="nav-card-desc" id="card-fl-desc">Video editing with subtitles and music, plus shop advertising.</div>
-          <div class="nav-card-arrow">Hire me →</div>
+          <div class="nav-card-arrow" id="card-fl-arrow">Hire me →</div>
         </a>
         <a class="nav-card" href="pages/programs.html">
           <div class="nav-card-icon">💻</div>
           <div class="nav-card-title" id="card-prog-title">My Programs</div>
           <div class="nav-card-desc" id="card-prog-desc">Open-source projects and tools on GitHub.</div>
-          <div class="nav-card-arrow">View on GitHub →</div>
+          <div class="nav-card-arrow" id="card-prog-arrow">View on GitHub →</div>
         </a>
         <a class="nav-card" href="#" onclick="openResumeModal(event)">
           <div class="nav-card-icon">📄</div>
           <div class="nav-card-title" id="card-resume-title">Résumé</div>
           <div class="nav-card-desc" id="card-resume-desc">Password-protected. Available upon request.</div>
-          <div class="nav-card-locked">🔒 Private</div>
+          <div class="nav-card-locked" id="card-resume-locked">🔒 Private</div>
         </a>
       </div>
     </section>
@@ -238,6 +238,10 @@
         flTitle: 'Freelance Jobs', flDesc: 'Video editing with subtitles and music, plus shop advertising.',
         progTitle: 'My Programs', progDesc: 'Open-source projects and tools on GitHub.',
         resumeTitle: 'Résumé', resumeDesc: 'Password-protected. Available upon request.',
+        arrowRead: 'Read more →', arrowExplore: 'Explore →', arrowShop: 'Shop now →',
+        arrowHire: 'Hire me →', arrowGithub: 'View on GitHub →',
+        lockedBadge: '🔒 Private',
+        scroll: 'Scroll',
       },
       'zh-hant': {
         tag: '香港創作者',
@@ -252,6 +256,10 @@
         flTitle: '接案服務', flDesc: '影片剪輯（含字幕與音樂）及網店廣告代理。',
         progTitle: '我的程式', progDesc: '托管於 GitHub 的開源專案與工具。',
         resumeTitle: '履歷', resumeDesc: '受密碼保護，如需查閱請聯絡我。',
+        arrowRead: '了解更多 →', arrowExplore: '前往探索 →', arrowShop: '前往購買 →',
+        arrowHire: '聯絡接案 →', arrowGithub: '前往 GitHub →',
+        lockedBadge: '🔒 私人',
+        scroll: '向下捲動',
       },
       'zh-hans': {
         tag: '香港创作者',
@@ -266,6 +274,10 @@
         flTitle: '接案服务', flDesc: '视频剪辑（含字幕与音乐）及网店广告代理。',
         progTitle: '我的程序', progDesc: '托管于 GitHub 的开源项目与工具。',
         resumeTitle: '简历', resumeDesc: '受密码保护，如需查阅请联系我。',
+        arrowRead: '了解更多 →', arrowExplore: '前往探索 →', arrowShop: '前往购买 →',
+        arrowHire: '联系接案 →', arrowGithub: '前往 GitHub →',
+        lockedBadge: '🔒 私人',
+        scroll: '向下滚动',
       },
     };
 
@@ -291,6 +303,13 @@
       document.getElementById('card-prog-desc').textContent       = p.progDesc;
       document.getElementById('card-resume-title').textContent    = p.resumeTitle;
       document.getElementById('card-resume-desc').textContent     = p.resumeDesc;
+      document.getElementById('card-about-arrow').textContent     = p.arrowRead;
+      document.getElementById('card-community-arrow').textContent = p.arrowExplore;
+      document.getElementById('card-shop-arrow').textContent      = p.arrowShop;
+      document.getElementById('card-fl-arrow').textContent        = p.arrowHire;
+      document.getElementById('card-prog-arrow').textContent      = p.arrowGithub;
+      document.getElementById('card-resume-locked').textContent   = p.lockedBadge;
+      document.getElementById('scroll-hint').textContent          = p.scroll;
     }
 
     initPage('home');

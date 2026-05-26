@@ -37,23 +37,59 @@
 [data-theme="light"] {
   --bg:        #fafbff;
   --bg2:       #ffffff;
-  --bg3:       #f1f2fa;
+  --bg3:       #eef0f8;
   --surface:   #ffffff;
-  --surface2:  #f6f7fc;
-  --border:    rgba(15,15,30,0.08);
-  --border2:   rgba(15,15,30,0.14);
+  --surface2:  #f3f4fb;
+  --border:    rgba(15,15,30,0.10);
+  --border2:   rgba(15,15,30,0.22);
   --accent:    #5a4ddb;
   --accent-h:  #7c6eff;
   --accent2:   #1aa79a;
   --red:       #e23a4a;
   --text:      #14142b;
-  --muted:     #5c5c70;
-  --dim:       #c4c4d6;
+  --muted:     #424256;
+  --dim:       #b0b0c4;
   --noise-opacity: 0.018;
-  --ambient-glow: rgba(90,77,219,0.08);
-  --nav-bg:    rgba(255,255,255,0.78);
+  --ambient-glow: rgba(90,77,219,0.10);
+  --nav-bg:    rgba(255,255,255,0.82);
   --menu-bg:   rgba(255,255,255,0.96);
   color-scheme: light;
+}
+
+/* P0 fixes — light mode contrast on nav + ghost buttons */
+[data-theme="light"] .nav-links a { color: #2e2e44; }
+[data-theme="light"] .nav-links a:hover,
+[data-theme="light"] .nav-links a.active {
+  color: var(--accent);
+  background: rgba(90,77,219,0.08);
+}
+[data-theme="light"] .btn-ghost {
+  color: var(--text);
+  border-color: rgba(15,15,30,0.32);
+}
+[data-theme="light"] .btn-ghost:hover {
+  background: var(--surface2);
+  border-color: rgba(15,15,30,0.55);
+}
+[data-theme="light"] .theme-toggle { color: #424256; }
+[data-theme="light"] .lang-btn { color: #424256; }
+
+/* P3 — light-mode hero polish: subtle purple spotlight + retuned drop-shadow */
+[data-theme="light"] .hero {
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 35%,
+    rgba(90,77,219,0.09) 0%,
+    rgba(26,167,154,0.05) 45%,
+    transparent 75%
+  );
+}
+[data-theme="light"] .hero h1 .accent {
+  filter: drop-shadow(0 4px 22px rgba(90,77,219,0.28))
+          drop-shadow(0 0 1px rgba(20,20,43,0.18));
+}
+[data-theme="light"] .hero-greeting,
+[data-theme="light"] .hero-sub {
+  color: #3a3a4e;
 }
 
 /* Smooth color transition when theme switches */
