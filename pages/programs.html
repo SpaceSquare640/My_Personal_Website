@@ -8,26 +8,43 @@
   <style>
     .prog-hero { padding: 5rem 2rem 3rem; max-width: 1080px; margin: 0 auto; }
     .prog-body { max-width: 1080px; margin: 0 auto; padding: 0 2rem 5rem; display: flex; flex-direction: column; gap: 2rem; }
-    .github-card {
+
+    /* Program card */
+    .prog-card {
       border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
     }
-    .github-header {
+    .prog-header {
       background: var(--surface); border-bottom: 1px solid var(--border);
       padding: 1.75rem 2rem; display: flex; align-items: center; gap: 1.25rem;
     }
-    .github-icon {
+    .prog-icon {
       width: 52px; height: 52px; background: var(--bg3); border-radius: 12px;
       display: flex; align-items: center; justify-content: center; font-size: 1.75rem; flex-shrink: 0;
     }
-    .github-header h2 { font-family: var(--font-h); font-weight: 700; font-size: 1.1rem; }
-    .github-header p { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
-    .github-body { background: var(--bg2); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    .github-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
-    .repo-placeholder {
-      background: var(--surface); border: 1px dashed var(--border2);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      color: var(--muted); font-size: 0.82rem; text-align: center;
+    .prog-header h2 {
+      font-family: var(--font-h); font-weight: 800; font-size: 1.4rem;
+      letter-spacing: -0.005em; line-height: 1.1;
     }
+    .prog-header p { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+    .prog-body-inner {
+      background: var(--bg2); padding: 2rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .prog-body-inner p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+
+    /* Meta row (file size etc.) */
+    .prog-meta {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      font-size: 0.72rem; color: var(--muted);
+    }
+    .prog-meta-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 99px;
+      letter-spacing: 0.02em;
+    }
+
+    .prog-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   </style>
 </head>
 <body>
@@ -41,25 +58,55 @@
     </div>
 
     <div class="prog-body">
-      <div class="github-card fade-up">
-        <div class="github-header">
-          <div class="github-icon">💻</div>
+
+      <!-- Disk Speed Tester -->
+      <div class="prog-card fade-up">
+        <div class="prog-header">
+          <div class="prog-icon">💽</div>
           <div>
-            <h2>GitHub</h2>
+            <h2 id="dst-title">Disk Speed Tester</h2>
+            <p id="dst-sub">Windows utility · Free &amp; open-source</p>
+          </div>
+        </div>
+        <div class="prog-body-inner">
+          <p id="dst-body">
+            A lightweight Windows utility for measuring sequential and random read/write speeds of any local drive (SSD, HDD, USB, SD card). Useful for verifying advertised speeds, comparing drives, and spotting failing storage.
+          </p>
+          <div class="prog-meta">
+            <span class="prog-meta-chip">📦 <span id="dst-size">~25 KB ZIP</span></span>
+            <span class="prog-meta-chip">🪟 <span id="dst-platform">Windows</span></span>
+            <span class="prog-meta-chip">🆓 <span id="dst-license">MIT-style, free to use</span></span>
+          </div>
+          <div class="prog-actions">
+            <a class="btn btn-primary" href="../downloads/Disk_Speed_Tester.zip" download id="btn-dst-download">
+              ⬇ Download (ZIP)
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/SpaceSquare640/Disk_Speed_Tester" target="_blank" rel="noopener" id="btn-dst-github">
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub Profile -->
+      <div class="prog-card fade-up fade-up-1">
+        <div class="prog-header">
+          <div class="prog-icon">💻</div>
+          <div>
+            <h2 id="gh-title">GitHub Profile</h2>
             <p id="gh-sub">View all repositories and source code</p>
           </div>
         </div>
-        <div class="github-body">
-          <p id="gh-body">All of my programs and open-source projects are hosted on GitHub. Click the button below to visit my GitHub profile and browse the available repositories.</p>
-          <div class="repo-placeholder" id="gh-placeholder">
-            Add your GitHub URL in the button below to link directly to your profile.
+        <div class="prog-body-inner">
+          <p id="gh-body">All of my programs and open-source projects are hosted on GitHub. Click below to browse every available repository.</p>
+          <div class="prog-actions">
+            <a class="btn btn-primary" href="https://github.com/SpaceSquare640" target="_blank" rel="noopener" id="btn-gh">
+              Visit GitHub Profile →
+            </a>
           </div>
-          <!-- Replace # with your GitHub profile URL e.g. https://github.com/YourUsername -->
-          <a class="btn btn-primary" href="#" target="_blank" id="btn-gh">
-            Visit GitHub Profile →
-          </a>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -70,36 +117,71 @@
   <script>
     const PAGE_TEXT = {
       en: {
-        title: 'My Programs', desc: 'Open-source projects and tools hosted on GitHub.',
+        title: 'My Programs',
+        desc: 'Open-source projects and tools hosted on GitHub.',
+        dstTitle: 'Disk Speed Tester',
+        dstSub: 'Windows utility · Free & open-source',
+        dstBody: 'A lightweight Windows utility for measuring sequential and random read/write speeds of any local drive (SSD, HDD, USB, SD card). Useful for verifying advertised speeds, comparing drives, and spotting failing storage.',
+        dstSize: '~25 KB ZIP',
+        dstPlatform: 'Windows',
+        dstLicense: 'MIT-style, free to use',
+        btnDstDownload: '⬇ Download (ZIP)',
+        btnDstGithub: 'View on GitHub →',
+        ghTitle: 'GitHub Profile',
         ghSub: 'View all repositories and source code',
-        ghBody: 'All of my programs and open-source projects are hosted on GitHub. Click the button below to visit my GitHub profile and browse the available repositories.',
-        ghPlaceholder: 'Add your GitHub URL in the button below to link directly to your profile.',
+        ghBody: 'All of my programs and open-source projects are hosted on GitHub. Click below to browse every available repository.',
         btnGh: 'Visit GitHub Profile →',
       },
       'zh-hant': {
-        title: '我的程式', desc: '托管於 GitHub 的開源專案與工具。',
+        title: '我的程式',
+        desc: '托管於 GitHub 的開源專案與工具。',
+        dstTitle: '硬碟速度測試工具',
+        dstSub: 'Windows 工具 · 免費開源',
+        dstBody: '輕量級的 Windows 工具，可量度任何本機硬碟（SSD、HDD、USB、SD 卡）的順序與隨機讀寫速度。可用於驗證廠商宣稱速度、對比不同硬碟，以及偵測即將損壞的儲存裝置。',
+        dstSize: '~25 KB ZIP',
+        dstPlatform: 'Windows',
+        dstLicense: 'MIT 類授權，免費使用',
+        btnDstDownload: '⬇ 下載（ZIP）',
+        btnDstGithub: '前往 GitHub →',
+        ghTitle: 'GitHub 個人頁面',
         ghSub: '查看所有儲存庫與原始碼',
-        ghBody: '我所有的程式及開源專案均托管於 GitHub。請點擊下方按鈕前往我的 GitHub 個人頁面，瀏覽所有可用的儲存庫。',
-        ghPlaceholder: '請在下方按鈕中填入您的 GitHub URL 以直接連結至個人頁面。',
+        ghBody: '我所有的程式及開源專案均托管於 GitHub。請點擊下方按鈕瀏覽所有可用的儲存庫。',
         btnGh: '前往 GitHub 個人頁面 →',
       },
       'zh-hans': {
-        title: '我的程序', desc: '托管于 GitHub 的开源项目与工具。',
+        title: '我的程序',
+        desc: '托管于 GitHub 的开源项目与工具。',
+        dstTitle: '硬盘速度测试工具',
+        dstSub: 'Windows 工具 · 免费开源',
+        dstBody: '轻量级的 Windows 工具，可测量任何本机硬盘（SSD、HDD、USB、SD 卡）的顺序与随机读写速度。可用于验证厂商宣称速度、对比不同硬盘，以及检测即将损坏的存储设备。',
+        dstSize: '~25 KB ZIP',
+        dstPlatform: 'Windows',
+        dstLicense: 'MIT 类授权，免费使用',
+        btnDstDownload: '⬇ 下载（ZIP）',
+        btnDstGithub: '前往 GitHub →',
+        ghTitle: 'GitHub 个人页面',
         ghSub: '查看所有仓库与源代码',
-        ghBody: '我所有的程序及开源项目均托管于 GitHub。请点击下方按钮前往我的 GitHub 个人页面，浏览所有可用的仓库。',
-        ghPlaceholder: '请在下方按钮中填入您的 GitHub URL 以直接链接至个人页面。',
+        ghBody: '我所有的程序及开源项目均托管于 GitHub。请点击下方按钮浏览所有可用的仓库。',
         btnGh: '前往 GitHub 个人页面 →',
       },
     };
 
     function applyPageText() {
       const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
-      document.getElementById('title').textContent         = p.title;
-      document.getElementById('desc').textContent          = p.desc;
-      document.getElementById('gh-sub').textContent        = p.ghSub;
-      document.getElementById('gh-body').textContent       = p.ghBody;
-      document.getElementById('gh-placeholder').textContent = p.ghPlaceholder;
-      document.getElementById('btn-gh').textContent        = p.btnGh;
+      document.getElementById('title').textContent             = p.title;
+      document.getElementById('desc').textContent              = p.desc;
+      document.getElementById('dst-title').textContent         = p.dstTitle;
+      document.getElementById('dst-sub').textContent           = p.dstSub;
+      document.getElementById('dst-body').textContent          = p.dstBody;
+      document.getElementById('dst-size').textContent          = p.dstSize;
+      document.getElementById('dst-platform').textContent      = p.dstPlatform;
+      document.getElementById('dst-license').textContent       = p.dstLicense;
+      document.getElementById('btn-dst-download').textContent  = p.btnDstDownload;
+      document.getElementById('btn-dst-github').textContent    = p.btnDstGithub;
+      document.getElementById('gh-title').textContent          = p.ghTitle;
+      document.getElementById('gh-sub').textContent            = p.ghSub;
+      document.getElementById('gh-body').textContent           = p.ghBody;
+      document.getElementById('btn-gh').textContent            = p.btnGh;
     }
 
     initPage('programs');

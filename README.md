@@ -23,7 +23,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/community-blog.html` | `/pages/community-blog.html` | Blog sub-page (gaming, photography, personal posts) |
 | `pages/shop.html` | `/pages/shop.html` | Shop (own + promoted products) |
 | `pages/freelance.html` | `/pages/freelance.html` | Freelance services |
-| `pages/programs.html` | `/pages/programs.html` | GitHub programs |
+| `pages/programs.html` | `/pages/programs.html` | Downloadable programs + GitHub profile (Disk Speed Tester) |
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
@@ -54,7 +54,7 @@ spacesquare/
 ### 1. Update links
 - **YouTube** — already set to `https://www.youtube.com/channel/UChmwTSclAf-m1z5DemiakUQ` in `community.html` and `components.js` ✓
 - **Discord** — already set to `https://discord.gg/KjUsGBFYwF` in `community.html` and `components.js` ✓
-- **GitHub** — still placeholder (`href="#"`) in `programs.html` and `components.js` — replace with your real GitHub profile URL
+- **GitHub** — set to `https://github.com/SpaceSquare640` in `programs.html` and `components.js` footer ✓
 
 ### 2. Set up résumé 2FA (TOTP)
 
@@ -72,10 +72,13 @@ Each product should have its own sub-page (e.g. `pages/product-item-name.html`).
 - `img/icon/product/<slug>.jpg` — **square thumbnail** shown on the shop card (1:1, ~400×400, < 200 KB)
 - `img/shop/<slug>-{1..N}.jpg` — **product detail screenshots** shown in the gallery on the product page (16:9 cropped, full-size lightbox on click)
 
+### 5. Add downloadable programs
+Drop the binary into `downloads/` (e.g. `downloads/My_Tool.zip`) and add a `prog-card` to `pages/programs.html` linking to it with the `download` attribute. The GitHub repo URL goes on the secondary "View on GitHub" button. Files in `downloads/` are served directly by GitHub Pages.
+
 ### 4. Add blog posts
 In `pages/community-blog.html`, add a new `<a class="post-item">` entry inside `.post-list` and a matching `tagP*` / `titleP*` / `dateP*` group inside `PAGE_TEXT`. Each post should have its own sub-page (e.g. `pages/post-slug.html`). Gaming, photography, and personal posts all live here — use the `.post-tag.game` modifier for purple game tags or the default teal for everything else.
 
-### 5. Deploy to GitHub Pages
+### 6. Deploy to GitHub Pages
 Repository: [SpaceSquare640/My_Personal_Website](https://github.com/SpaceSquare640/My_Personal_Website)
 **Live URL: https://spacesquare640.github.io/My_Personal_Website/**
 

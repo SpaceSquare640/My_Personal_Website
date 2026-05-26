@@ -4,6 +4,25 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.15] — 2026-05-26
+
+### Added
+- **Disk Speed Tester** added to `pages/programs.html`
+  - `downloads/Disk_Speed_Tester.zip` — 25 KB Windows utility, served directly by GitHub Pages
+  - New `.prog-card` component (replaces the old single `.github-card`): icon + title + subtitle header, body with description, meta chips (size / platform / license), and an action row with **⬇ Download (ZIP)** primary CTA and **View on GitHub →** secondary CTA
+  - GitHub repo link: <https://github.com/SpaceSquare640/Disk_Speed_Tester>
+  - Full trilingual i18n (EN / 繁中 / 简中) for title, subtitle, description, meta chips, and both buttons — incl. CJK product name "硬碟/硬盘速度測試/测试工具"
+  - Existing GitHub Profile card kept as a second `.prog-card` underneath, now pointing at `https://github.com/SpaceSquare640` (no longer placeholder `#`)
+- `downloads/` — new top-level folder for distributable binaries / archives
+- README §5 — new "Add downloadable programs" subsection documenting the `downloads/` convention
+
+### Changed
+- `js/components.js` — footer **GitHub** link no longer `#`; now points to `https://github.com/SpaceSquare640`
+- README §1 — GitHub setup checkbox flipped to ✓ (URL now wired)
+- README §5 → §6 — "Deploy to GitHub Pages" renumbered to make room for the new downloads section
+
+---
+
 ## [1.0.14] — 2026-05-26
 
 ### Added

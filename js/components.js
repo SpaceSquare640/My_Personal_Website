@@ -97,7 +97,7 @@ function buildFooter() {
       <a href="mailto:chin52696411@gmail.com">Email</a>
       <a href="https://discord.gg/KjUsGBFYwF" target="_blank">Discord</a>
       <a href="https://www.youtube.com/channel/UChmwTSclAf-m1z5DemiakUQ" target="_blank">YouTube</a>
-      <a href="#" target="_blank">GitHub</a>
+      <a href="https://github.com/SpaceSquare640" target="_blank" rel="noopener">GitHub</a>
     </div>
     <span data-i18n="footer.hk">${t('footer.hk')} 🇭🇰</span>
   `;
