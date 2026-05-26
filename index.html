@@ -18,6 +18,34 @@
       overflow: hidden;
     }
 
+    /* Cursor-tracking spotlight (desktop only) */
+    .hero-spotlight {
+      position: absolute;
+      width: 620px; height: 620px;
+      left: 0; top: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,110,255,0.22) 0%, rgba(79,209,197,0.10) 40%, transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+      transform: translate3d(-50%, -50%, 0);
+      will-change: transform;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      mix-blend-mode: screen;
+    }
+    [data-theme="light"] .hero-spotlight {
+      background: radial-gradient(circle, rgba(90,77,219,0.18) 0%, rgba(26,167,154,0.10) 40%, transparent 70%);
+      mix-blend-mode: multiply;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .hero:hover .hero-spotlight { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-spotlight { display: none; }
+    }
+    .hero > * { position: relative; z-index: 1; }
+
     .hero h1 {
       font-family: var(--font-h);
       font-weight: 900;
@@ -152,6 +180,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="grid-overlay"></div>
+      <div class="hero-spotlight" aria-hidden="true"></div>
 
       <div class="tag fade-up">
         <span class="tag-dot"></span>
@@ -315,6 +344,26 @@
     initPage('home');
     applyPageText();
     document.addEventListener('langchange', applyPageText);
+
+    // Cursor-tracking hero spotlight — desktop only, RAF-throttled
+    (() => {
+      const spot = document.querySelector('.hero-spotlight');
+      const hero = document.querySelector('.hero');
+      if (!spot || !hero) return;
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let x = 0, y = 0, raf = null;
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        x = e.clientX - r.left;
+        y = e.clientY - r.top;
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          spot.style.transform = `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
+          raf = null;
+        });
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>

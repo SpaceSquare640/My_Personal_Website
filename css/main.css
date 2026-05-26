@@ -164,6 +164,72 @@ body::after {
   background: radial-gradient(ellipse, var(--ambient-glow) 0%, transparent 65%);
 }
 
+/* ── AURORA — drifting GPU-composited gradient blobs ── */
+.aurora-wrap {
+  position: fixed; inset: 0;
+  z-index: 0; pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+.aurora-blob {
+  position: absolute;
+  width: 55vmax; height: 55vmax;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.aurora-blob:nth-child(1) {
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%);
+  top: -22%; left: -18%;
+  animation: aurora-a 28s ease-in-out infinite alternate;
+}
+.aurora-blob:nth-child(2) {
+  background: radial-gradient(circle, var(--accent2) 0%, transparent 60%);
+  bottom: -25%; right: -18%;
+  animation: aurora-b 34s ease-in-out infinite alternate;
+}
+.aurora-blob:nth-child(3) {
+  background: radial-gradient(circle, var(--accent-h) 0%, transparent 60%);
+  top: 30%; left: 35%;
+  opacity: 0.35;
+  animation: aurora-c 40s ease-in-out infinite alternate;
+}
+@keyframes aurora-a {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(10vw, -8vh, 0) scale(1.18); }
+}
+@keyframes aurora-b {
+  0%   { transform: translate3d(0, 0, 0) scale(0.95); }
+  100% { transform: translate3d(-8vw, 6vh, 0) scale(1.1); }
+}
+@keyframes aurora-c {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-12vw, 10vh, 0) scale(1.25); }
+}
+/* Light theme — aurora reads as a soft pastel wash */
+[data-theme="light"] .aurora-blob { opacity: 0.32; filter: blur(70px); }
+[data-theme="light"] .aurora-blob:nth-child(3) { opacity: 0.22; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob { animation: none !important; }
+}
+
+/* View Transitions API — smooth cross-fade when toggling theme */
+@supports (view-transition-name: root) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  ::view-transition-old(root) { animation-name: vt-fade-out; }
+  ::view-transition-new(root) { animation-name: vt-fade-in; }
+}
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
