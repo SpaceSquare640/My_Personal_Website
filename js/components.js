@@ -60,19 +60,9 @@ function getTheme() {
 }
 function toggleTheme() {
   const next = getTheme() === 'light' ? 'dark' : 'light';
-  const commit = () => {
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-    document.dispatchEvent(new Event('themechange'));
-  };
-  // Use the native View Transitions API for a smooth cross-fade when supported
-  // (Chrome 111+, Edge 111+, Safari 18+); falls back to instant swap otherwise
-  if (document.startViewTransition &&
-      !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.startViewTransition(commit);
-  } else {
-    commit();
-  }
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+  document.dispatchEvent(new Event('themechange'));
 }
 // Apply on script load — runs before initPage so paint is correct
 applyTheme(getTheme());
@@ -206,51 +196,12 @@ function buildScrollProgress() {
   update();
 }
 
-// Aurora — drifting GPU-composited blobs as a soft background layer
-function buildAurora() {
-  if (document.querySelector('.aurora-wrap')) return;
-  const wrap = document.createElement('div');
-  wrap.className = 'aurora-wrap';
-  wrap.setAttribute('aria-hidden', 'true');
-  wrap.innerHTML = '<div class="aurora-blob"></div><div class="aurora-blob"></div><div class="aurora-blob"></div>';
-  document.body.prepend(wrap);
-}
-
-// 3D tilt on cards — desktop hover only, RAF-throttled
-function attachTilt(selector, max = 5) {
-  const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const reduced  = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!canHover || reduced) return;
-  document.querySelectorAll(selector).forEach(card => {
-    let raf = null;
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width  - 0.5;
-      const py = (e.clientY - r.top)  / r.height - 0.5;
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        card.style.transform =
-          `perspective(900px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg) translateY(-4px) translateZ(0)`;
-      });
-    }, { passive: true });
-    card.addEventListener('pointerleave', () => {
-      if (raf) cancelAnimationFrame(raf);
-      card.style.transform = '';
-    });
-  });
-}
-
 function initPage(activeKey) {
   initI18n();
-  buildAurora();
   buildNav(activeKey);
   buildFooter();
   buildResumeModal();
   buildScrollProgress();
-
-  // 3D tilt on hoverable cards (desktop only; helper self-gates)
-  attachTilt('.nav-card');
-  attachTilt('.product-card', 4);
 
   // Re-render nav/footer on lang change
   document.addEventListener('langchange', () => {

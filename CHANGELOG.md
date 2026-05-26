@@ -4,29 +4,6 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
-## [1.0.19] — 2026-05-26
-
-### Added
-- **Aurora background** — three large blurred radial-gradient blobs (purple / teal / light purple) drifting site-wide on slow `transform`-only keyframes (28s, 34s, 40s). Composited on the GPU, no layout/paint cost. Lower opacity + extra blur in light mode so it reads as a soft pastel wash.
-  - `css/main.css` — `.aurora-wrap` + `.aurora-blob` styles + `aurora-a/b/c` keyframes; `contain: strict` on wrapper to isolate paint
-  - `js/components.js` — `buildAurora()` injects 3 blobs once into `<body>` via `initPage()`
-- **Cursor-tracking hero spotlight** — soft 620px purple→teal radial glow follows the pointer over the hero, with `mix-blend-mode: screen` (dark) / `multiply` (light). Fade-in on hover, RAF-throttled pointermove.
-  - `index.html` — `.hero-spotlight` element + styles; pointermove handler in the page's inline script
-- **3D card tilt** — `.nav-card` (homepage) and `.product-card` (shop) now tilt with `perspective(900px) rotateX/Y` toward the cursor and combine with the existing `translateY(-4px)` hover lift
-  - `js/components.js` — `attachTilt(selector, max)` helper; self-gates on `(hover: hover) and (pointer: fine)`; pointermove RAF-throttled; resets on `pointerleave`
-- **Native View Transitions for theme toggle** — `toggleTheme()` now wraps the swap in `document.startViewTransition()` when the API is available (Chrome/Edge 111+, Safari 18+), giving a smooth 0.45s cross-fade between light and dark; instant fallback in Firefox
-  - `css/main.css` — `::view-transition-old(root)` / `::view-transition-new(root)` keyframes + timing
-  - `js/components.js` — `toggleTheme()` wrapped; reduced-motion bypasses the transition
-
-### Performance budget
-- All four effects use `transform` / `opacity` only — no layout, paint, or scroll-bound JS
-- Aurora drifts at 28–40s loops on `will-change: transform` (single compositor layer per blob)
-- Cursor + tilt handlers are RAF-throttled and `{ passive: true }`
-- Every effect is gated by `prefers-reduced-motion: reduce`; pointer effects additionally require `(hover: hover) and (pointer: fine)` so mobile gets no extra cost
-- Target: comfortably ≥ 60 fps on a mid-range laptop and modern phones
-
----
-
 ## [1.0.18] — 2026-05-26
 
 ### Changed
