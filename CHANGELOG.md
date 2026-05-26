@@ -4,6 +4,26 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.20] — 2026-05-26
+
+### Added — four page-scoped polish effects (no global / site-wide changes)
+All four effects honor `prefers-reduced-motion: reduce`; nothing was added to `css/main.css` or `js/components.js`.
+
+- **Effect A · Stats counter on Blox Fruits page** — when the stats grid scrolls into view, all numeric `.stat-value` elements (Level 2618, Bounty 6.7M, Beli 21M, Fragments 1,700) animate from 0 to their final values over ~950ms with ease-out cubic. IntersectionObserver fires once per visit; non-numeric values (Angel V4, Shipwright) are skipped. Snaps to exact text on completion.
+  - Scoped inline to `pages/product-bloxfruit-account.html` only
+- **Effect B · Scroll-to-top floating button** — small 44×44 circular `↑` button appears in the bottom-right corner after 400 px of scroll, smooth-scrolls back to top on click. Glassy `backdrop-filter`, theme-aware via existing CSS variables, hover state turns purple.
+  - Inline in `pages/product-bloxfruit-account.html` and `pages/product-firefighting-simulator-ignite.html` only (the two longest pages)
+- **Effect C · Typewriter homepage greeting** — `<p id="hero-greeting">` types itself out letter-by-letter at 65 ms/char on first visit per browser session, then sits still. Uses `sessionStorage.seenTypewriter` flag so reloading the same tab skips the animation. Layout-stable (`min-height: 1.6em` reserved).
+  - Inline in `index.html` only
+- **Effect D · Hover preview overlay on shop cards** — slides a dark gradient strip up from the bottom of each thumbnail on hover, showing the price + "View product →" CTA (trilingual). Pointer-events disabled so it doesn't block the card link. Desktop only (`(hover: hover) and (pointer: fine)`).
+  - New `.product-overlay` markup + CSS + `viewProduct` i18n key (EN: "View product →" / 繁中: "查看商品 →" / 简中: "查看商品 →")
+  - Inline in `pages/shop.html` only
+
+### Backups
+- Full project backup created at `E:\[BackUp]\[My_Personal_website Backup]\My_Personal_website_2026-05-26_233232` (11.34 MB, 244 files, including `.git`) — pre-v1.0.20 snapshot
+
+---
+
 ## [1.0.18] — 2026-05-26
 
 ### Changed

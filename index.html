@@ -315,6 +315,28 @@
     initPage('home');
     applyPageText();
     document.addEventListener('langchange', applyPageText);
+
+    // Effect C — typewriter greeting (once per session, reduced-motion safe)
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (sessionStorage.getItem('seenTypewriter')) return;
+      const el = document.getElementById('hero-greeting');
+      if (!el) return;
+      const full = el.textContent;
+      if (!full) return;
+      el.textContent = '';
+      // Reserve height so the layout doesn't jump
+      el.style.minHeight = '1.6em';
+      el.style.display = 'inline-block';
+      const speed = 65; // ms per character
+      let i = 0;
+      function tick() {
+        el.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(tick, speed);
+        else sessionStorage.setItem('seenTypewriter', '1');
+      }
+      setTimeout(tick, 380); // wait for fade-up to begin
+    })();
   </script>
 </body>
 </html>

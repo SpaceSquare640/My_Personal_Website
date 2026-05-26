@@ -55,6 +55,35 @@
       transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
     .product-card:hover .product-img img { transform: scale(1.06); }
+
+    /* Effect D — hover preview overlay on shop card thumbnails (desktop only) */
+    .product-overlay {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.55) 60%,
+        transparent 100%);
+      color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      transform: translateY(100%);
+      transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+      pointer-events: none;
+    }
+    .overlay-price { font-weight: 700; letter-spacing: 0.02em; }
+    .overlay-cta {
+      color: var(--accent2);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .product-card:hover .product-overlay { transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .product-overlay { transition: none; }
+    }
     .product-info { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
     .product-name {
       font-family: var(--font-h); font-weight: 700; font-size: 0.95rem;
@@ -111,6 +140,10 @@
           <a class="product-card" href="product-bloxfruit-account.html">
             <div class="product-img">
               <img src="../img/icon/product/blox-fruits-account.jpg" alt="Blox Fruits Account icon" loading="lazy">
+              <div class="product-overlay">
+                <span class="overlay-price">HKD 700</span>
+                <span class="overlay-cta" id="p1-cta">View product →</span>
+              </div>
             </div>
             <div class="product-info">
               <div class="product-name" id="p1-name">Blox Fruits Account</div>
@@ -124,6 +157,10 @@
           <a class="product-card" href="product-firefighting-simulator-ignite.html">
             <div class="product-img">
               <img src="../img/icon/product/Firefighting_Simulator_Ignite_Steam_CDK.jpg" alt="Firefighting Simulator Ignite Steam CDK" loading="lazy">
+              <div class="product-overlay">
+                <span class="overlay-price" id="p2-overlay-price">From HKD 148</span>
+                <span class="overlay-cta" id="p2-cta">View product →</span>
+              </div>
             </div>
             <div class="product-info">
               <div class="product-name" id="p2-name">Firefighting Simulator: Ignite — Steam CDK</div>
@@ -185,6 +222,7 @@
         p2Name: 'Firefighting Simulator: Ignite — Steam CDK',
         p2Desc: '[In Stock] Official Steam key · Standard or All-DLC · Instant delivery',
         p2Price: 'From HKD 148',
+        viewProduct: 'View product →',
         promoLabel: 'Promoted Products',
         promoEmpty: 'No promoted products at the moment.',
       },
@@ -196,6 +234,7 @@
         p2Name: '模擬消防小隊 Firefighting Simulator: Ignite — Steam CDK',
         p2Desc: '[現貨] 官方正版序號 · 標準版 / 全 DLC 豪華版 · 秒發',
         p2Price: '低至 HK$148',
+        viewProduct: '查看商品 →',
         promoLabel: '代售商品',
         promoEmpty: '目前暫無代售商品。',
       },
@@ -207,6 +246,7 @@
         p2Name: '模拟消防小队 Firefighting Simulator: Ignite — Steam CDK',
         p2Desc: '[现货] 官方正版序号 · 标准版 / 全 DLC 豪华版 · 秒发',
         p2Price: '低至 HK$148',
+        viewProduct: '查看商品 →',
         promoLabel: '代售商品',
         promoEmpty: '目前暂无代售商品。',
       },
@@ -222,6 +262,9 @@
       document.getElementById('p2-name').textContent     = p.p2Name;
       document.getElementById('p2-desc').textContent     = p.p2Desc;
       document.getElementById('p2-price').textContent    = p.p2Price;
+      document.getElementById('p2-overlay-price').textContent = p.p2Price;
+      document.getElementById('p1-cta').textContent      = p.viewProduct;
+      document.getElementById('p2-cta').textContent      = p.viewProduct;
       document.getElementById('promo-label').textContent = p.promoLabel;
       document.getElementById('promo-empty').innerHTML   =
         p.promoEmpty + (getLang() === 'en'

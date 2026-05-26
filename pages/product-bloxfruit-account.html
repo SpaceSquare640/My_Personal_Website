@@ -35,6 +35,35 @@
     .big-price { font-family: var(--font-h); font-weight: 900; font-size: 2.5rem; color: var(--accent2); letter-spacing: -0.01em; }
     .buy-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
+    /* Effect B — scroll-to-top floating button */
+    .scroll-top {
+      position: fixed; right: 1.5rem; bottom: 1.5rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      font-size: 1.15rem; font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2,0.7,0.2,1),
+                  background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      pointer-events: none;
+      z-index: 250;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .scroll-top.visible {
+      opacity: 1; transform: translateY(0); pointer-events: auto;
+    }
+    .scroll-top:hover {
+      background: var(--accent); border-color: var(--accent); color: #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-top { transition: opacity 0.2s; }
+    }
+
     /* Gallery */
     .gallery-section { margin-bottom: 2.5rem; }
     .gallery-grid {
@@ -420,6 +449,10 @@
     </div>
   </div>
 
+  <!-- Effect B — scroll-to-top button -->
+  <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" aria-label="Close" onclick="closeLightbox(event)">✕</button>
@@ -576,6 +609,66 @@
     initPage('shop');
     applyPageText();
     document.addEventListener('langchange', applyPageText);
+
+    // Effect A — count-up animation on stats grid (fires once on scroll-into-view)
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const grid = document.querySelector('.stats-grid');
+      if (!grid || !('IntersectionObserver' in window)) return;
+      const numRe = /^([0-9][0-9,.]*)([A-Za-z]*)$/;
+      const targets = Array.from(grid.querySelectorAll('.stat-value'))
+        .filter(el => numRe.test(el.textContent.trim()));
+      // Stash originals + show 0 placeholder
+      targets.forEach(el => {
+        const t = el.textContent.trim();
+        el.dataset.final = t;
+        const suffix = t.match(numRe)[2] || '';
+        el.textContent = '0' + suffix;
+      });
+      function animate(el) {
+        const final = el.dataset.final;
+        const m = final.match(numRe);
+        if (!m) return;
+        const numStr = m[1].replace(/,/g, '');
+        const target = parseFloat(numStr);
+        const suffix = m[2];
+        const hasComma = m[1].includes(',');
+        const decimals = (numStr.split('.')[1] || '').length;
+        const duration = 950;
+        const start = performance.now();
+        function step(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+          const v = target * eased;
+          let out = decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
+          if (hasComma) out = parseInt(out, 10).toLocaleString();
+          el.textContent = out + suffix;
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = final; // exact snap
+        }
+        requestAnimationFrame(step);
+      }
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            targets.forEach(animate);
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      io.observe(grid);
+    })();
+
+    // Effect B — scroll-to-top visibility toggle
+    (() => {
+      const btn = document.getElementById('scroll-top-btn');
+      if (!btn) return;
+      const onScroll = () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
   </script>
 </body>
 </html>

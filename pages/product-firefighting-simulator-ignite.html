@@ -172,6 +172,35 @@
     }
     .warn-card strong { color: var(--red); }
     .buy-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* Effect B — scroll-to-top floating button */
+    .scroll-top {
+      position: fixed; right: 1.5rem; bottom: 1.5rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      font-size: 1.15rem; font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2,0.7,0.2,1),
+                  background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      pointer-events: none;
+      z-index: 250;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .scroll-top.visible {
+      opacity: 1; transform: translateY(0); pointer-events: auto;
+    }
+    .scroll-top:hover {
+      background: var(--accent); border-color: var(--accent); color: #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-top { transition: opacity 0.2s; }
+    }
   </style>
 </head>
 <body>
@@ -284,6 +313,10 @@
 
     </div>
   </div>
+
+  <!-- Effect B — scroll-to-top button -->
+  <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -463,6 +496,17 @@
     initPage('shop');
     applyPageText();
     document.addEventListener('langchange', applyPageText);
+
+    // Effect B — scroll-to-top visibility toggle
+    (() => {
+      const btn = document.getElementById('scroll-top-btn');
+      if (!btn) return;
+      const onScroll = () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
   </script>
 </body>
 </html>
