@@ -4,6 +4,28 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.17] — 2026-05-26
+
+### Added
+- **New shop product — Firefighting Simulator: Ignite (Steam CDK)**
+  - `img/icon/product/Firefighting_Simulator_Ignite_Steam_CDK.jpg` (180 KB) — listing banner image, used as both the shop-card icon and the product-page gallery photo
+  - `pages/product-firefighting-simulator-ignite.html` — full detail page:
+    - Status badge "In Stock · Instant Delivery"
+    - Gallery with click-to-enlarge lightbox (same component as Blox Fruits page)
+    - **Two-tier plan grid** with strikethrough original price + discounted price + "Save HK$10" tag:
+      - Plan A · Standard (Just the Game) — HK$148 → **HK$138**
+      - Plan B · Deluxe (Game + All DLC) — HK$218 → **HK$208** (highlighted as best value)
+    - "Why Buy From Me" checklist — 100% genuine, instant delivery, language support, local seller
+    - Payment & Delivery — FPS / 八達通 / AlipayHK / Alipay pills; WhatsApp delivery note
+    - Buyer Terms (warning card) — no refunds, faulty-key handling, **region lock: HK / MO / TW only**
+    - Buyer Protection Tips — chat-log preservation, dispute screenshots
+    - WhatsApp + Email contact CTAs
+    - Full EN / 繁中 / 简中 i18n with content adapted from the user-supplied Carousell listing
+  - `pages/shop.html` — new product card under "My Own Products"; trilingual name / description / "From HKD 138" price strap
+- `README.md` — new product page added to the pages table
+
+---
+
 ## [1.0.16] — 2026-05-26
 
 ### Fixed — Bug Report 2026-05-26

@@ -26,6 +26,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/programs.html` | `/pages/programs.html` | Downloadable programs + GitHub profile (Disk Speed Tester) |
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
+| `pages/product-firefighting-simulator-ignite.html` | `/pages/product-firefighting-simulator-ignite.html` | Shop product: Firefighting Simulator: Ignite Steam CDK (HKD 138 / 208) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
 | `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! (with QR invite + friend code) |
 

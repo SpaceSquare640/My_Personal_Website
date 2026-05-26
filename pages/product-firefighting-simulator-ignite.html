@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firefighting Simulator: Ignite — Steam CDK · SpaceSquare Shop</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .product-page { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; color: var(--muted); text-decoration: none;
+      margin-bottom: 2.5rem; transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* Hero */
+    .product-hero { margin-bottom: 2.5rem; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent2); background: rgba(79,209,197,0.1);
+      border: 1px solid rgba(79,209,197,0.25);
+      padding: 3px 10px; border-radius: 99px; margin-bottom: 1rem;
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+    .product-title {
+      font-family: var(--font-h); font-weight: 900; font-size: 2.3rem;
+      line-height: 1.0; margin-bottom: 0.5rem; letter-spacing: -0.015em;
+    }
+    .product-subtitle { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
+
+    /* Gallery */
+    .gallery-section { margin-bottom: 2.5rem; }
+    .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      aspect-ratio: 16 / 9;
+      cursor: zoom-in;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute; top: 10px; right: 10px;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.55);
+      color: #fff; font-size: 0.85rem;
+      border-radius: 50%;
+      opacity: 0; transition: opacity 0.25s;
+      backdrop-filter: blur(6px);
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 600;
+      background: rgba(5,5,12,0.92);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem; cursor: zoom-out;
+      animation: lbFade 0.18s ease;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.15); }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Plan cards */
+    .plan-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 600px) { .plan-grid { grid-template-columns: 1fr; } }
+    .plan-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      position: relative;
+    }
+    .plan-card.featured {
+      border-color: rgba(79,209,197,0.45);
+      background: linear-gradient(180deg, rgba(79,209,197,0.06), var(--surface));
+    }
+    .plan-tag {
+      align-self: flex-start;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent); background: rgba(124,110,255,0.12);
+      border: 1px solid rgba(124,110,255,0.25);
+      padding: 3px 10px; border-radius: 99px;
+    }
+    .plan-card.featured .plan-tag {
+      color: var(--accent2); background: rgba(79,209,197,0.12);
+      border-color: rgba(79,209,197,0.25);
+    }
+    .plan-name { font-family: var(--font-h); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.005em; }
+    .plan-sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.5rem; }
+    .plan-price-row { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+    .plan-price-orig {
+      color: var(--muted); font-size: 0.95rem; text-decoration: line-through;
+    }
+    .plan-price-now {
+      font-family: var(--font-h); font-weight: 900; font-size: 1.8rem;
+      color: var(--accent2); letter-spacing: -0.01em;
+    }
+    .plan-save {
+      font-size: 0.72rem; color: var(--red);
+      background: rgba(255,95,109,0.1); border: 1px solid rgba(255,95,109,0.2);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* Generic detail sections */
+    .detail-section { margin-bottom: 2rem; }
+    .detail-section-title {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500;
+      padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      color: var(--muted); font-size: 0.9rem; line-height: 1.8;
+    }
+    .info-card strong { color: var(--text); }
+    .feature-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .feature-list li {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.6;
+      padding-left: 1.5rem; position: relative;
+    }
+    .feature-list li::before {
+      content: '✓';
+      position: absolute; left: 0; top: 0;
+      color: var(--accent2); font-weight: 700;
+    }
+    .pay-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pay-pill {
+      display: inline-block; font-size: 0.78rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 99px; color: var(--text);
+    }
+    .warn-card {
+      background: rgba(255,95,109,0.06); border: 1px solid rgba(255,95,109,0.18);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      color: var(--muted); font-size: 0.88rem; line-height: 1.8;
+    }
+    .warn-card strong { color: var(--red); }
+    .buy-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="product-page">
+
+      <a class="back-link" href="shop.html" id="back-link">← Back to Shop</a>
+
+      <!-- Hero -->
+      <div class="product-hero fade-up">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">In Stock · Instant Delivery</span>
+        </div>
+        <h1 class="product-title" id="prod-title">Firefighting Simulator: Ignite — Steam CDK</h1>
+        <p class="product-subtitle" id="prod-subtitle">100% official Steam key · Choose Standard or Game + All DLC · Sent within minutes after payment</p>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-section fade-up fade-up-1">
+        <div class="detail-section-title" id="gal-label">Listing Banner</div>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="../img/icon/product/Firefighting_Simulator_Ignite_Steam_CDK.jpg"
+                 alt="Firefighting Simulator: Ignite — Steam CDK pricing banner"
+                 loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Plans -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="plans-label">Choose Your Plan</div>
+        <div class="plan-grid">
+          <div class="plan-card">
+            <span class="plan-tag" id="plan-a-tag">Plan A · Standard</span>
+            <div class="plan-name" id="plan-a-name">Just the Game</div>
+            <div class="plan-sub" id="plan-a-sub">Base game without DLC.</div>
+            <div class="plan-price-row">
+              <span class="plan-price-orig">HK$148</span>
+              <span class="plan-price-now">HK$138</span>
+              <span class="plan-save" id="plan-a-save">Save HK$10</span>
+            </div>
+          </div>
+          <div class="plan-card featured">
+            <span class="plan-tag" id="plan-b-tag">Plan B · Deluxe</span>
+            <div class="plan-name" id="plan-b-name">Game + All DLC</div>
+            <div class="plan-sub" id="plan-b-sub">Best value · every expansion included.</div>
+            <div class="plan-price-row">
+              <span class="plan-price-orig">HK$218</span>
+              <span class="plan-price-now">HK$208</span>
+              <span class="plan-save" id="plan-b-save">Save HK$10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why choose me -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="why-label">Why Buy From Me</div>
+        <div class="info-card">
+          <ul class="feature-list">
+            <li id="why-1"><strong>100% Genuine.</strong> Personally tested + supplier-confirmed. Activation creates an official Steam purchase record and Steam emails you a confirmation. Not a shared account, not a stolen key — your CDK enters your library permanently.</li>
+            <li id="why-2"><strong>Instant Delivery.</strong> The CDK is sent via WhatsApp within minutes of payment confirmation.</li>
+            <li id="why-3"><strong>Languages.</strong> Game supports Traditional Chinese and English.</li>
+            <li id="why-4"><strong>Local Seller.</strong> Hong Kong-based — communicate in Cantonese / Mandarin / English without barriers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment & Delivery -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="pay-label">Payment &amp; Delivery</div>
+        <div class="info-card">
+          <p style="margin-bottom: 0.8rem;"><strong id="pay-methods-label">Accepted payment methods:</strong></p>
+          <div class="pay-pills" style="margin-bottom: 1rem;">
+            <span class="pay-pill">FPS (轉數快)</span>
+            <span class="pay-pill" id="pay-octopus">Octopus 八達通</span>
+            <span class="pay-pill">AlipayHK</span>
+            <span class="pay-pill">Alipay</span>
+          </div>
+          <p id="delivery-note">Once payment is confirmed, the Steam CDK is delivered directly to you via WhatsApp — usually within minutes. You then redeem it on Steam yourself, and Steam sends a confirmation email to your registered address.</p>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="terms-label">Buyer Terms</div>
+        <div class="warn-card">
+          <p style="margin-bottom: 0.7rem;"><strong>⚠️ <span id="warn-norefund-title">No refunds.</span></strong> <span id="warn-norefund">Steam CDKs are one-time virtual products. Once a key is delivered it is treated as &quot;revealed&quot; and cannot be refunded.</span></p>
+          <p style="margin-bottom: 0.7rem;"><strong>⚠️ <span id="warn-fault-title">Faulty key handling.</span></strong> <span id="warn-fault">If a key won't activate, immediately screenshot the Steam error message (with full screen showing system clock + Steam username) and send it to me — I will follow up and resolve it promptly.</span></p>
+          <p><strong>⚠️ <span id="warn-region-title">Region lock.</span></strong> <span id="warn-region">Keys are only valid for Steam accounts registered in Hong Kong / Macau / Taiwan (港澳台).</span></p>
+        </div>
+      </div>
+
+      <!-- Buyer tips -->
+      <div class="detail-section fade-up fade-up-1">
+        <div class="detail-section-title" id="tips-label">Buyer Protection Tips</div>
+        <div class="info-card">
+          <ul class="feature-list">
+            <li id="tip-1"><strong>Save the chat log.</strong> After you receive the CDK, screenshot the WhatsApp conversation containing the key for your own records.</li>
+            <li id="tip-2"><strong>Disputes.</strong> If a key fails to activate, capture a full-screen screenshot showing the Steam error message, the system clock, and your Steam username — this prevents "key-cheating" disputes and lets me verify the issue quickly.</li>
+          </ul>
+        </div>
+
+        <!-- Contact CTAs -->
+        <div class="buy-btns">
+          <a class="btn btn-teal" href="https://wa.me/85264001277" target="_blank" id="btn-whatsapp">WhatsApp +852 6400 1277</a>
+          <a class="btn btn-ghost" href="mailto:chin52696411@gmail.com" id="btn-email">Send Email</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" aria-label="Close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        backLink: '← Back to Shop',
+        statusText: 'In Stock · Instant Delivery',
+        prodTitle: 'Firefighting Simulator: Ignite — Steam CDK',
+        prodSubtitle: '100% official Steam key · Choose Standard or Game + All DLC · Sent within minutes after payment',
+        galLabel: 'Listing Banner',
+        plansLabel: 'Choose Your Plan',
+        planATag: 'Plan A · Standard',
+        planAName: 'Just the Game',
+        planASub: 'Base game without DLC.',
+        planASave: 'Save HK$10',
+        planBTag: 'Plan B · Deluxe',
+        planBName: 'Game + All DLC',
+        planBSub: 'Best value · every expansion included.',
+        planBSave: 'Save HK$10',
+        whyLabel: 'Why Buy From Me',
+        why1: '<strong>100% Genuine.</strong> Personally tested + supplier-confirmed. Activation creates an official Steam purchase record and Steam emails you a confirmation. Not a shared account, not a stolen key — your CDK enters your library permanently.',
+        why2: '<strong>Instant Delivery.</strong> The CDK is sent via WhatsApp within minutes of payment confirmation.',
+        why3: '<strong>Languages.</strong> Game supports Traditional Chinese and English.',
+        why4: '<strong>Local Seller.</strong> Hong Kong-based — communicate in Cantonese / Mandarin / English without barriers.',
+        payLabel: 'Payment & Delivery',
+        payMethodsLabel: 'Accepted payment methods:',
+        payOctopus: 'Octopus 八達通',
+        deliveryNote: 'Once payment is confirmed, the Steam CDK is delivered directly to you via WhatsApp — usually within minutes. You then redeem it on Steam yourself, and Steam sends a confirmation email to your registered address.',
+        termsLabel: 'Buyer Terms',
+        warnNorefundTitle: 'No refunds.',
+        warnNorefund: 'Steam CDKs are one-time virtual products. Once a key is delivered it is treated as "revealed" and cannot be refunded.',
+        warnFaultTitle: 'Faulty key handling.',
+        warnFault: "If a key won't activate, immediately screenshot the Steam error message (with full screen showing system clock + Steam username) and send it to me — I will follow up and resolve it promptly.",
+        warnRegionTitle: 'Region lock.',
+        warnRegion: 'Keys are only valid for Steam accounts registered in Hong Kong / Macau / Taiwan (港澳台).',
+        tipsLabel: 'Buyer Protection Tips',
+        tip1: '<strong>Save the chat log.</strong> After you receive the CDK, screenshot the WhatsApp conversation containing the key for your own records.',
+        tip2: '<strong>Disputes.</strong> If a key fails to activate, capture a full-screen screenshot showing the Steam error message, the system clock, and your Steam username — this prevents "key-cheating" disputes and lets me verify the issue quickly.',
+        btnWhatsApp: 'WhatsApp +852 6400 1277',
+        btnEmail: 'Send Email',
+      },
+      'zh-hant': {
+        backLink: '← 返回網店',
+        statusText: '現貨 · 秒速發貨',
+        prodTitle: '模擬消防小隊 Firefighting Simulator: Ignite — Steam CDK',
+        prodSubtitle: '100% 官方正版序號 · 標準版或全 DLC 豪華版 · 付款後幾分鐘內發出',
+        galLabel: '產品宣傳圖',
+        plansLabel: '選擇版本',
+        planATag: 'Plan A · 標準版',
+        planAName: 'Just the Game',
+        planASub: '只含本體，不含 DLC。',
+        planASave: '即減 HK$10',
+        planBTag: 'Plan B · 豪華版',
+        planBName: 'Game + All DLC',
+        planBSub: '最抵之選 · 包含所有擴展包。',
+        planBSave: '即減 HK$10',
+        whyLabel: '為什麼選擇我',
+        why1: '<strong>100% 官方正版。</strong>本人已親自測試並向供應商確認。啟動後有 Steam 官方購買記錄，Steam 會發送 Email 通知啟動成功。絕對唔係共享帳號、唔係黑號 — CDK 永久入庫。',
+        why2: '<strong>秒速發貨。</strong>付款確認後，幾分鐘內透過 WhatsApp 直接傳送序號。',
+        why3: '<strong>支援語言。</strong>遊戲支援繁體中文及英文。',
+        why4: '<strong>在地賣家。</strong>香港賣家，廣東話 / 普通話 / 英文均可溝通，無障礙。',
+        payLabel: '付款與發貨',
+        payMethodsLabel: '可接受的付款方式：',
+        payOctopus: '八達通 Octopus',
+        deliveryNote: '付款確認後，Steam CDK 會透過 WhatsApp 直接發送給您，通常數分鐘內到手。您自行在 Steam 啟動，Steam 會發送確認 Email 到您的註冊信箱。',
+        termsLabel: '買家須知及條款',
+        warnNorefundTitle: '不可退款。',
+        warnNorefund: '由於 CDK 屬於一次性虛擬產品，序號一經發出即視為「已洩漏」，因此購買後不可退款。',
+        warnFaultTitle: '故障處理。',
+        warnFault: '如序號無法使用，請立即截圖 Steam 錯誤訊息（全螢幕，包含系統時鐘及 Steam 帳號名稱）並傳送給我跟進，我會第一時間處理。',
+        warnRegionTitle: '地區限制。',
+        warnRegion: '僅限港澳台地區的 Steam 帳號激活。',
+        tipsLabel: '買家保障小貼士',
+        tip1: '<strong>截圖存證。</strong>收到 CDK 後，建議自行截圖保存 WhatsApp 對話紀錄。',
+        tip2: '<strong>應對爭議。</strong>如序號無法啟動，請提供「全螢幕截圖」（包含 Steam 錯誤提示、電腦時間、以及 Steam 帳號名稱），防止「呃 Key」爭議並助我快速核實。',
+        btnWhatsApp: 'WhatsApp +852 6400 1277',
+        btnEmail: '發送電郵',
+      },
+      'zh-hans': {
+        backLink: '← 返回网店',
+        statusText: '现货 · 秒速发货',
+        prodTitle: '模拟消防小队 Firefighting Simulator: Ignite — Steam CDK',
+        prodSubtitle: '100% 官方正版序号 · 标准版或全 DLC 豪华版 · 付款后几分钟内发出',
+        galLabel: '产品宣传图',
+        plansLabel: '选择版本',
+        planATag: 'Plan A · 标准版',
+        planAName: 'Just the Game',
+        planASub: '只含本体，不含 DLC。',
+        planASave: '立减 HK$10',
+        planBTag: 'Plan B · 豪华版',
+        planBName: 'Game + All DLC',
+        planBSub: '超值之选 · 包含所有扩展包。',
+        planBSave: '立减 HK$10',
+        whyLabel: '为什么选择我',
+        why1: '<strong>100% 官方正版。</strong>本人亲自测试并向供货商确认。激活后有 Steam 官方购买记录，Steam 会发送 Email 通知激活成功。绝对不是共享账号、不是黑号 — CDK 永久入库。',
+        why2: '<strong>秒速发货。</strong>付款确认后，几分钟内通过 WhatsApp 直接传送序号。',
+        why3: '<strong>支持语言。</strong>游戏支持繁体中文及英文。',
+        why4: '<strong>本地卖家。</strong>香港卖家，粤语 / 普通话 / 英文均可沟通，零障碍。',
+        payLabel: '付款与发货',
+        payMethodsLabel: '可接受的付款方式：',
+        payOctopus: '八达通 Octopus',
+        deliveryNote: '付款确认后，Steam CDK 会通过 WhatsApp 直接发送给您，通常数分钟内到手。您自行在 Steam 激活，Steam 会发送确认 Email 到您的注册信箱。',
+        termsLabel: '买家须知及条款',
+        warnNorefundTitle: '不可退款。',
+        warnNorefund: '由于 CDK 属于一次性虚拟产品，序号一经发出即视为「已泄漏」，因此购买后不可退款。',
+        warnFaultTitle: '故障处理。',
+        warnFault: '如序号无法使用，请立即截图 Steam 错误信息（全屏，包含系统时钟及 Steam 账号名称）并传送给我跟进，我会第一时间处理。',
+        warnRegionTitle: '地区限制。',
+        warnRegion: '仅限港澳台地区的 Steam 账号激活。',
+        tipsLabel: '买家保障小贴士',
+        tip1: '<strong>截图存证。</strong>收到 CDK 后，建议自行截图保存 WhatsApp 对话记录。',
+        tip2: '<strong>应对争议。</strong>如序号无法激活，请提供「全屏截图」（包含 Steam 错误提示、电脑时间、以及 Steam 账号名称），防止「呃 Key」争议并助我快速核实。',
+        btnWhatsApp: 'WhatsApp +852 6400 1277',
+        btnEmail: '发送邮件',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('back-link').textContent       = p.backLink;
+      document.getElementById('status-text').textContent     = p.statusText;
+      document.getElementById('prod-title').textContent      = p.prodTitle;
+      document.getElementById('prod-subtitle').textContent   = p.prodSubtitle;
+      document.getElementById('gal-label').textContent       = p.galLabel;
+      document.getElementById('plans-label').textContent     = p.plansLabel;
+      document.getElementById('plan-a-tag').textContent      = p.planATag;
+      document.getElementById('plan-a-name').textContent     = p.planAName;
+      document.getElementById('plan-a-sub').textContent      = p.planASub;
+      document.getElementById('plan-a-save').textContent     = p.planASave;
+      document.getElementById('plan-b-tag').textContent      = p.planBTag;
+      document.getElementById('plan-b-name').textContent     = p.planBName;
+      document.getElementById('plan-b-sub').textContent      = p.planBSub;
+      document.getElementById('plan-b-save').textContent     = p.planBSave;
+      document.getElementById('why-label').textContent       = p.whyLabel;
+      document.getElementById('why-1').innerHTML             = p.why1;
+      document.getElementById('why-2').innerHTML             = p.why2;
+      document.getElementById('why-3').innerHTML             = p.why3;
+      document.getElementById('why-4').innerHTML             = p.why4;
+      document.getElementById('pay-label').textContent       = p.payLabel;
+      document.getElementById('pay-methods-label').textContent = p.payMethodsLabel;
+      document.getElementById('pay-octopus').textContent     = p.payOctopus;
+      document.getElementById('delivery-note').textContent   = p.deliveryNote;
+      document.getElementById('terms-label').textContent     = p.termsLabel;
+      document.getElementById('warn-norefund-title').textContent = p.warnNorefundTitle;
+      document.getElementById('warn-norefund').textContent   = p.warnNorefund;
+      document.getElementById('warn-fault-title').textContent = p.warnFaultTitle;
+      document.getElementById('warn-fault').textContent      = p.warnFault;
+      document.getElementById('warn-region-title').textContent = p.warnRegionTitle;
+      document.getElementById('warn-region').textContent     = p.warnRegion;
+      document.getElementById('tips-label').textContent      = p.tipsLabel;
+      document.getElementById('tip-1').innerHTML             = p.tip1;
+      document.getElementById('tip-2').innerHTML             = p.tip2;
+      document.getElementById('btn-whatsapp').textContent    = p.btnWhatsApp;
+      document.getElementById('btn-email').textContent       = p.btnEmail;
+    }
+
+    // Lightbox
+    function openLightbox(item) {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.id === 'lightbox-img') return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    initPage('shop');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

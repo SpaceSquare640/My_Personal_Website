@@ -121,6 +121,19 @@
               </div>
             </div>
           </a>
+          <a class="product-card" href="product-firefighting-simulator-ignite.html">
+            <div class="product-img">
+              <img src="../img/icon/product/Firefighting_Simulator_Ignite_Steam_CDK.jpg" alt="Firefighting Simulator Ignite Steam CDK" loading="lazy">
+            </div>
+            <div class="product-info">
+              <div class="product-name" id="p2-name">Firefighting Simulator: Ignite — Steam CDK</div>
+              <div class="product-desc" id="p2-desc">[In Stock] Official Steam key · Standard or All-DLC · Instant delivery</div>
+              <div class="product-footer">
+                <span class="product-price" id="p2-price">From HKD 138</span>
+                <span class="product-arrow">View →</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
 
@@ -169,6 +182,9 @@
         ownLabel: 'My Own Products',
         p1Name: 'Blox Fruits Account',
         p1Desc: 'Lv.2618 · Angel V4 · 6.7M Bounty · 10 Perm Fruits · Dragon, Dough, T-Rex · CDK + TTK',
+        p2Name: 'Firefighting Simulator: Ignite — Steam CDK',
+        p2Desc: '[In Stock] Official Steam key · Standard or All-DLC · Instant delivery',
+        p2Price: 'From HKD 138',
         promoLabel: 'Promoted Products',
         promoEmpty: 'No promoted products at the moment.',
       },
@@ -177,6 +193,9 @@
         ownLabel: '自售商品',
         p1Name: 'Blox Fruits 帳號',
         p1Desc: '2618等 · Angel V4 · 賞金6.7M · 10永久果實 · 龍·麵糰·暴龍 · CDK + TTK',
+        p2Name: '模擬消防小隊 Firefighting Simulator: Ignite — Steam CDK',
+        p2Desc: '[現貨] 官方正版序號 · 標準版 / 全 DLC 豪華版 · 秒發',
+        p2Price: '低至 HK$138',
         promoLabel: '代售商品',
         promoEmpty: '目前暫無代售商品。',
       },
@@ -185,6 +204,9 @@
         ownLabel: '自售商品',
         p1Name: 'Blox Fruits 帐号',
         p1Desc: '2618等 · Angel V4 · 赏金6.7M · 10永久果实 · 龙·面团·暴龙 · CDK + TTK',
+        p2Name: '模拟消防小队 Firefighting Simulator: Ignite — Steam CDK',
+        p2Desc: '[现货] 官方正版序号 · 标准版 / 全 DLC 豪华版 · 秒发',
+        p2Price: '低至 HK$138',
         promoLabel: '代售商品',
         promoEmpty: '目前暂无代售商品。',
       },
@@ -197,6 +219,9 @@
       document.getElementById('own-label').textContent   = p.ownLabel;
       document.getElementById('p1-name').textContent     = p.p1Name;
       document.getElementById('p1-desc').textContent     = p.p1Desc;
+      document.getElementById('p2-name').textContent     = p.p2Name;
+      document.getElementById('p2-desc').textContent     = p.p2Desc;
+      document.getElementById('p2-price').textContent    = p.p2Price;
       document.getElementById('promo-label').textContent = p.promoLabel;
       document.getElementById('promo-empty').innerHTML   =
         p.promoEmpty + (getLang() === 'en'
