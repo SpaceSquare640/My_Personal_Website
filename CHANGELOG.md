@@ -4,6 +4,20 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.21] — 2026-05-26
+
+### Added
+- **PDF Tool** added to `pages/programs.html` as a second downloadable program (sits between Disk Speed Tester and the GitHub Profile card)
+  - `downloads/PDF_Tool.zip` — 9 KB ZIP containing `PDF_Tool.py`, `README.md`, and `CHANGELOG.md` (no `.git` history)
+  - Source bundled from `D:\Code\Python Code\PDF_Tool` — a Python desktop GUI built with CustomTkinter that supports: Add PDF, Merge, Alternate Mix, Split Pages, Compress, Encrypt, To Image, Extract Text, Rotate Pages, plus list management (sort / remove / clear)
+  - GitHub repo link: <https://github.com/SpaceSquare640/PDF_Tool>
+  - Trilingual i18n (EN / 繁中 / 简中) for the program title, subtitle, description, meta chips (size / platform 🐍 / license), and both action buttons
+  - Dependency note rendered inline below the description: `pip install customtkinter pypdf pdf2image Pillow` + Poppler link for the PDF→image feature
+  - GitHub Profile card fade-up class bumped `fade-up-1` → `fade-up-2` so all three cards still stagger correctly
+- README pages table updated to list both downloadable programs
+
+---
+
 ## [1.0.20] — 2026-05-26
 
 ### Added — four page-scoped polish effects (no global / site-wide changes)
