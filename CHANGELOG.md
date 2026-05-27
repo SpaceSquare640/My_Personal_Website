@@ -4,6 +4,26 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.26] — 2026-05-27
+
+### Added
+- **New blog post — "Tokyo Ikebukuro — Top-Tier Pokémon GO Coordinates"** (`pages/post-pokemon-go-ikebukuro.html`)
+  - Text-only post (no photo), built around a prominent **coordinates card** showing `35.730105, 139.719079` with copy-to-clipboard button
+  - **Two map CTAs** — "Open in Google Maps →" and "Open in Apple Maps →" (both linked to the coordinates)
+  - Intro paragraph + Location Overview card + **3 advantage cards** (PokéStop density / instant raid lobbies / weather-proof grinding) with numbered headings and hover lift
+  - Hashtag row at the bottom: #PokemonGO #PokemonGOCoordinates #TokyoGrinding #Ikebukuro #GameGuide #PokemonGOHotspot
+  - Three tags: **Pokémon Go Coordinate** (purple) · **Japan** (teal) · **Game** (red)
+  - Full EN / 繁中 / 简中 i18n (繁中 "Pokémon GO 座標 · 日本 · 遊戲" / 简中 "Pokémon GO 坐标 · 日本 · 游戏")
+  - Full SEO meta (description, keywords, OG, Twitter Card, canonical, `article:tag` ×3) + **BlogPosting JSON-LD** with `contentLocation` `GeoCoordinates` (lat 35.730105, lon 139.719079) — eligible for Google Maps integration
+- **Blog tag filter — two new tag slugs added**
+  - `pokemon-go-coordinate` ("Pokémon Go Coordinate" / "Pokémon GO 座標" / "Pokémon GO 坐标")
+  - `japan` ("Japan" / "日本" / "日本")
+  - Both wired into `SLUG_TO_KEY` and the trilingual `tag` dictionary in `pages/community-blog.html`
+- New post added at the top of `pages/community-blog.html` post list
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.25] — 2026-05-27
 
 ### Added
