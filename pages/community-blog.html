@@ -32,12 +32,61 @@
     .back-link:hover { color: var(--text); }
     .posts-body { max-width: 1080px; margin: 0 auto; padding: 0 2rem 5rem; }
 
-    /* ── Tag filter bar ── */
-    .tag-filter {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    /* ── Tag filter (collapsible) ── */
+    .tag-filter-wrap {
       margin-bottom: 1.25rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border);
+    }
+    .tag-filter-toggle {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-b);
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .tag-filter-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .tag-filter-toggle .toggle-icon { font-size: 0.95rem; line-height: 1; }
+    .tag-filter-toggle .toggle-active {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-left: 0.5rem;
+      margin-left: 0.1rem;
+      border-left: 1px solid var(--border2);
+    }
+    .tag-filter-toggle .toggle-active strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .tag-filter-toggle .toggle-chevron {
+      font-size: 0.7rem;
+      transition: transform 0.25s ease;
+      margin-left: 0.15rem;
+    }
+    .tag-filter-wrap.open .tag-filter-toggle .toggle-chevron {
+      transform: rotate(180deg);
+    }
+
+    .tag-filter {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+    }
+    .tag-filter-wrap.open .tag-filter {
+      max-height: 600px;
+      opacity: 1;
+      margin-top: 0.85rem;
     }
     .tag-chip {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -141,8 +190,18 @@
 
     <div class="posts-body">
 
-      <!-- Tag filter bar (chips rendered by JS) -->
-      <div class="tag-filter" id="tag-filter" role="tablist" aria-label="Filter posts by tag"></div>
+      <!-- Tag filter (collapsible; chips rendered by JS) -->
+      <div class="tag-filter-wrap" id="tag-filter-wrap">
+        <button class="tag-filter-toggle" id="tag-filter-toggle"
+                aria-expanded="false" aria-controls="tag-filter"
+                onclick="toggleTagFilter()">
+          <span class="toggle-icon">🏷️</span>
+          <span class="toggle-label" id="toggle-label">Filter by tag</span>
+          <span class="toggle-active" id="toggle-active">: <strong id="toggle-active-name">All</strong></span>
+          <span class="toggle-chevron">▾</span>
+        </button>
+        <div class="tag-filter" id="tag-filter" role="tablist" aria-label="Filter posts by tag"></div>
+      </div>
 
       <!-- Post list -->
       <div class="post-list" id="post-list">
@@ -236,6 +295,7 @@
         desc: 'Announcements, gaming, photography, and personal posts. Filter by tag.',
         all: 'All',
         empty: 'No posts match this tag yet.',
+        filterByTag: 'Filter by tag',
         tag: {
           'pokemonGo':           'Pokémon Go',
           'pokemonGoCoordinate': 'Pokémon Go Coordinate',
@@ -265,6 +325,7 @@
         desc: '公告、遊戲、攝影及個人文章。可依標籤篩選。',
         all: '全部',
         empty: '目前沒有符合此標籤的文章。',
+        filterByTag: '依標籤篩選',
         tag: {
           'pokemonGo':           'Pokémon GO',
           'pokemonGoCoordinate': 'Pokémon GO 座標',
@@ -294,6 +355,7 @@
         desc: '公告、游戏、摄影及个人文章。可按标签筛选。',
         all: '全部',
         empty: '目前没有符合此标签的文章。',
+        filterByTag: '按标签筛选',
         tag: {
           'pokemonGo':           'Pokémon GO',
           'pokemonGoCoordinate': 'Pokémon GO 坐标',
@@ -339,6 +401,14 @@
       document.getElementById('title').textContent = p.title;
       document.getElementById('desc').textContent  = p.desc;
       document.getElementById('empty-text').textContent = p.empty;
+      document.getElementById('toggle-label').textContent = p.filterByTag;
+
+      // Refresh the currently-active tag label on the toggle button
+      const activeChip = document.querySelector('.tag-chip.active');
+      const activeSlug = activeChip ? activeChip.getAttribute('data-tag') : 'all';
+      const activeName = activeSlug === 'all' ? p.all : (p.tag[SLUG_TO_KEY[activeSlug]] || activeSlug);
+      const nameEl = document.getElementById('toggle-active-name');
+      if (nameEl) nameEl.textContent = activeName;
 
       // Per-post titles + dates (via data-tk attribute)
       document.querySelectorAll('[data-tk]').forEach(el => {
@@ -413,7 +483,30 @@
         c.setAttribute('aria-selected', active ? 'true' : 'false');
       });
       document.getElementById('empty-msg').classList.toggle('show', visible === 0);
+
+      // Update the toggle button to reflect the active filter
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      const name = slug === 'all' ? p.all : (p.tag[SLUG_TO_KEY[slug]] || slug);
+      const nameEl = document.getElementById('toggle-active-name');
+      if (nameEl) nameEl.textContent = name;
     }
+
+    function toggleTagFilter() {
+      const wrap = document.getElementById('tag-filter-wrap');
+      const btn  = document.getElementById('tag-filter-toggle');
+      const open = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    // Close the filter dropdown when the user taps anywhere outside it
+    document.addEventListener('click', (e) => {
+      const wrap = document.getElementById('tag-filter-wrap');
+      if (!wrap || !wrap.classList.contains('open')) return;
+      if (!wrap.contains(e.target)) {
+        wrap.classList.remove('open');
+        document.getElementById('tag-filter-toggle')?.setAttribute('aria-expanded', 'false');
+      }
+    });
 
     buildTagFilter();
     initPage('community');

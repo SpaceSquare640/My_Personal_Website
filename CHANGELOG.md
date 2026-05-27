@@ -4,6 +4,19 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.28] — 2026-05-27
+
+### Changed
+- **Blog tag filter is now collapsible behind a button** (`pages/community-blog.html`)
+  - The chip row is hidden by default; a new pill button "🏷️ Filter by tag: **All** ▾" appears in its place
+  - Click the button → chips slide open (`max-height` + `opacity` transition); chevron rotates 180°
+  - Click outside the filter, or click the button again → chips collapse
+  - The button's "active tag" label updates every time a chip is clicked, so you can see which filter is on without re-opening the panel
+  - Filter button label is fully i18n'd: **Filter by tag** / **依標籤篩選** / **按标签筛选**
+- Page loads with a less crowded header — only the toggle button shows until the user wants to filter
+
+---
+
 ## [1.0.27] — 2026-05-27
 
 ### Added
