@@ -33,6 +33,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/post-new-youtube-banner-icon.html` | `/pages/post-new-youtube-banner-icon.html` | Blog post: New YouTube Channel Branding — Banner & Icon |
 | `pages/post-pokemon-go.html` | `/pages/post-pokemon-go.html` | Blog post: Let's Play Pokémon GO! (trainer code + QR) |
 | `pages/post-pokemon-go-ikebukuro.html` | `/pages/post-pokemon-go-ikebukuro.html` | Blog post: Tokyo Ikebukuro Pokémon GO Hotspot Coordinates |
+| `pages/post-pokemon-go-taipei.html` | `/pages/post-pokemon-go-taipei.html` | Blog post: Taipei Main Station Pokémon GO Hotspot Coordinates |
 | `pages/post-nam-sang-wai-night-ride.html` | `/pages/post-nam-sang-wai-night-ride.html` | Blog post: 南生圍夜騎 · Nam Sang Wai Night Ride |
 
 ## File Structure

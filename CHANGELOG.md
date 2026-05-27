@@ -4,6 +4,25 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.29] — 2026-05-27
+
+### Added
+- **New blog post — "Taipei Main Station — Top-Tier Pokémon GO Coordinates"** (`pages/post-pokemon-go-taipei.html`)
+  - Text-only post built around coords `25.047989, 121.516793` (Datong District, Taipei City; intersection of Chengde Rd Sec.1 × Civic Boulevard Sec.1, next to Taipei Main Station + Q Square / 京站時尚廣場)
+  - Same component family as the Ikebukuro post: coordinates card with copy + Google Maps + Apple Maps CTAs; location/terrain card; 3 numbered advantage cards (PokéStop Density · Cherry-Blossom Rain 24/7 Lures · Raid Efficiency)
+  - **Coordinate Portal** footer note + hashtag row (#PokemonGO #PokemonGOCoordinates #TaipeiGrinding #TaipeiMainStation #GameGuide #PokemonGOHotspot #Taiwan)
+  - Four tags: **Pokémon Go Coordinate** (purple) · **Taiwan** (teal) · **Taipei** (teal) · **Game** (red)
+  - Full EN / 繁中 / 简中 i18n — content matches the user-supplied 繁中 source (retains official game terminology: 補給站／精靈球／傷藥／誘餌模組／團體戰／星碎)
+  - Full SEO meta (description, keywords, OG, Twitter Card, canonical, `article:tag` ×4) + **BlogPosting JSON-LD** with `contentLocation` `GeoCoordinates` (lat 25.047989, lon 121.516793)
+- **Blog tag filter — two new tag slugs added**
+  - `taiwan` ("Taiwan" / "台灣" / "台湾")
+  - `taipei` ("Taipei" / "台北" / "台北")
+  - Wired into `SLUG_TO_KEY` + trilingual tag dictionary in `pages/community-blog.html`
+- New post added at the top of the blog list (5 of 7 posts now tagged with at least one geographic tag)
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.28] — 2026-05-27
 
 ### Changed
