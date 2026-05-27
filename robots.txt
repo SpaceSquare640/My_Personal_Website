@@ -1,0 +1,10 @@
+# robots.txt for SpaceSquare personal website
+# Site: https://spacesquare640.github.io/My_Personal_Website/
+
+User-agent: *
+Allow: /
+
+# Don't index résumé landing (password-protected, low SEO value)
+Disallow: /pages/resume.html
+
+Sitemap: https://spacesquare640.github.io/My_Personal_Website/sitemap.xml

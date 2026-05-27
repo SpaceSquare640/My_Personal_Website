@@ -4,6 +4,39 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.24] — 2026-05-27
+
+### Added — Full SEO pass (3 tiers)
+
+**Tier 1 · Per-page meta + favicons + social previews** (13 HTML pages)
+- New favicon + apple-touch-icon on every page → `img/icon/site/spacesquare-icon.png` (clean URL copy of `My_Watermark_&_Icon_[20260527].png`)
+- New social-share cover → `img/icon/site/og-cover.png` (clean URL copy of the YouTube banner)
+- Per-page unique `<meta name="description">` (was: only on index)
+- `<meta name="author">`, `<meta name="theme-color" content="#7c6eff">`, `<meta name="keywords">` on all pages
+- `<link rel="canonical">` on every page → prevents duplicate-content issues
+- **Open Graph** tags: `og:type`, `og:site_name`, `og:title`, `og:description`, `og:url`, `og:image` (+ `og:image:width/height` where known); `og:locale` + alternates for `en_US` / `zh_TW` / `zh_CN` on homepage
+- **Twitter Card** `summary_large_image` with `twitter:title`, `twitter:description`, `twitter:image`
+- Product pages additionally declare `product:price:amount` / `product:price:currency`
+- Blog post pages declare `article:published_time`, `article:author`, `article:section`
+- `pages/resume.html` declares `<meta name="robots" content="noindex, nofollow">` since it's gated
+
+**Tier 2 · Crawler help** (root files)
+- `robots.txt` — allows all; disallows `/pages/resume.html`; declares sitemap location
+- `sitemap.xml` — 12 URLs with `lastmod`, `changefreq`, `priority`
+
+**Tier 3 · JSON-LD structured data** (rich-result eligible)
+- `index.html` — `Person` (name, jobTitle, nationality, sameAs YouTube/Discord/GitHub) + `WebSite`
+- `pages/product-bloxfruit-account.html` — `Product` with `Offer` (HKD 700, InStock, areaServed HK/MO/TW, seller=SpaceSquare)
+- `pages/product-firefighting-simulator-ignite.html` — `Product` with **two `Offer` entries** (Plan A HK$148 / Plan B HK$218)
+- `pages/programs.html` — three `SoftwareApplication` entries (Disk Speed Tester / PDF Tool / Multimedia Downloader) with `downloadUrl`, `applicationCategory`, free `Offer`
+- All 3 blog posts (`pages/post-pikmin-bloom.html`, `pages/post-city-contrast.html`, `pages/post-new-youtube-banner-icon.html`) — `BlogPosting` with headline, datePublished, author, image, mainEntityOfPage, articleSection
+
+### Changed
+- `<title>` tags expanded on several pages to be more descriptive (better SERP click-through): index, community, shop, programs, freelance, both products, all 3 blog posts
+- README features list updated to mention SEO
+
+---
+
 ## [1.0.23] — 2026-05-27
 
 ### Added
