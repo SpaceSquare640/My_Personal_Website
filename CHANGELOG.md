@@ -4,6 +4,20 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.23] — 2026-05-27
+
+### Added
+- **New blog post — "New YouTube Channel Branding — Banner & Icon"**
+  - `pages/post-new-youtube-banner-icon.html` — channel-update post with full-width banner display, a side-by-side icon + description block, three explanatory body paragraphs, "Visit YouTube Channel →" CTA, and click-to-enlarge lightbox on both images
+  - `img/blog/My_YouTube_channel_banner_[20260527].png` (3.2 MB) — wide 16:9 YouTube channel banner with the SpaceSquare wordmark + gaming/Roblox theme
+  - `img/blog/My_Watermark_&_Icon_[20260527].png` (1.5 MB) — square channel avatar / video watermark; neon-blue frame + 4-point star + SpaceSquare wordmark
+  - HTML src attributes use percent-encoded paths (`%26` for `&`, `%5B` / `%5D` for `[` `]`) so the exact user-supplied filenames are preserved on disk while remaining valid in markup
+  - Full EN / 繁中 (頻道更新 / 全新 YouTube 頻道形象 — 橫額與頭像) / 简中 (频道更新 / 全新 YouTube 频道形象 — 横幅与头像) i18n on title, tag, dates, body paragraphs, icon description, and CTA
+  - Listed at the top of `pages/community-blog.html` as the newest post (above Pikmin Bloom and City in Contrast); new `tagP3 / titleP3 / dateP3` keys wired in all three languages
+- `README.md` — new post added to the pages table
+
+---
+
 ## [1.0.22] — 2026-05-26
 
 ### Added

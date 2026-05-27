@@ -29,6 +29,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/product-firefighting-simulator-ignite.html` | `/pages/product-firefighting-simulator-ignite.html` | Shop product: Firefighting Simulator: Ignite Steam CDK (HKD 138 / 208) |
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
 | `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! (with QR invite + friend code) |
+| `pages/post-new-youtube-banner-icon.html` | `/pages/post-new-youtube-banner-icon.html` | Blog post: New YouTube Channel Branding — Banner & Icon |
 
 ## File Structure
 

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New YouTube Channel Branding — SpaceSquare</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .post-page { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; color: var(--muted); text-decoration: none;
+      margin-bottom: 2rem; transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* Header */
+    .post-header { margin-bottom: 2.5rem; }
+    .post-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 99px;
+      background: rgba(79,209,197,0.1); color: var(--accent2);
+      border: 1px solid rgba(79,209,197,0.2);
+      margin-bottom: 1rem;
+    }
+    .post-title-en {
+      font-family: var(--font-h); font-weight: 900; font-size: 2.4rem;
+      line-height: 1.0; letter-spacing: -0.015em; margin-bottom: 0.5rem;
+    }
+    .post-meta {
+      color: var(--muted); font-size: 0.82rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    /* Banner */
+    .banner-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      margin-bottom: 2rem;
+      aspect-ratio: 16 / 9;
+      cursor: zoom-in;
+    }
+    .banner-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .banner-wrap:hover img { transform: scale(1.03); }
+
+    /* Icon row */
+    .icon-section {
+      display: grid;
+      grid-template-columns: minmax(180px, 240px) 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 1.75rem 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    @media (max-width: 560px) {
+      .icon-section { grid-template-columns: 1fr; text-align: center; }
+    }
+    .icon-wrap {
+      width: 100%; aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+    .icon-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .icon-text h3 {
+      font-family: var(--font-h); font-weight: 800; font-size: 1.3rem;
+      letter-spacing: -0.005em; margin-bottom: 0.6rem;
+    }
+    .icon-text p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; }
+
+    /* Body text */
+    .post-body {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+      color: var(--muted); font-size: 0.95rem; line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+    .post-body p + p { margin-top: 0.9rem; }
+    .post-body strong { color: var(--text); }
+
+    /* CTA */
+    .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 600;
+      background: rgba(5,5,12,0.92);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem; cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.15); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav"></nav>
+
+  <div class="page">
+    <div class="post-page">
+
+      <a class="back-link" href="community-blog.html" id="back-link">← Blog</a>
+
+      <!-- Header -->
+      <div class="post-header fade-up">
+        <span class="post-tag" id="post-tag">Channel Update</span>
+        <h1 class="post-title-en" id="post-title">New YouTube Channel Branding — Banner &amp; Icon</h1>
+        <div class="post-meta">
+          <span>📅 <span id="post-date">2026-05-27</span></span>
+          <span>📺 <span id="post-platform">YouTube</span></span>
+        </div>
+      </div>
+
+      <!-- Banner (wide) -->
+      <div class="banner-wrap fade-up fade-up-1" onclick="openLightbox(this)">
+        <img src="../img/blog/My_YouTube_channel_banner_%5B20260527%5D.png"
+             alt="SpaceSquare YouTube channel banner — Roblox / gaming theme with the SpaceSquare wordmark"
+             loading="lazy" id="banner-img">
+      </div>
+
+      <!-- Icon block -->
+      <div class="icon-section fade-up fade-up-1">
+        <div class="icon-wrap" onclick="openLightbox(this)">
+          <img src="../img/blog/My_Watermark_%26_Icon_%5B20260527%5D.png"
+               alt="SpaceSquare watermark and channel icon — neon-blue square with a 4-point star and the SpaceSquare wordmark"
+               loading="lazy" id="icon-img">
+        </div>
+        <div class="icon-text">
+          <h3 id="icon-title">Watermark &amp; Channel Icon</h3>
+          <p id="icon-desc">A clean neon-blue square frame with a 4-point star — used as both the channel avatar and the video watermark that appears on every upload.</p>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="post-body fade-up fade-up-1">
+        <p id="body-1"><strong>Channel refresh.</strong> I've updated the SpaceSquare YouTube channel's full visual identity — a new banner that leans into the gaming / Roblox vibe I cover most often, and a matching minimal icon used as the channel avatar plus the on-screen watermark on every upload.</p>
+        <p id="body-2"><strong>What changed:</strong> the banner now features the SpaceSquare wordmark front-and-centre with stylised game characters and a layered blue-to-purple gradient. The icon is intentionally simple — a thin neon square frame with a 4-point star — so it stays readable at any size, from the channel page hero down to the tiny watermark in the corner of a video.</p>
+        <p id="body-3"><strong>Where you'll see it:</strong> the new banner is live on the YouTube channel page, the avatar updates everywhere YouTube uses it (comments, search, shorts), and the watermark will appear from the next upload onwards.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-row fade-up fade-up-2">
+        <a class="btn btn-primary" href="https://www.youtube.com/channel/UChmwTSclAf-m1z5DemiakUQ" target="_blank" rel="noopener" id="btn-yt">
+          Visit YouTube Channel →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" aria-label="Close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    const PAGE_TEXT = {
+      en: {
+        backLink: '← Blog',
+        postTag: 'Channel Update',
+        postTitle: 'New YouTube Channel Branding — Banner & Icon',
+        postDate: '2026-05-27',
+        postPlatform: 'YouTube',
+        iconTitle: 'Watermark & Channel Icon',
+        iconDesc: 'A clean neon-blue square frame with a 4-point star — used as both the channel avatar and the video watermark that appears on every upload.',
+        body1: '<strong>Channel refresh.</strong> I\'ve updated the SpaceSquare YouTube channel\'s full visual identity — a new banner that leans into the gaming / Roblox vibe I cover most often, and a matching minimal icon used as the channel avatar plus the on-screen watermark on every upload.',
+        body2: '<strong>What changed:</strong> the banner now features the SpaceSquare wordmark front-and-centre with stylised game characters and a layered blue-to-purple gradient. The icon is intentionally simple — a thin neon square frame with a 4-point star — so it stays readable at any size, from the channel page hero down to the tiny watermark in the corner of a video.',
+        body3: '<strong>Where you\'ll see it:</strong> the new banner is live on the YouTube channel page, the avatar updates everywhere YouTube uses it (comments, search, shorts), and the watermark will appear from the next upload onwards.',
+        btnYt: 'Visit YouTube Channel →',
+      },
+      'zh-hant': {
+        backLink: '← 部落格',
+        postTag: '頻道更新',
+        postTitle: '全新 YouTube 頻道形象 — 橫額與頭像',
+        postDate: '2026年5月27日',
+        postPlatform: 'YouTube',
+        iconTitle: '浮水印與頻道頭像',
+        iconDesc: '簡潔的霓虹藍方形外框加上 4 角星 — 同時作為頻道頭像和影片浮水印，會出現在每一支上傳的影片上。',
+        body1: '<strong>頻道形象更新。</strong>SpaceSquare YouTube 頻道的整體視覺形象已全面更新 — 全新橫額更貼近我經常製作的遊戲／Roblox 風格，並設計了與之呼應的極簡頭像，同時作為頻道大頭貼和每支影片的畫面浮水印。',
+        body2: '<strong>改了什麼：</strong>橫額正中央放上 SpaceSquare 字標，搭配風格化的遊戲角色與藍紫漸層底色。頭像則刻意保持簡約 — 一個細邊的霓虹方框加 4 角星 — 不論在頻道頁的大圖、評論列的小頭像、還是影片角落的浮水印，都能保持清晰可讀。',
+        body3: '<strong>會在哪裡看到：</strong>新橫額已上線在 YouTube 頻道頁，頭像會同步更新到所有 YouTube 使用它的位置（留言、搜尋、Shorts），而浮水印會從下一支上傳影片開始顯示。',
+        btnYt: '前往 YouTube 頻道 →',
+      },
+      'zh-hans': {
+        backLink: '← 博客',
+        postTag: '频道更新',
+        postTitle: '全新 YouTube 频道形象 — 横幅与头像',
+        postDate: '2026年5月27日',
+        postPlatform: 'YouTube',
+        iconTitle: '水印与频道头像',
+        iconDesc: '简洁的霓虹蓝方形外框加上 4 角星 — 同时作为频道头像和视频水印，会出现在每一支上传的视频上。',
+        body1: '<strong>频道形象更新。</strong>SpaceSquare YouTube 频道的整体视觉形象已全面更新 — 全新横幅更贴近我经常制作的游戏／Roblox 风格，并设计了与之呼应的极简头像，同时作为频道头像和每支视频的画面水印。',
+        body2: '<strong>改了什么：</strong>横幅正中央放上 SpaceSquare 字标，搭配风格化的游戏角色与蓝紫渐变底色。头像则刻意保持简约 — 一个细边的霓虹方框加 4 角星 — 不论在频道页的大图、评论列的小头像、还是视频角落的水印，都能保持清晰可读。',
+        body3: '<strong>会在哪里看到：</strong>新横幅已上线在 YouTube 频道页，头像会同步更新到所有 YouTube 使用它的位置（评论、搜索、Shorts），而水印会从下一支上传视频开始显示。',
+        btnYt: '前往 YouTube 频道 →',
+      },
+    };
+
+    function applyPageText() {
+      const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
+      document.getElementById('back-link').textContent      = p.backLink;
+      document.getElementById('post-tag').textContent       = p.postTag;
+      document.getElementById('post-title').textContent     = p.postTitle;
+      document.getElementById('post-date').textContent      = p.postDate;
+      document.getElementById('post-platform').textContent  = p.postPlatform;
+      document.getElementById('icon-title').textContent     = p.iconTitle;
+      document.getElementById('icon-desc').textContent      = p.iconDesc;
+      document.getElementById('body-1').innerHTML           = p.body1;
+      document.getElementById('body-2').innerHTML           = p.body2;
+      document.getElementById('body-3').innerHTML           = p.body3;
+      document.getElementById('btn-yt').textContent         = p.btnYt;
+    }
+
+    function openLightbox(wrap) {
+      const img = wrap.querySelector('img');
+      if (!img) return;
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.id === 'lightbox-img') return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    initPage('community');
+    applyPageText();
+    document.addEventListener('langchange', applyPageText);
+  </script>
+</body>
+</html>

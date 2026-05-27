@@ -53,6 +53,13 @@
 
     <div class="posts-body">
       <div class="post-list">
+        <a class="post-item" href="post-new-youtube-banner-icon.html">
+          <div>
+            <div class="post-tag" id="tag-p3">Channel Update</div>
+            <div class="post-title" id="title-p3">New YouTube Channel Branding — Banner &amp; Icon</div>
+          </div>
+          <div class="post-date" id="date-p3">2026-05-27</div>
+        </a>
         <a class="post-item" href="post-pikmin-bloom.html">
           <div>
             <div class="post-tag game" id="tag-p2">Game · Pikmin Bloom</div>
@@ -77,9 +84,9 @@
   <script src="../js/components.js"></script>
   <script>
     const PAGE_TEXT = {
-      en:        { title: 'Blog',   desc: 'Announcements, gaming, photography, and personal posts.', tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: 'Game · Pikmin Bloom', titleP2: "Let's Play Pikmin Bloom!",       dateP2: '2026-05-25' },
-      'zh-hant': { title: '部落格', desc: '公告、遊戲、攝影及個人文章。',                              tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '遊戲 · Pikmin Bloom', titleP2: '一起來玩 Pikmin Bloom！',         dateP2: '2026年5月25日' },
-      'zh-hans': { title: '博客',   desc: '公告、游戏、摄影及个人文章。',                              tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '游戏 · Pikmin Bloom', titleP2: '一起来玩 Pikmin Bloom！',         dateP2: '2026年5月25日' },
+      en:        { title: 'Blog',   desc: 'Announcements, gaming, photography, and personal posts.', tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: 'Game · Pikmin Bloom', titleP2: "Let's Play Pikmin Bloom!",       dateP2: '2026-05-25', tagP3: 'Channel Update', titleP3: 'New YouTube Channel Branding — Banner & Icon', dateP3: '2026-05-27' },
+      'zh-hant': { title: '部落格', desc: '公告、遊戲、攝影及個人文章。',                              tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '遊戲 · Pikmin Bloom', titleP2: '一起來玩 Pikmin Bloom！',         dateP2: '2026年5月25日', tagP3: '頻道更新', titleP3: '全新 YouTube 頻道形象 — 橫額與頭像', dateP3: '2026年5月27日' },
+      'zh-hans': { title: '博客',   desc: '公告、游戏、摄影及个人文章。',                              tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '游戏 · Pikmin Bloom', titleP2: '一起来玩 Pikmin Bloom！',         dateP2: '2026年5月25日', tagP3: '频道更新', titleP3: '全新 YouTube 频道形象 — 横幅与头像', dateP3: '2026年5月27日' },
     };
     function applyPageText() {
       const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
@@ -91,6 +98,9 @@
       document.getElementById('tag-p2').textContent   = p.tagP2;
       document.getElementById('title-p2').textContent = p.titleP2;
       document.getElementById('date-p2').textContent  = p.dateP2;
+      document.getElementById('tag-p3').textContent   = p.tagP3;
+      document.getElementById('title-p3').textContent = p.titleP3;
+      document.getElementById('date-p3').textContent  = p.dateP3;
     }
     initPage('community');
     applyPageText();
