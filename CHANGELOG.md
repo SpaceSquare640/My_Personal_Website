@@ -4,6 +4,24 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.27] — 2026-05-27
+
+### Added
+- **New blog post — "南生圍夜騎 · Nam Sang Wai Night Ride"** (`pages/post-nam-sang-wai-night-ride.html`)
+  - Photo-focused post (no body sections — just a hero image + caption + location card)
+  - Hero photo `img/blog/Bike_20260522_19.46.jpg` (1.7 MB) — road bike on a bridge over 錦田河 (Kam Tin River), Friday 2026-05-22 at 19:46
+  - Click-to-enlarge lightbox on the photo
+  - Bilingual title (中文 + English), italicised caption, location card with "Open in Maps →" CTA pointing at 南生圍 / 錦田河 / 元朗
+  - Tags: **Road Bike** · **Hong Kong** (both teal)
+  - Full EN / 繁中 (公路單車) / 简中 (公路自行车) i18n
+  - Full SEO meta (description, keywords, OG, Twitter Card, canonical, `article:tag` ×2) + **BlogPosting JSON-LD** with `contentLocation` referencing 南生圍 / 錦田河 / 元朗 / 香港
+- **Blog tag filter — new tag slug added**
+  - `road-bike` ("Road Bike" / "公路單車" / "公路自行车") — wired into `SLUG_TO_KEY` and the trilingual tag dict in `pages/community-blog.html`
+- Post inserted into the blog list at the chronologically correct slot (between Pikmin Bloom 2026-05-25 and City Contrast 2025-11-08)
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.26] — 2026-05-27
 
 ### Added
