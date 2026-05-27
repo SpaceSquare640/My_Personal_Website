@@ -23,7 +23,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/community-blog.html` | `/pages/community-blog.html` | Blog sub-page (gaming, photography, personal posts) |
 | `pages/shop.html` | `/pages/shop.html` | Shop (own + promoted products) |
 | `pages/freelance.html` | `/pages/freelance.html` | Freelance services |
-| `pages/programs.html` | `/pages/programs.html` | Downloadable programs + GitHub profile (Disk Speed Tester, PDF Tool) |
+| `pages/programs.html` | `/pages/programs.html` | Downloadable programs + GitHub profile (Disk Speed Tester, PDF Tool, Multimedia Downloader) |
 | `pages/resume.html` | `/pages/resume.html` | Password-protected résumé |
 | `pages/product-bloxfruit-account.html` | `/pages/product-bloxfruit-account.html` | Shop product: Blox Fruits Account (HKD 700) |
 | `pages/product-firefighting-simulator-ignite.html` | `/pages/product-firefighting-simulator-ignite.html` | Shop product: Firefighting Simulator: Ignite Steam CDK (HKD 138 / 208) |

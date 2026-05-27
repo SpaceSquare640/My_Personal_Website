@@ -4,6 +4,21 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.22] — 2026-05-26
+
+### Added
+- **Multimedia Downloader** added to `pages/programs.html` as a third downloadable program (sits between PDF Tool and the GitHub Profile card)
+  - `downloads/Multimedia_Downloader.zip` — 36 KB bundle (already placed by user) containing the desktop GUI (`Multimedia_Downloader.py`, tkinter), the Flask web app (`web_app.py`, `templates/index.html`, `static/{styles.css,script.js}`), shared engine (`core.py`, `i18n.py`), and project files (README, CHANGELOG, requirements.txt, .gitignore)
+  - GitHub repo link: <https://github.com/SpaceSquare640/Multimedia_Downloader>
+  - Built on `yt-dlp` + `ffmpeg`; supports 500+ sites (YouTube, TikTok, BiliBili, Facebook, Instagram, etc.); audio extraction to MP3 / FLAC / AAC / WAV / OGG / M4A / Opus / WMA; trilingual UI in both interfaces (English default / 繁中 / 简中)
+  - Card uses icon 🎬 and four meta chips (📦 size · 🐍 Python 3.8+ · 📺 500+ sites · 🆓 free & open-source)
+  - Dependency note rendered inline below the description: `pip install -r requirements.txt` (yt-dlp, Pillow, requests, Flask) + ffmpeg PATH link for audio/conversion
+  - Full trilingual i18n on title, subtitle, body, meta chips, and both action buttons (mdTitle / mdSub / mdBody / mdSize / mdPlatform / mdSites / mdLicense / btnMdDownload / btnMdGithub)
+  - GitHub Profile card fade-up class bumped `fade-up-2` → `fade-up-3` so all four cards still stagger correctly
+- README pages table updated to list all three downloadable programs
+
+---
+
 ## [1.0.21] — 2026-05-26
 
 ### Added

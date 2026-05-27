@@ -124,8 +124,45 @@
         </div>
       </div>
 
-      <!-- GitHub Profile -->
+      <!-- Multimedia Downloader -->
       <div class="prog-card fade-up fade-up-2">
+        <div class="prog-header">
+          <div class="prog-icon">🎬</div>
+          <div>
+            <h2 id="md-title">Multimedia Downloader</h2>
+            <p id="md-sub">Desktop GUI + Web App · Free &amp; open-source</p>
+          </div>
+        </div>
+        <div class="prog-body-inner">
+          <p id="md-body">
+            A cross-platform multimedia downloader and format converter built on <code style="background: var(--bg3); padding: 1px 6px; border-radius: 4px;">yt-dlp</code> + <code style="background: var(--bg3); padding: 1px 6px; border-radius: 4px;">ffmpeg</code>. Ships with both a native desktop GUI (tkinter) and a browser-based web app (Flask) sharing the same core engine. Supports 500+ sites including YouTube, TikTok, BiliBili, Facebook, and Instagram. Audio extraction to MP3 / FLAC / AAC / WAV / OGG / M4A / Opus / WMA. Trilingual UI (English / 繁中 / 简中).
+          </p>
+          <div class="prog-meta">
+            <span class="prog-meta-chip">📦 <span id="md-size">~36 KB ZIP</span></span>
+            <span class="prog-meta-chip">🐍 <span id="md-platform">Python 3.8+ · cross-platform</span></span>
+            <span class="prog-meta-chip">📺 <span id="md-sites">500+ sites</span></span>
+            <span class="prog-meta-chip">🆓 <span id="md-license">Free &amp; open-source</span></span>
+          </div>
+          <p id="md-deps" style="color: var(--muted); font-size: 0.82rem; line-height: 1.7;">
+            <strong style="color: var(--text);">Dependencies:</strong>
+            <code style="background: var(--bg3); padding: 1px 6px; border-radius: 4px;">pip install -r requirements.txt</code>
+            (yt-dlp · Pillow · requests · Flask). Optional but recommended:
+            <a href="https://ffmpeg.org/" target="_blank" rel="noopener" style="color: var(--accent);">ffmpeg</a>
+            on your system PATH for audio extraction &amp; format conversion.
+          </p>
+          <div class="prog-actions">
+            <a class="btn btn-primary" href="../downloads/Multimedia_Downloader.zip" download id="btn-md-download">
+              ⬇ Download (ZIP)
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/SpaceSquare640/Multimedia_Downloader" target="_blank" rel="noopener" id="btn-md-github">
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub Profile -->
+      <div class="prog-card fade-up fade-up-3">
         <div class="prog-header">
           <div class="prog-icon">💻</div>
           <div>
@@ -171,6 +208,15 @@
         pdfLicense: 'Free & open-source',
         btnPdfDownload: '⬇ Download (ZIP)',
         btnPdfGithub: 'View on GitHub →',
+        mdTitle: 'Multimedia Downloader',
+        mdSub: 'Desktop GUI + Web App · Free & open-source',
+        mdBody: 'A cross-platform multimedia downloader and format converter built on yt-dlp + ffmpeg. Ships with both a native desktop GUI (tkinter) and a browser-based web app (Flask) sharing the same core engine. Supports 500+ sites including YouTube, TikTok, BiliBili, Facebook, and Instagram. Audio extraction to MP3 / FLAC / AAC / WAV / OGG / M4A / Opus / WMA. Trilingual UI (English / 繁中 / 简中).',
+        mdSize: '~36 KB ZIP',
+        mdPlatform: 'Python 3.8+ · cross-platform',
+        mdSites: '500+ sites',
+        mdLicense: 'Free & open-source',
+        btnMdDownload: '⬇ Download (ZIP)',
+        btnMdGithub: 'View on GitHub →',
         ghTitle: 'GitHub Profile',
         ghSub: 'View all repositories and source code',
         ghBody: 'All of my programs and open-source projects are hosted on GitHub. Click below to browse every available repository.',
@@ -195,6 +241,15 @@
         pdfLicense: '免費開源',
         btnPdfDownload: '⬇ 下載（ZIP）',
         btnPdfGithub: '前往 GitHub →',
+        mdTitle: '多媒體下載器',
+        mdSub: '桌面版 + 網頁版 · 免費開源',
+        mdBody: '跨平台多媒體下載器與格式轉換工具，基於 yt-dlp + ffmpeg。同時提供桌面版 (tkinter) 與網頁版 (Flask) 介面，共用同一個核心引擎。支援 YouTube、TikTok、BiliBili、Facebook、Instagram 等 500+ 平台。可擷取音訊為 MP3 / FLAC / AAC / WAV / OGG / M4A / Opus / WMA。三語介面（英文 / 繁中 / 简中）。',
+        mdSize: '~36 KB ZIP',
+        mdPlatform: 'Python 3.8+ · 跨平台',
+        mdSites: '500+ 平台',
+        mdLicense: '免費開源',
+        btnMdDownload: '⬇ 下載（ZIP）',
+        btnMdGithub: '前往 GitHub →',
         ghTitle: 'GitHub 個人頁面',
         ghSub: '查看所有儲存庫與原始碼',
         ghBody: '我所有的程式及開源專案均托管於 GitHub。請點擊下方按鈕瀏覽所有可用的儲存庫。',
@@ -219,6 +274,15 @@
         pdfLicense: '免费开源',
         btnPdfDownload: '⬇ 下载（ZIP）',
         btnPdfGithub: '前往 GitHub →',
+        mdTitle: '多媒体下载器',
+        mdSub: '桌面版 + 网页版 · 免费开源',
+        mdBody: '跨平台多媒体下载器与格式转换工具，基于 yt-dlp + ffmpeg。同时提供桌面版 (tkinter) 与网页版 (Flask) 界面，共用同一个核心引擎。支持 YouTube、TikTok、BiliBili、Facebook、Instagram 等 500+ 平台。可提取音频为 MP3 / FLAC / AAC / WAV / OGG / M4A / Opus / WMA。三语界面（英文 / 繁中 / 简中）。',
+        mdSize: '~36 KB ZIP',
+        mdPlatform: 'Python 3.8+ · 跨平台',
+        mdSites: '500+ 平台',
+        mdLicense: '免费开源',
+        btnMdDownload: '⬇ 下载（ZIP）',
+        btnMdGithub: '前往 GitHub →',
         ghTitle: 'GitHub 个人页面',
         ghSub: '查看所有仓库与源代码',
         ghBody: '我所有的程序及开源项目均托管于 GitHub。请点击下方按钮浏览所有可用的仓库。',
@@ -246,6 +310,15 @@
       document.getElementById('pdf-license').textContent       = p.pdfLicense;
       document.getElementById('btn-pdf-download').textContent  = p.btnPdfDownload;
       document.getElementById('btn-pdf-github').textContent    = p.btnPdfGithub;
+      document.getElementById('md-title').textContent          = p.mdTitle;
+      document.getElementById('md-sub').textContent            = p.mdSub;
+      document.getElementById('md-body').textContent           = p.mdBody;
+      document.getElementById('md-size').textContent           = p.mdSize;
+      document.getElementById('md-platform').textContent       = p.mdPlatform;
+      document.getElementById('md-sites').textContent          = p.mdSites;
+      document.getElementById('md-license').textContent        = p.mdLicense;
+      document.getElementById('btn-md-download').textContent   = p.btnMdDownload;
+      document.getElementById('btn-md-github').textContent     = p.btnMdGithub;
       document.getElementById('gh-title').textContent          = p.ghTitle;
       document.getElementById('gh-sub').textContent            = p.ghSub;
       document.getElementById('gh-body').textContent           = p.ghBody;
