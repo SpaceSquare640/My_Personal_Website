@@ -31,6 +31,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/post-city-contrast.html` | `/pages/post-city-contrast.html` | Blog post: 城市縫隙 · City in Contrast |
 | `pages/post-pikmin-bloom.html` | `/pages/post-pikmin-bloom.html` | Blog post: Let's Play Pikmin Bloom! (with QR invite + friend code) |
 | `pages/post-new-youtube-banner-icon.html` | `/pages/post-new-youtube-banner-icon.html` | Blog post: New YouTube Channel Branding — Banner & Icon |
+| `pages/post-pokemon-go.html` | `/pages/post-pokemon-go.html` | Blog post: Let's Play Pokémon GO! (trainer code + QR) |
 
 ## File Structure
 

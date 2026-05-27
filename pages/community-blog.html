@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — SpaceSquare Community</title>
-  <meta name="description" content="Blog posts from SpaceSquare — gaming (Pikmin Bloom, Roblox), photography (城市縫隙 / City in Contrast), channel updates, and personal posts.">
-  <meta name="keywords" content="SpaceSquare blog, gaming blog, Hong Kong photography, Pikmin Bloom, channel updates">
+  <title>Blog — SpaceSquare Community · Gaming · Photography · Channel</title>
+  <meta name="description" content="SpaceSquare's blog — gaming posts (Pokémon GO, Pikmin Bloom), Hong Kong street photography, and YouTube channel updates. Filter by tag.">
+  <meta name="keywords" content="SpaceSquare blog, Hong Kong gaming, Pokémon GO, Pikmin Bloom, street photography, YouTube channel updates">
   <meta name="author" content="SpaceSquare">
   <meta name="theme-color" content="#7c6eff">
   <link rel="canonical" href="https://spacesquare640.github.io/My_Personal_Website/pages/community-blog.html">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpaceSquare">
   <meta property="og:title" content="Blog — SpaceSquare Community">
-  <meta property="og:description" content="Gaming, photography, channel updates, and personal posts from SpaceSquare.">
+  <meta property="og:description" content="Gaming, photography, channel updates. Filter by tag.">
   <meta property="og:url" content="https://spacesquare640.github.io/My_Personal_Website/pages/community-blog.html">
   <meta property="og:image" content="https://spacesquare640.github.io/My_Personal_Website/img/icon/site/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Blog — SpaceSquare">
-  <meta name="twitter:description" content="Gaming, photography, channel updates, and personal posts.">
+  <meta name="twitter:description" content="Gaming, photography, channel updates. Filter by tag.">
   <meta name="twitter:image" content="https://spacesquare640.github.io/My_Personal_Website/img/icon/site/og-cover.png">
   <link rel="stylesheet" href="../css/main.css">
   <style>
@@ -31,30 +31,101 @@
     }
     .back-link:hover { color: var(--text); }
     .posts-body { max-width: 1080px; margin: 0 auto; padding: 0 2rem 5rem; }
-    .post-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+
+    /* ── Tag filter bar ── */
+    .tag-filter {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tag-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-b);
+      font-size: 0.75rem; letter-spacing: 0.04em;
+      padding: 5px 12px; border-radius: 99px;
+      background: transparent;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .tag-chip:hover { color: var(--text); border-color: var(--dim); }
+    .tag-chip .count {
+      font-size: 0.7rem;
+      color: var(--dim);
+      transition: color var(--transition);
+    }
+    .tag-chip:hover .count { color: var(--muted); }
+    .tag-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .tag-chip.active .count { color: rgba(255,255,255,0.85); }
+    .tag-chip.active.teal {
+      background: var(--accent2);
+      border-color: var(--accent2);
+    }
+
+    /* ── Post list ── */
+    .post-list {
+      display: flex; flex-direction: column; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
     .post-item {
       background: var(--bg2); padding: 1.5rem 2rem;
       display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
-      text-decoration: none; color: inherit; transition: background 0.2s;
+      text-decoration: none; color: inherit;
+      transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease,
+                  max-height 0.4s ease, padding 0.3s ease;
+      overflow: hidden;
     }
     .post-item:hover { background: var(--bg3); }
+    .post-item.hidden {
+      max-height: 0;
+      padding-top: 0; padding-bottom: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+    }
+
+    /* Tag pills on post items */
+    .post-tags-row {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
     .post-tag {
-      display: inline-block; font-size: 0.68rem; letter-spacing: 0.06em;
+      display: inline-block; font-size: 0.66rem; letter-spacing: 0.06em;
       text-transform: uppercase; padding: 2px 8px; border-radius: 99px;
       background: rgba(79,209,197,0.1); color: var(--accent2);
-      border: 1px solid rgba(79,209,197,0.2); margin-bottom: 0.4rem;
+      border: 1px solid rgba(79,209,197,0.2);
     }
     .post-tag.game {
       background: rgba(124,110,255,0.12); color: var(--accent);
       border-color: rgba(124,110,255,0.2);
     }
-    .post-title { font-family: var(--font-h); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.005em; line-height: 1.1; }
-    .post-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; margin-top: 2px; }
-    .empty-state {
-      background: var(--surface); border: 1px dashed var(--border2);
-      border-radius: var(--radius-lg); padding: 3rem 2rem;
-      text-align: center; color: var(--muted); font-size: 0.88rem;
+    .post-tag.red {
+      background: rgba(255,95,109,0.10); color: var(--red);
+      border-color: rgba(255,95,109,0.22);
     }
+
+    .post-title {
+      font-family: var(--font-h); font-weight: 800; font-size: 1.15rem;
+      letter-spacing: -0.005em; line-height: 1.1;
+    }
+    .post-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; margin-top: 2px; }
+
+    .empty-msg {
+      background: var(--surface); border: 1px dashed var(--border2);
+      border-radius: var(--radius-lg); padding: 2.5rem 2rem;
+      text-align: center; color: var(--muted); font-size: 0.88rem;
+      display: none;
+      margin-top: 1rem;
+    }
+    .empty-msg.show { display: block; }
   </style>
 </head>
 <body>
@@ -65,33 +136,68 @@
       <a class="back-link" href="community.html">← Community</a>
       <p class="section-label">Community · Blog</p>
       <h1 class="section-title" id="title">Blog</h1>
-      <p class="section-desc" id="desc">Announcements, updates, and personal posts.</p>
+      <p class="section-desc" id="desc">Announcements, gaming, photography, and personal posts. Filter by tag.</p>
     </div>
 
     <div class="posts-body">
-      <div class="post-list">
-        <a class="post-item" href="post-new-youtube-banner-icon.html">
+
+      <!-- Tag filter bar (chips rendered by JS) -->
+      <div class="tag-filter" id="tag-filter" role="tablist" aria-label="Filter posts by tag"></div>
+
+      <!-- Post list -->
+      <div class="post-list" id="post-list">
+
+        <a class="post-item" data-tags="pokemon-go hong-kong game" href="post-pokemon-go.html">
           <div>
-            <div class="post-tag" id="tag-p3">Channel Update</div>
-            <div class="post-title" id="title-p3">New YouTube Channel Branding — Banner &amp; Icon</div>
+            <div class="post-tags-row">
+              <span class="post-tag game" data-tag="pokemon-go" data-tk="tag.pokemonGo">Pokémon Go</span>
+              <span class="post-tag"      data-tag="hong-kong"  data-tk="tag.hongKong">Hong Kong</span>
+              <span class="post-tag red"  data-tag="game"       data-tk="tag.game">Game</span>
+            </div>
+            <div class="post-title" data-tk="title.pokemonGo">Let's Play Pokémon GO!</div>
           </div>
-          <div class="post-date" id="date-p3">2026-05-27</div>
+          <div class="post-date" data-tk="date.pokemonGo">2026-05-27</div>
         </a>
-        <a class="post-item" href="post-pikmin-bloom.html">
+
+        <a class="post-item" data-tags="channel-update" href="post-new-youtube-banner-icon.html">
           <div>
-            <div class="post-tag game" id="tag-p2">Game · Pikmin Bloom</div>
-            <div class="post-title" id="title-p2">Let's Play Pikmin Bloom!</div>
+            <div class="post-tags-row">
+              <span class="post-tag" data-tag="channel-update" data-tk="tag.channelUpdate">Channel Update</span>
+            </div>
+            <div class="post-title" data-tk="title.banner">New YouTube Channel Branding — Banner &amp; Icon</div>
           </div>
-          <div class="post-date" id="date-p2">2026-05-25</div>
+          <div class="post-date" data-tk="date.banner">2026-05-27</div>
         </a>
-        <a class="post-item" href="post-city-contrast.html">
+
+        <a class="post-item" data-tags="pikmin-bloom game" href="post-pikmin-bloom.html">
           <div>
-            <div class="post-tag" id="tag-p1">Photography</div>
-            <div class="post-title" id="title-p1">城市縫隙 · City in Contrast</div>
+            <div class="post-tags-row">
+              <span class="post-tag game" data-tag="pikmin-bloom" data-tk="tag.pikminBloom">Pikmin Bloom</span>
+              <span class="post-tag red"  data-tag="game"         data-tk="tag.game">Game</span>
+            </div>
+            <div class="post-title" data-tk="title.pikmin">Let's Play Pikmin Bloom!</div>
           </div>
-          <div class="post-date" id="date-p1">2025-11-08</div>
+          <div class="post-date" data-tk="date.pikmin">2026-05-25</div>
         </a>
+
+        <a class="post-item" data-tags="photography hong-kong" href="post-city-contrast.html">
+          <div>
+            <div class="post-tags-row">
+              <span class="post-tag" data-tag="photography" data-tk="tag.photography">Photography</span>
+              <span class="post-tag" data-tag="hong-kong"   data-tk="tag.hongKong">Hong Kong</span>
+            </div>
+            <div class="post-title" data-tk="title.city">城市縫隙 · City in Contrast</div>
+          </div>
+          <div class="post-date" data-tk="date.city">2025-11-08</div>
+        </a>
+
       </div>
+
+      <!-- Empty state when filter has no matches -->
+      <div class="empty-msg" id="empty-msg">
+        <span id="empty-text">No posts match this tag yet.</span>
+      </div>
+
     </div>
   </div>
 
@@ -100,25 +206,169 @@
   <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
   <script>
+    // i18n tables — page chrome + tag labels + post titles/dates
     const PAGE_TEXT = {
-      en:        { title: 'Blog',   desc: 'Announcements, gaming, photography, and personal posts.', tagP1: 'Photography', titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: 'Game · Pikmin Bloom', titleP2: "Let's Play Pikmin Bloom!",       dateP2: '2026-05-25', tagP3: 'Channel Update', titleP3: 'New YouTube Channel Branding — Banner & Icon', dateP3: '2026-05-27' },
-      'zh-hant': { title: '部落格', desc: '公告、遊戲、攝影及個人文章。',                              tagP1: '攝影',        titleP1: '城市縫隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '遊戲 · Pikmin Bloom', titleP2: '一起來玩 Pikmin Bloom！',         dateP2: '2026年5月25日', tagP3: '頻道更新', titleP3: '全新 YouTube 頻道形象 — 橫額與頭像', dateP3: '2026年5月27日' },
-      'zh-hans': { title: '博客',   desc: '公告、游戏、摄影及个人文章。',                              tagP1: '摄影',        titleP1: '城市缝隙 · City in Contrast', dateP1: '2025-11-08', tagP2: '游戏 · Pikmin Bloom', titleP2: '一起来玩 Pikmin Bloom！',         dateP2: '2026年5月25日', tagP3: '频道更新', titleP3: '全新 YouTube 频道形象 — 横幅与头像', dateP3: '2026年5月27日' },
+      en: {
+        title: 'Blog',
+        desc: 'Announcements, gaming, photography, and personal posts. Filter by tag.',
+        all: 'All',
+        empty: 'No posts match this tag yet.',
+        tag: {
+          'pokemonGo':      'Pokémon Go',
+          'hongKong':       'Hong Kong',
+          'game':           'Game',
+          'channelUpdate':  'Channel Update',
+          'pikminBloom':    'Pikmin Bloom',
+          'photography':    'Photography',
+        },
+        title_pokemonGo: "Let's Play Pokémon GO!",
+        title_banner:    'New YouTube Channel Branding — Banner & Icon',
+        title_pikmin:    "Let's Play Pikmin Bloom!",
+        title_city:      '城市縫隙 · City in Contrast',
+        date_pokemonGo: '2026-05-27',
+        date_banner:    '2026-05-27',
+        date_pikmin:    '2026-05-25',
+        date_city:      '2025-11-08',
+      },
+      'zh-hant': {
+        title: '部落格',
+        desc: '公告、遊戲、攝影及個人文章。可依標籤篩選。',
+        all: '全部',
+        empty: '目前沒有符合此標籤的文章。',
+        tag: {
+          'pokemonGo':      'Pokémon GO',
+          'hongKong':       '香港',
+          'game':           '遊戲',
+          'channelUpdate':  '頻道更新',
+          'pikminBloom':    'Pikmin Bloom',
+          'photography':    '攝影',
+        },
+        title_pokemonGo: '一起來玩 Pokémon GO！',
+        title_banner:    '全新 YouTube 頻道形象 — 橫額與頭像',
+        title_pikmin:    '一起來玩 Pikmin Bloom！',
+        title_city:      '城市縫隙 · City in Contrast',
+        date_pokemonGo: '2026年5月27日',
+        date_banner:    '2026年5月27日',
+        date_pikmin:    '2026年5月25日',
+        date_city:      '2025-11-08',
+      },
+      'zh-hans': {
+        title: '博客',
+        desc: '公告、游戏、摄影及个人文章。可按标签筛选。',
+        all: '全部',
+        empty: '目前没有符合此标签的文章。',
+        tag: {
+          'pokemonGo':      'Pokémon GO',
+          'hongKong':       '香港',
+          'game':           '游戏',
+          'channelUpdate':  '频道更新',
+          'pikminBloom':    'Pikmin Bloom',
+          'photography':    '摄影',
+        },
+        title_pokemonGo: '一起来玩 Pokémon GO！',
+        title_banner:    '全新 YouTube 频道形象 — 横幅与头像',
+        title_pikmin:    '一起来玩 Pikmin Bloom！',
+        title_city:      '城市缝隙 · City in Contrast',
+        date_pokemonGo: '2026年5月27日',
+        date_banner:    '2026年5月27日',
+        date_pikmin:    '2026年5月25日',
+        date_city:      '2025-11-08',
+      },
     };
+
+    // Map slug → translation key (camelCase) so data-tag stays slug-flavour
+    // while i18n keys stay JS-friendly
+    const SLUG_TO_KEY = {
+      'pokemon-go':     'pokemonGo',
+      'hong-kong':      'hongKong',
+      'game':           'game',
+      'channel-update': 'channelUpdate',
+      'pikmin-bloom':   'pikminBloom',
+      'photography':    'photography',
+    };
+
     function applyPageText() {
       const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
-      document.getElementById('title').textContent    = p.title;
-      document.getElementById('desc').textContent     = p.desc;
-      document.getElementById('tag-p1').textContent   = p.tagP1;
-      document.getElementById('title-p1').textContent = p.titleP1;
-      document.getElementById('date-p1').textContent  = p.dateP1;
-      document.getElementById('tag-p2').textContent   = p.tagP2;
-      document.getElementById('title-p2').textContent = p.titleP2;
-      document.getElementById('date-p2').textContent  = p.dateP2;
-      document.getElementById('tag-p3').textContent   = p.tagP3;
-      document.getElementById('title-p3').textContent = p.titleP3;
-      document.getElementById('date-p3').textContent  = p.dateP3;
+      document.getElementById('title').textContent = p.title;
+      document.getElementById('desc').textContent  = p.desc;
+      document.getElementById('empty-text').textContent = p.empty;
+
+      // Per-post titles + dates (via data-tk attribute)
+      document.querySelectorAll('[data-tk]').forEach(el => {
+        const key = el.getAttribute('data-tk');
+        if (key.startsWith('tag.')) {
+          const tk = key.slice(4);
+          if (p.tag && p.tag[tk]) el.textContent = p.tag[tk];
+        } else if (key.startsWith('title.')) {
+          const tk = 'title_' + key.slice(6);
+          if (p[tk]) el.textContent = p[tk];
+        } else if (key.startsWith('date.')) {
+          const tk = 'date_' + key.slice(5);
+          if (p[tk]) el.textContent = p[tk];
+        }
+      });
+
+      // Filter chips: re-render labels (counts unchanged)
+      document.querySelectorAll('.tag-chip').forEach(chip => {
+        const slug = chip.getAttribute('data-tag');
+        const label = slug === 'all'
+          ? p.all
+          : (p.tag[SLUG_TO_KEY[slug]] || slug);
+        const countEl = chip.querySelector('.count');
+        chip.firstChild.textContent = label + ' ';
+        if (countEl) chip.appendChild(countEl);
+      });
     }
+
+    // ── Tag-filter UI build ──
+    function buildTagFilter() {
+      const container = document.getElementById('tag-filter');
+      const posts = Array.from(document.querySelectorAll('.post-item'));
+      const counts = {};
+      posts.forEach(p => {
+        (p.dataset.tags || '').split(/\s+/).filter(Boolean).forEach(t => {
+          counts[t] = (counts[t] || 0) + 1;
+        });
+      });
+
+      const slugs = Object.keys(counts).sort();
+      const allChip = makeChip('all', posts.length, true);
+      container.appendChild(allChip);
+      slugs.forEach(slug => container.appendChild(makeChip(slug, counts[slug], false)));
+    }
+    function makeChip(slug, count, active) {
+      const btn = document.createElement('button');
+      btn.className = 'tag-chip' + (active ? ' active' : '');
+      btn.setAttribute('data-tag', slug);
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      btn.appendChild(document.createTextNode((slug === 'all' ? 'All' : slug) + ' '));
+      const c = document.createElement('span');
+      c.className = 'count';
+      c.textContent = '(' + count + ')';
+      btn.appendChild(c);
+      btn.addEventListener('click', () => filterByTag(slug));
+      return btn;
+    }
+
+    function filterByTag(slug) {
+      const posts = document.querySelectorAll('.post-item');
+      let visible = 0;
+      posts.forEach(p => {
+        const tags = (p.dataset.tags || '').split(/\s+/);
+        const match = slug === 'all' || tags.includes(slug);
+        p.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      document.querySelectorAll('.tag-chip').forEach(c => {
+        const active = c.getAttribute('data-tag') === slug;
+        c.classList.toggle('active', active);
+        c.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      document.getElementById('empty-msg').classList.toggle('show', visible === 0);
+    }
+
+    buildTagFilter();
     initPage('community');
     applyPageText();
     document.addEventListener('langchange', applyPageText);

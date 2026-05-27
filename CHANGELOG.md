@@ -4,6 +4,28 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.25] — 2026-05-27
+
+### Added
+- **New blog post — "Let's Play Pokémon GO!"** (`pages/post-pokemon-go.html`)
+  - QR code image (`img/blog/PokemonGo_SpaceSquare.png`, 412 KB) with click-to-enlarge lightbox
+  - Trainer Code card showing **8260 6046 5990** with one-click copy → `826060465990`
+  - Visit Pokémon GO CTA → `https://pokemongolive.com/`
+  - Three tags: **Pokémon Go** (purple) · **Hong Kong** (teal) · **Game** (red)
+  - Full EN / 繁中 / 简中 i18n
+  - Full SEO meta (description, keywords, OG, Twitter Card, canonical, `article:tag` ×3) + **BlogPosting JSON-LD**
+- **Tag search / filter feature** on `pages/community-blog.html`
+  - New `.tag-filter` chip row above the post list — automatically built from each post's `data-tags` attribute, with per-tag counts and an **All** chip
+  - Click a chip → posts that don't match smoothly collapse (`max-height` + `opacity` transition); active chip is filled in accent purple
+  - Empty-state message appears if a filter yields zero posts ("No posts match this tag yet." / 「目前沒有符合此標籤的文章。」 / "目前没有符合此标签的文章。")
+  - All chip labels trilingual via a `SLUG_TO_KEY` map (`pokemon-go` → `pokemonGo` etc.)
+  - Posts now display **all** their tags inline (was: only one tag visible)
+  - Existing posts re-tagged for consistency: Pikmin Bloom → `pikmin-bloom` + `game`; City Contrast → `photography` + `hong-kong`; YouTube Banner → `channel-update`
+- `sitemap.xml` — Pokémon GO post added
+- README pages table updated
+
+---
+
 ## [1.0.24] — 2026-05-27
 
 ### Added — Full SEO pass (3 tiers)
