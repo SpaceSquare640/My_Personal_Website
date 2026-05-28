@@ -4,6 +4,22 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.31] — 2026-05-28
+
+### Added
+- **New blog post — "Caught Shiny Mewtwo at a Raid · Tokyo"** (`pages/post-pokemon-go-mewtwo.html`)
+  - Photo: `img/blog/PokemonGo/PokemonGO_Mewtwo_20260528.JPG` (181 KB) — in-game catch card showing Mewtwo, CP 3658, Raid Battle, 豐島區 · 東京 · 日本, 2026-05-28
+  - 4-stat catch grid (✨ Shiny Mewtwo / CP 3658 / Raid Battle / Location) — first stat row gets a sparkle prefix + accent colour to mark the shiny variant
+  - Body identifies the shiny markers explicitly (green tail + green underbelly, vs. normal Mewtwo's purple) and cross-links to both the Groudon catch and the Ikebukuro coordinates posts
+  - Two CTAs: **View Ikebukuro Coordinates →** and **See the Groudon catch →**
+  - Same 3 tags as the Groudon post: **Pokémon Go** · **Japan** · **Game** (no new slugs)
+  - Full EN / 繁中 (團戰捉到色違超夢) / 简中 (团战捉到色违超梦) i18n
+  - Full SEO meta + 3× `article:tag` + BlogPosting JSON-LD with `contentLocation` (Toshima, Tokyo) + `keywords` including "Shiny"
+- Post inserted at top of `pages/community-blog.html` post list (newest)
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.30] — 2026-05-28
 
 ### Changed — img/blog/ reorganised into per-topic subfolders

@@ -35,6 +35,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 | `pages/post-pokemon-go-ikebukuro.html` | `/pages/post-pokemon-go-ikebukuro.html` | Blog post: Tokyo Ikebukuro Pokémon GO Hotspot Coordinates |
 | `pages/post-pokemon-go-taipei.html` | `/pages/post-pokemon-go-taipei.html` | Blog post: Taipei Main Station Pokémon GO Hotspot Coordinates |
 | `pages/post-pokemon-go-groudon.html` | `/pages/post-pokemon-go-groudon.html` | Blog post: Caught Groudon at a Primal Raid · Tokyo |
+| `pages/post-pokemon-go-mewtwo.html` | `/pages/post-pokemon-go-mewtwo.html` | Blog post: Caught Shiny Mewtwo at a Raid · Tokyo |
 | `pages/post-nam-sang-wai-night-ride.html` | `/pages/post-nam-sang-wai-night-ride.html` | Blog post: 南生圍夜騎 · Nam Sang Wai Night Ride |
 
 ## File Structure
