@@ -4,6 +4,40 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.30] — 2026-05-28
+
+### Changed — img/blog/ reorganised into per-topic subfolders
+Flat `img/blog/` was getting noisy. All existing blog images moved into themed subfolders (paths in HTML `src`, `og:image`, and JSON-LD `image` updated accordingly via `git mv` so file history is preserved):
+
+| New path | What |
+|---|---|
+| `img/blog/Road_Bike/Bike_20260522_19.46.jpg` | Nam Sang Wai night ride hero |
+| `img/blog/PokemonGo/PokemonGo_SpaceSquare.png` | Trainer-code QR for the "Let's Play Pokémon GO!" post |
+| `img/blog/PokemonGo/PokemonGO_Groudon_20260528.JPG` | **NEW** — Groudon catch card |
+| `img/blog/Pikmin_Bloom/pikmin-bloom-invite.jpg` | Pikmin Bloom invite QR card |
+| `img/blog/Photography/city-contrast.jpg` | 城市縫隙 photography hero |
+| `img/blog/Icon/My_Watermark_&_Icon_[20260527].png` | Channel icon / watermark |
+| `img/blog/Banner/My_YouTube_channel_banner_[20260527].png` | YouTube banner |
+
+> Note: subfolder named `Pikmin_Bloom/` (matches the full game name and the existing `post-pikmin-bloom.html` slug). User-provided list said `Pikemin/`; renamed to the full `Pikmin_Bloom/` at user request.
+
+Updated paths in: `post-nam-sang-wai-night-ride.html`, `post-pokemon-go.html`, `post-pikmin-bloom.html`, `post-city-contrast.html`, `post-new-youtube-banner-icon.html` (covers both `src` and absolute `og:image` URLs).
+
+### Added
+- **New blog post — "Caught Groudon at a Primal Raid · Tokyo"** (`pages/post-pokemon-go-groudon.html`)
+  - Photo: `img/blog/PokemonGo/PokemonGO_Groudon_20260528.JPG` (in-game catch card — Groudon, CP 2275, caught at a Primal Raid in 豐島區 · 東京 · 日本 on 2026-05-28)
+  - 4-stat catch grid (Pokémon / CP / Caught at / Location) under the photo
+  - 2-paragraph body that cross-links to the Ikebukuro Pokémon GO coordinates post (same neighbourhood as the catch)
+  - Two CTAs: "View Ikebukuro Coordinates →" (internal) and "Visit Pokémon GO →" (external)
+  - Click-to-enlarge lightbox on the catch photo
+  - Three tags (all existing slugs, no new ones): **Pokémon Go** (purple) · **Japan** (teal) · **Game** (red)
+  - Full EN / 繁中 (Primal 團戰捉到固拉多) / 简中 (Primal 团战捉到固拉多) i18n
+  - Full SEO meta + 3× `article:tag` + BlogPosting JSON-LD with `contentLocation` (Toshima, Tokyo)
+- Post inserted at top of `pages/community-blog.html` post list (newest)
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.29] — 2026-05-27
 
 ### Added
