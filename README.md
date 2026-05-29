@@ -2,6 +2,9 @@
 
 A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, creator, and shop owner.
 
+> **⚠️ Copyright © 2026 SpaceSquare. All Rights Reserved.**
+> This repository is **source-available, NOT open-source.** Viewing the source on GitHub does *not* grant permission to download, copy, fork, modify, redistribute, or deploy this site or any of its content, design, code, or media. See [`LICENSE`](LICENSE) for the full notice. Unauthorised use is a violation of copyright. For licensing requests, contact `chin52696411@gmail.com`.
+
 ## Features
 
 - Dark colour scheme with subtle noise grain and ambient glow

@@ -4,6 +4,21 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.32] — 2026-05-28
+
+### Added — Copyright protection (proprietary license)
+
+This repository is published as **source-available, not open-source.** Three layers of explicit notice added to deter unauthorised copying / forking / hosting of the site.
+
+- **`LICENSE`** — new full proprietary "All Rights Reserved" notice at the repo root (GitHub auto-displays this on the repo page). Spells out exactly what's prohibited (downloading, cloning, re-deploying, copying design/code/copy/media, training AI on the content, etc.), what's permitted (personal viewing in a browser), exempts the binaries in `downloads/` (those carry their own licenses), and notes third-party material (Google Fonts, game screenshots) remains under its original owners' rights. Lists contact channels for licensing requests (email · Discord · WhatsApp +852 6400 1277).
+- **`README.md`** — new ⚠️ Copyright callout right under the title, linking to `LICENSE`, making the "source-available, not open-source" stance unmissable.
+- **`<meta name="copyright" content="© 2026 SpaceSquare. All Rights Reserved.">`** — added to every HTML page (19 files total: `index.html` + all 18 pages under `pages/`). Sits next to the existing `<meta name="author">` tag in each `<head>`.
+- Footer i18n string `footer.rights` already reads "© 2026 SpaceSquare. All rights reserved." / "© 2026 SpaceSquare。保留所有權利。" / "© 2026 SpaceSquare。保留所有权利。" — left as-is.
+
+> Note: This is a deterrent / clarification, not legal advice. By default any work published on GitHub without an open-source license is already "All Rights Reserved" under copyright law — these additions just make the intent unmistakable to anyone who lands on the repo or views the page source.
+
+---
+
 ## [1.0.31] — 2026-05-28
 
 ### Added
