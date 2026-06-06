@@ -4,6 +4,44 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.35] — 2026-06-06
+
+### Added / Changed — Golden-Ratio GUI rebuild, Gold & Silver themes, Settings modal
+
+**Design & aesthetic overhaul (Golden Ratio, φ = 1.618)**
+- New φ-based token system in `:root` (`css/main.css`): spacing scale `--sp-1…7` (ratio φ),
+  type scale `--fs-1…8` (ratio √φ ≈ 1.272, so two type steps = one golden step), plus
+  φ-derived `--radius` (0.618rem) / `--radius-lg` (1rem), `--lh-body` (1.618) and `--nav-h` (4.236rem).
+- Re-pointed the shared component layer (nav, sections, cards, buttons, tags, footer, modals, divider,
+  body line-height) and the homepage hero/nav-cards (`index.html`) to these tokens — values only,
+  no markup or selector changes.
+
+**New theme — Gold & Silver (two variants)**
+- `[data-theme="gold-dark"]` — warm near-black base, metallic gold accent (`#d4af37`), silver text/secondary.
+- `[data-theme="gold-light"]` — ivory base, brushed-silver surfaces, deep contrast-safe gold (`#9a7d1e`).
+- Both include contrast fixes (nav links, ghost buttons, toggle icons) mirroring the existing light-theme
+  block, plus a gold→silver→gold recolour of the animated headline gradient.
+
+**New feature — Settings modal**
+- ⚙️ button added to the nav on every page (`js/components.js`). Opens a settings panel
+  (reusing the existing `.modal-overlay`/`.modal-box` infrastructure) with: **Theme** (4-way segmented
+  control), **Language** (EN / 繁中 / 简中), **Liquid Glass** switch, **Reduce Motion** switch, and
+  **Reset to defaults**. Fully translated (EN / zh-hant / zh-hans, new `settings` i18n block).
+- **Reduce Motion** is a new opt-in UI parameter (`[data-motion="reduce"]`, key `ss-motion`) that damps
+  animations/transitions site-wide.
+
+**Persistence**
+- All preferences persist in `localStorage` (`theme`, `ss-lang`, `ss-glass`, `ss-motion`) and are applied
+  on script load for a correct first paint. Verified across reloads and across pages (homepage + shop).
+
+**Architecture**
+- Purely additive / value-swaps — no existing functional code removed. `applyTheme`/`getTheme` were
+  generalized to support the two gold themes (the nav 🌙/☀️ quick-toggle keeps its dark↔light behavior);
+  `setTheme` / `applyMotion`/`getMotion`/`setMotion` / `buildSettingsModal` added alongside the existing
+  glass + résumé-modal patterns.
+
+---
+
 ## [1.0.34] — 2026-06-06
 
 ### Added — Liquid Glass visual effect (opt-in)

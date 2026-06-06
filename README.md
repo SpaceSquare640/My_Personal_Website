@@ -9,9 +9,13 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 
 - Dark colour scheme with subtle noise grain and ambient glow
 - Smooth fade-up entrance animations
+- **Golden-Ratio design system** — all shared spacing, type scale, radii, line-height and nav height are derived from φ (1.618). Spacing steps ×φ, type steps ×√φ (so every two type steps = one golden step), exposed as `--sp-*` / `--fs-*` CSS variables in `css/main.css`
+- **Four themes** — Dark (default), Light, **Gold & Silver · Dark** (warm near-black + metallic gold + silver), and **Gold & Silver · Light** (ivory + brushed silver + deep gold). All driven by `[data-theme]` CSS-variable palettes
+- **Settings modal** — ⚙️ nav button (every page) opens a settings panel to pick theme + language and toggle Liquid Glass and Reduce Motion; every choice persists in `localStorage`
 - Three-language support: **English** (default), **Traditional Chinese**, **Simplified Chinese**
 - Language preference persisted via `localStorage`
 - **Liquid Glass** opt-in visual effect — 🫧 nav toggle frosts surfaces (`backdrop-filter` blur + sheen); off by default, saved per-visitor in `localStorage`
+- **Reduce Motion** opt-in parameter — damps animations/transitions site-wide (`[data-motion="reduce"]`), toggled from Settings
 - 2FA-protected Résumé page (rotating TOTP codes via authenticator app)
 - Gradient display headings with soft glow (purple → teal accent)
 - **Full SEO** — per-page meta + Open Graph + Twitter Card, canonical URLs, favicon, theme-color, JSON-LD structured data (Person, WebSite, Product, BlogPosting, SoftwareApplication), `robots.txt` and `sitemap.xml`
@@ -97,6 +101,25 @@ Repository: [SpaceSquare640/My_Personal_Website](https://github.com/SpaceSquare6
 **Live URL: https://spacesquare640.github.io/My_Personal_Website/**
 
 Deployed from `main` branch root via GitHub Pages.
+
+## Design System (Golden Ratio)
+
+The shared UI is built on the Golden Ratio (φ = 1.618). Tokens live in `:root` in `css/main.css`:
+
+- **Spacing** `--sp-1 … --sp-7` — ratio φ: `0.382 · 0.618 · 1.000 · 1.618 · 2.618 · 4.236 · 6.854` rem
+- **Type** `--fs-1 … --fs-8` — ratio √φ (1.272): `0.618 · 0.786 · 1.000 · 1.272 · 1.618 · 2.058 · 2.618 · 4.236` rem (two type steps = one golden step)
+- **Geometry** — `--radius 0.618rem` / `--radius-lg 1rem` (ratio φ), `--lh-body 1.618`, `--nav-h 4.236rem`
+
+### Themes & preferences (persisted in `localStorage`)
+
+| Key | Values | Default |
+|---|---|---|
+| `theme` | `dark` · `light` · `gold-dark` · `gold-light` | `dark` |
+| `ss-lang` | `en` · `zh-hant` · `zh-hans` | `en` |
+| `ss-glass` | `on` · `off` | `off` |
+| `ss-motion` | `normal` · `reduce` | `normal` |
+
+All four are applied on `js/components.js` / `js/i18n.js` load so the first paint is correct, and are editable from the ⚙️ Settings modal (built once in `components.js`, available on every page).
 
 ## Tech Stack
 

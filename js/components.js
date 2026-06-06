@@ -47,28 +47,57 @@ function buildNav(activeKey) {
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark">
           <span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>
         </button>
+        <button class="settings-toggle" onclick="openSettingsModal()" aria-label="${t('settings.title')}" title="${t('settings.title')}">⚙️</button>
         <div class="lang-switcher">${langBtns}</div>
       </div>
     </div>
   `;
 }
 
-// Theme: 'dark' (default) or 'light' — persisted in localStorage
+// Theme: 'dark' (default) · 'light' · 'gold-dark' · 'gold-light' — persisted in localStorage
+const THEMES = ['dark', 'light', 'gold-dark', 'gold-light'];
 function applyTheme(theme) {
-  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  else document.documentElement.removeAttribute('data-theme');
+  // 'dark' is the base (no attribute); every other theme sets data-theme
+  if (theme && theme !== 'dark' && THEMES.includes(theme)) {
+    document.documentElement.setAttribute('data-theme', theme);
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
 }
 function getTheme() {
-  return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+  const v = localStorage.getItem('theme');
+  return THEMES.includes(v) ? v : 'dark';
 }
+function setTheme(theme) {
+  if (!THEMES.includes(theme)) return;
+  localStorage.setItem('theme', theme);
+  applyTheme(theme);
+  document.dispatchEvent(new Event('themechange'));
+}
+// Nav 🌙/☀️ quick switch — toggles between dark and light only (unchanged behavior)
 function toggleTheme() {
   const next = getTheme() === 'light' ? 'dark' : 'light';
-  localStorage.setItem('theme', next);
-  applyTheme(next);
-  document.dispatchEvent(new Event('themechange'));
+  setTheme(next);
 }
 // Apply on script load — runs before initPage so paint is correct
 applyTheme(getTheme());
+
+// Reduce Motion: 'normal' (default) or 'reduce' — opt-in UI parameter
+function applyMotion(mode) {
+  if (mode === 'reduce') document.documentElement.setAttribute('data-motion', 'reduce');
+  else document.documentElement.removeAttribute('data-motion');
+}
+function getMotion() {
+  return localStorage.getItem('ss-motion') === 'reduce' ? 'reduce' : 'normal';
+}
+function setMotion(mode) {
+  const next = mode === 'reduce' ? 'reduce' : 'normal';
+  localStorage.setItem('ss-motion', next);
+  applyMotion(next);
+  document.dispatchEvent(new Event('motionchange'));
+}
+// Apply on script load — default normal (no override)
+applyMotion(getMotion());
 
 // Liquid glass: 'off' (default) or 'on' — opt-in effect, persisted in localStorage
 function applyGlass(mode) {
@@ -206,6 +235,102 @@ function buildResumeModal() {
   document.body.appendChild(el);
 }
 
+/* ── SETTINGS MODAL ── reuses .modal-overlay / .modal-box infrastructure */
+function buildSettingsModal() {
+  if (document.getElementById('settings-modal')) return;
+  const el = document.createElement('div');
+  el.className = 'modal-overlay settings-modal';
+  el.id = 'settings-modal';
+  el.onclick = e => { if (e.target === el) closeSettingsModal(); };
+  document.body.appendChild(el);
+  renderSettingsModal();
+}
+
+function renderSettingsModal() {
+  const el = document.getElementById('settings-modal');
+  if (!el) return;
+  const theme = getTheme();
+  const glass = getGlass();
+  const motion = getMotion();
+  const lang = getLang();
+
+  const themeOpts = [
+    ['dark',       t('settings.themeDark')],
+    ['light',      t('settings.themeLight')],
+    ['gold-dark',  t('settings.themeGoldDark')],
+    ['gold-light', t('settings.themeGoldLight')],
+  ];
+  const langOpts = [['en', 'EN'], ['zh-hant', '繁中'], ['zh-hans', '简中']];
+
+  const themeBtns = themeOpts.map(([v, label]) =>
+    `<button class="seg-btn${theme === v ? ' active' : ''}" onclick="setTheme('${v}'); renderSettingsModal();">${label}</button>`
+  ).join('');
+  const langBtns = langOpts.map(([v, label]) =>
+    `<button class="seg-btn${lang === v ? ' active' : ''}" onclick="setLang('${v}'); renderSettingsModal();">${label}</button>`
+  ).join('');
+
+  el.innerHTML = `
+    <div class="modal-box">
+      <div class="settings-head">
+        <h3>⚙️ ${t('settings.title')}</h3>
+        <span class="settings-sub">${t('settings.subtitle')}</span>
+      </div>
+
+      <div class="settings-group">
+        <span class="settings-label">${t('settings.theme')}</span>
+        <div class="seg">${themeBtns}</div>
+      </div>
+
+      <div class="settings-group">
+        <span class="settings-label">${t('settings.language')}</span>
+        <div class="seg">${langBtns}</div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-row-text">
+          <span class="settings-row-title">${t('settings.glass')}</span>
+          <span class="settings-row-desc">${t('settings.glassDesc')}</span>
+        </div>
+        <div class="switch${glass === 'on' ? ' on' : ''}" role="switch" aria-checked="${glass === 'on'}"
+          tabindex="0" onclick="toggleGlass(); renderSettingsModal();"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleGlass();renderSettingsModal();}"></div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-row-text">
+          <span class="settings-row-title">${t('settings.motion')}</span>
+          <span class="settings-row-desc">${t('settings.motionDesc')}</span>
+        </div>
+        <div class="switch${motion === 'reduce' ? ' on' : ''}" role="switch" aria-checked="${motion === 'reduce'}"
+          tabindex="0" onclick="setMotion(getMotion()==='reduce'?'normal':'reduce'); renderSettingsModal();"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setMotion(getMotion()==='reduce'?'normal':'reduce');renderSettingsModal();}"></div>
+      </div>
+
+      <button class="settings-reset" onclick="resetSettings()">${t('settings.reset')}</button>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="closeSettingsModal()">${t('settings.done')}</button>
+      </div>
+    </div>`;
+}
+
+function openSettingsModal(e) {
+  if (e) e.preventDefault();
+  renderSettingsModal();
+  document.getElementById('settings-modal')?.classList.add('open');
+}
+function closeSettingsModal() {
+  document.getElementById('settings-modal')?.classList.remove('open');
+}
+function resetSettings() {
+  ['theme', 'ss-glass', 'ss-motion'].forEach(k => localStorage.removeItem(k));
+  applyTheme('dark');
+  applyGlass('off');
+  applyMotion('normal');
+  setLang('en'); // fires langchange → nav + settings re-render with defaults
+  renderSettingsModal();
+}
+
 function buildScrollProgress() {
   if (document.querySelector('.scroll-progress')) return;
   const bar = document.createElement('div');
@@ -226,11 +351,13 @@ function initPage(activeKey) {
   buildNav(activeKey);
   buildFooter();
   buildResumeModal();
+  buildSettingsModal();
   buildScrollProgress();
 
-  // Re-render nav/footer on lang change
+  // Re-render nav/footer/settings on lang change
   document.addEventListener('langchange', () => {
     buildNav(activeKey);
     buildFooter();
+    renderSettingsModal();
   });
 }
