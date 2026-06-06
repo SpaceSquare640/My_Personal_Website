@@ -41,6 +41,9 @@ function buildNav(activeKey) {
     <div class="nav-menu">
       <ul class="nav-links">${links}</ul>
       <div class="nav-right">
+        <button class="glass-toggle${getGlass()==='on'?' active':''}" onclick="toggleGlass()" aria-label="Toggle liquid glass effect" aria-pressed="${getGlass()==='on'}" title="Toggle liquid glass">
+          <span class="glass-icon">🫧</span>
+        </button>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark">
           <span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>
         </button>
@@ -66,6 +69,28 @@ function toggleTheme() {
 }
 // Apply on script load — runs before initPage so paint is correct
 applyTheme(getTheme());
+
+// Liquid glass: 'off' (default) or 'on' — opt-in effect, persisted in localStorage
+function applyGlass(mode) {
+  if (mode === 'on') document.documentElement.setAttribute('data-glass', 'on');
+  else document.documentElement.removeAttribute('data-glass');
+}
+function getGlass() {
+  return localStorage.getItem('ss-glass') === 'on' ? 'on' : 'off';
+}
+function toggleGlass() {
+  const next = getGlass() === 'on' ? 'off' : 'on';
+  localStorage.setItem('ss-glass', next);
+  applyGlass(next);
+  const btn = document.querySelector('.glass-toggle');
+  if (btn) {
+    btn.classList.toggle('active', next === 'on');
+    btn.setAttribute('aria-pressed', next === 'on');
+  }
+  document.dispatchEvent(new Event('glasschange'));
+}
+// Apply on script load — default OFF, so nothing changes unless the user opts in
+applyGlass(getGlass());
 
 function toggleMobileNav() {
   const nav = document.getElementById('main-nav');

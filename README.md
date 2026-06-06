@@ -11,6 +11,7 @@ A dark-themed personal website for SpaceSquare — Hong Kong-based YouTuber, cre
 - Smooth fade-up entrance animations
 - Three-language support: **English** (default), **Traditional Chinese**, **Simplified Chinese**
 - Language preference persisted via `localStorage`
+- **Liquid Glass** opt-in visual effect — 🫧 nav toggle frosts surfaces (`backdrop-filter` blur + sheen); off by default, saved per-visitor in `localStorage`
 - 2FA-protected Résumé page (rotating TOTP codes via authenticator app)
 - Gradient display headings with soft glow (purple → teal accent)
 - **Full SEO** — per-page meta + Open Graph + Twitter Card, canonical URLs, favicon, theme-color, JSON-LD structured data (Person, WebSite, Product, BlogPosting, SoftwareApplication), `robots.txt` and `sitemap.xml`

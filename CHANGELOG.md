@@ -4,6 +4,19 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.34] — 2026-06-06
+
+### Added — Liquid Glass visual effect (opt-in)
+
+- **New 🫧 nav toggle button** (`js/components.js`) — sits next to the theme toggle in `.nav-right`. Lets each visitor turn a frosted "liquid glass" look on or off. Preference is saved in `localStorage` under `ss-glass` and re-applied on every page load.
+- **Off by default** — the site looks exactly as before unless a visitor opts in. Nothing global is forced on; the effect is purely additive and reversible.
+- **Scoped styling** (`css/main.css`) — all glass rules live under the `[data-glass="on"]` attribute on `<html>`, so they apply *only* when enabled and touch nothing when off. Frosted translucent surfaces (`backdrop-filter: blur + saturate`, layered top-sheen gradient, soft border + shadow) are applied to: nav bar, mobile menu, `.card`, `.nav-card`, `.platform-*`, `.prog-card`, `.product-card`, `.modal-box`, `.code-card`, `.stat-card`, `.qr-img`, `.post-item`, `.post-tag`, `.sub-hero`, `.posts-body`, `.post-body`.
+- **Theme-aware** — separate `--glass-*` CSS variables for dark and light themes so the frost reads correctly in both.
+- **Graceful fallback** — an `@supports not (backdrop-filter)` block falls back to a solid `--surface` tint on browsers without backdrop-filter support.
+- Button active state glows teal (`--accent2`) when the effect is on; `aria-pressed` reflects state for accessibility.
+
+---
+
 ## [1.0.33] — 2026-05-28
 
 ### Added

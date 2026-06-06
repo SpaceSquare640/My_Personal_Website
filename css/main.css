@@ -285,6 +285,30 @@ body::after {
 [data-theme="light"] .theme-toggle .icon-sun { transform: translateY(0); opacity: 1; }
 [data-theme="light"] .theme-toggle .icon-moon { transform: translateY(-150%); opacity: 0; }
 
+/* Liquid-glass toggle button — mirrors .theme-toggle */
+.glass-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all var(--transition);
+}
+.glass-toggle:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+  transform: scale(1.08);
+}
+.glass-toggle.active {
+  border-color: var(--accent2);
+  background: rgba(79,209,197,0.14);
+  box-shadow: 0 0 0 1px rgba(79,209,197,0.25), 0 0 12px rgba(79,209,197,0.25);
+}
+[data-theme="light"] .glass-toggle { color: #424256; }
+
 /* ── PAGE WRAPPER ── */
 .page { position: relative; z-index: 1; padding-top: var(--nav-h); min-height: 100vh; }
 
@@ -642,4 +666,85 @@ footer {
   }
   body .post-page { padding-bottom: 4rem; }
   body .post-title { font-size: 1.4rem; line-height: 1.25; }
+}
+
+/* ──────────────────────────────────────────────
+   LIQUID GLASS — opt-in effect (<html data-glass="on">)
+   Off by default; activated only via the 🫧 nav toggle.
+   Frosted translucent surfaces with a soft top sheen.
+   ────────────────────────────────────────────── */
+:root {
+  --glass-bg:     linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+  --glass-fill:   rgba(28,28,39,0.45);
+  --glass-border: rgba(255,255,255,0.16);
+  --glass-blur:   16px;
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.30);
+}
+[data-theme="light"] {
+  --glass-bg:     linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+  --glass-fill:   rgba(255,255,255,0.42);
+  --glass-border: rgba(15,15,30,0.12);
+  --glass-shadow: 0 8px 32px rgba(60,60,110,0.14);
+}
+
+/* Surfaces that become frosted glass when the effect is on */
+[data-glass="on"] .card,
+[data-glass="on"] .nav-card,
+[data-glass="on"] .platform-card,
+[data-glass="on"] .platform-header,
+[data-glass="on"] .platform-body,
+[data-glass="on"] .prog-card,
+[data-glass="on"] .product-card,
+[data-glass="on"] .modal-box,
+[data-glass="on"] .code-card,
+[data-glass="on"] .stat-card,
+[data-glass="on"] .qr-img,
+[data-glass="on"] .post-item,
+[data-glass="on"] .post-tag,
+[data-glass="on"] .sub-hero,
+[data-glass="on"] .posts-body,
+[data-glass="on"] .post-body {
+  background: var(--glass-bg), var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Nav bar gets a deeper frost */
+[data-glass="on"] .nav {
+  background: var(--glass-bg), var(--glass-fill);
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(180%);
+  backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(180%);
+}
+
+/* Mobile dropdown menu also frosts so links stay readable */
+@media (max-width: 768px) {
+  [data-glass="on"] .nav.mobile-open .nav-menu {
+    background: var(--glass-bg), var(--glass-fill);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    border: 1px solid var(--glass-border);
+  }
+}
+
+/* Graceful fallback: browsers without backdrop-filter get a solid-ish tint */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-glass="on"] .card,
+  [data-glass="on"] .nav-card,
+  [data-glass="on"] .platform-card,
+  [data-glass="on"] .platform-header,
+  [data-glass="on"] .platform-body,
+  [data-glass="on"] .prog-card,
+  [data-glass="on"] .product-card,
+  [data-glass="on"] .modal-box,
+  [data-glass="on"] .code-card,
+  [data-glass="on"] .stat-card,
+  [data-glass="on"] .post-item,
+  [data-glass="on"] .sub-hero,
+  [data-glass="on"] .posts-body,
+  [data-glass="on"] .post-body,
+  [data-glass="on"] .nav {
+    background: var(--surface);
+  }
 }
