@@ -4,6 +4,25 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.33] — 2026-05-28
+
+### Added
+- **New blog post — "Chicago Lincoln Park — Pokémon GO Hotspot Coordinates"** (`pages/post-pokemon-go-chicago.html`)
+  - Text-only post built around coords `41.916425, -87.631556` (Lincoln Park, Chicago, Illinois, USA — open green space on the north side of downtown)
+  - Same component family as the Taipei/Ikebukuro posts: coordinates card with Copy + Google Maps + Apple Maps CTAs, location/terrain card, 3 numbered highlight cards (**01 Route — Lakefront Trail · 02 Open Sky · Accurate GPS · 03 Gym Density · Weekend Raids**)
+  - Coordinate Portal footer + hashtag row (#PokemonGO #PokemonGOCoordinates #ChicagoGrinding #LincolnPark #LakefrontTrail #GameGuide #PokemonGOHotspot #USA)
+  - Four tags: **Pokémon Go Coordinate** (purple) · **USA** (teal) · **Chicago** (teal) · **Game** (red)
+  - Full EN / 繁中 / 简中 i18n — 繁中 mirrors the user-supplied source verbatim and keeps the original Pokémon GO Taiwan/HK community terminology (補給站、誘餌、團體戰)
+  - Full SEO meta (description, keywords, OG, Twitter Card, canonical, `article:tag` ×4) + **BlogPosting JSON-LD** with `contentLocation` `GeoCoordinates` (lat 41.916425, lon -87.631556)
+- **Blog tag filter — two new tag slugs added**
+  - `usa` ("USA" / "美國" / "美国")
+  - `chicago` ("Chicago" / "芝加哥" / "芝加哥")
+  - Wired into `SLUG_TO_KEY` + trilingual tag dictionary in `pages/community-blog.html`
+- Post inserted at top of the blog list (now spans 4 cities: Hong Kong · Tokyo · Taipei · Chicago)
+- `sitemap.xml` + README pages table updated
+
+---
+
 ## [1.0.32] — 2026-05-28
 
 ### Added — Copyright protection (proprietary license)
