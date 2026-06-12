@@ -63,6 +63,12 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://spacesquare640.github.io/My_Personal_Website/pages/post-pokemon-go-copenhagen.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://spacesquare640.github.io/My_Personal_Website/pages/post-pokemon-go-chicago.html</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>

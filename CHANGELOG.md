@@ -4,6 +4,24 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.36] — 2026-06-12
+
+### Added — Blog post: Copenhagen Top 5 Pokémon GO Hotspot Coordinates
+
+- New blog post `pages/post-pokemon-go-copenhagen.html` — a five-spot Copenhagen catch guide:
+  Fælledparken, Tivoli Gardens, Nyhavn, Kongens Have and Amager Beach Park. Each spot has its own
+  card with coordinates (copy button + Google Maps link), featured Pokémon list and a "why go" note,
+  plus a three-card Trainer Tips section (weather, event rotation, bag management).
+- Fully trilingual (EN / zh-hant / zh-hans) via the established `PAGE_TEXT` + `applyPageText()` pattern;
+  spot/tip content is data-driven (arrays) to keep the i18n table compact.
+- Registered in `pages/community-blog.html` with new `denmark` and `copenhagen` filter tags
+  (translated in all three languages, added to `SLUG_TO_KEY`).
+- SEO: per-page meta/OG/Twitter/canonical + JSON-LD `BlogPosting` with Copenhagen `GeoCoordinates`;
+  new entry in `sitemap.xml`.
+- `README.md` pages table updated.
+
+---
+
 ## [1.0.35] — 2026-06-06
 
 ### Added / Changed — Golden-Ratio GUI rebuild, Gold & Silver themes, Settings modal
