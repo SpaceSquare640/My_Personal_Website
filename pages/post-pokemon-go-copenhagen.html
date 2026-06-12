@@ -109,27 +109,59 @@
       margin-bottom: 2rem;
     }
 
+    /* Quick-jump bar */
+    .spot-jump {
+      display: flex; flex-wrap: wrap; gap: 0.45rem;
+      margin-bottom: 2rem;
+    }
+    .jump-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 6px 14px; border-radius: 99px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      text-decoration: none;
+      transition: all var(--transition);
+      font-family: var(--font-b);
+    }
+    .jump-chip:hover {
+      color: var(--accent); border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .jump-chip .jump-ico { font-size: 0.95rem; line-height: 1; }
+
     /* Spot cards */
     .spot-card {
       background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid transparent;
       border-radius: var(--radius-lg);
       padding: 1.75rem 2rem;
       margin-bottom: 1rem;
-      transition: border-color var(--transition), transform 0.3s ease;
+      scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+      transition: border-color var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
     }
     .spot-card:hover {
       border-color: rgba(124,110,255,0.35);
+      border-left-color: var(--accent);
       transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
     }
     .spot-head {
-      display: flex; align-items: baseline; gap: 0.85rem;
-      margin-bottom: 0.85rem;
+      display: flex; align-items: center; gap: 0.85rem;
+      margin-bottom: 1rem;
     }
     .spot-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
       font-family: var(--font-h); font-weight: 900;
-      font-size: 1.8rem; line-height: 1;
-      color: var(--accent);
+      font-size: 1.05rem; line-height: 1;
+      box-shadow: 0 4px 14px rgba(124,110,255,0.35);
     }
+    .spot-icon { font-size: 1.45rem; line-height: 1; }
     .spot-name {
       font-family: var(--font-h); font-weight: 800; font-size: 1.35rem;
       letter-spacing: -0.005em; line-height: 1.15;
@@ -188,6 +220,25 @@
       flex: 1; min-width: 200px;
     }
 
+    /* Pokémon pill chips */
+    .poke-chips {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      align-items: center;
+    }
+    .poke-chip {
+      display: inline-block;
+      font-size: 0.78rem; line-height: 1.5;
+      padding: 3px 11px; border-radius: 99px;
+      background: rgba(124,110,255,0.10);
+      border: 1px solid rgba(124,110,255,0.22);
+      color: var(--text);
+      transition: border-color var(--transition), transform 0.2s ease;
+    }
+    .poke-chip:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
     /* Tips */
     .tips-grid {
       display: grid;
@@ -218,11 +269,16 @@
 
     /* Closing note */
     .portal-note {
-      background: var(--surface); border: 1px dashed var(--border2);
-      border-radius: var(--radius); padding: 1rem 1.25rem;
-      color: var(--muted); font-size: 0.84rem; line-height: 1.7;
+      background: linear-gradient(135deg, rgba(124,110,255,0.07), rgba(79,209,197,0.06));
+      border: 1px solid rgba(124,110,255,0.25);
+      border-radius: var(--radius-lg); padding: 1.5rem 1.5rem;
+      color: var(--muted); font-size: 0.9rem; line-height: 1.8;
       text-align: center;
       margin-bottom: 2rem;
+    }
+    .portal-note .outro-ico {
+      display: block; font-size: 1.6rem; line-height: 1;
+      margin-bottom: 0.6rem;
     }
 
     /* Hashtag row */
@@ -270,13 +326,23 @@
       <!-- Intro -->
       <p class="post-intro fade-up fade-up-1" id="intro">Copenhagen is more than a fairy-tale city — for trainers it's a playground full of treasure. Whether you're planning a trip to Denmark or just looking for a fresh place to grind, these five curated hotspots will supercharge your Pokédex progress.</p>
 
+      <!-- Quick jump -->
+      <div class="spot-jump fade-up fade-up-1">
+        <a class="jump-chip" href="#spot-1"><span class="jump-ico">🏟️</span><span id="jump-1">01 · Fælledparken</span></a>
+        <a class="jump-chip" href="#spot-2"><span class="jump-ico">🎡</span><span id="jump-2">02 · Tivoli Gardens</span></a>
+        <a class="jump-chip" href="#spot-3"><span class="jump-ico">⚓</span><span id="jump-3">03 · Nyhavn</span></a>
+        <a class="jump-chip" href="#spot-4"><span class="jump-ico">🏰</span><span id="jump-4">04 · Kongens Have</span></a>
+        <a class="jump-chip" href="#spot-5"><span class="jump-ico">🏖️</span><span id="jump-5">05 · Amager Beach Park</span></a>
+      </div>
+
       <!-- 5 Hotspots -->
       <div class="fade-up fade-up-1">
         <div class="section-label-row">📍 <span id="label-spots">Five Recommended Hotspots</span></div>
 
-        <div class="spot-card">
+        <div class="spot-card" id="spot-1">
           <div class="spot-head">
             <span class="spot-num">01</span>
+            <span class="spot-icon">🏟️</span>
             <h2 class="spot-name" id="spot-1-name">Fælledparken</h2>
           </div>
           <div class="spot-coord">
@@ -286,7 +352,7 @@
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="pokemon">Featured Pokémon</span>
-            <span class="meta-val" id="spot-1-pokemon">Zeraora (Special Research), Mega Mewtwo (5-star raids), Paldean Tauros (Fighting), Comfey, event-cap Pikachu.</span>
+            <span class="meta-val poke-chips" id="spot-1-pokemon">Zeraora (Special Research), Mega Mewtwo (5-star raids), Paldean Tauros (Fighting), Comfey, event-cap Pikachu.</span>
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="reason">Why Go</span>
@@ -294,9 +360,10 @@
           </div>
         </div>
 
-        <div class="spot-card">
+        <div class="spot-card" id="spot-2">
           <div class="spot-head">
             <span class="spot-num">02</span>
+            <span class="spot-icon">🎡</span>
             <h2 class="spot-name" id="spot-2-name">Tivoli Gardens</h2>
           </div>
           <div class="spot-coord">
@@ -306,7 +373,7 @@
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="pokemon">Featured Pokémon</span>
-            <span class="meta-val" id="spot-2-pokemon">Poké Ball-cap Caterpie, Abra, Eevee, Pidgey.</span>
+            <span class="meta-val poke-chips" id="spot-2-pokemon">Poké Ball-cap Caterpie, Abra, Eevee, Pidgey.</span>
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="reason">Why Go</span>
@@ -314,9 +381,10 @@
           </div>
         </div>
 
-        <div class="spot-card">
+        <div class="spot-card" id="spot-3">
           <div class="spot-head">
             <span class="spot-num">03</span>
+            <span class="spot-icon">⚓</span>
             <h2 class="spot-name" id="spot-3-name">Nyhavn</h2>
           </div>
           <div class="spot-coord">
@@ -326,7 +394,7 @@
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="pokemon">Featured Pokémon</span>
-            <span class="meta-val" id="spot-3-pokemon">Squirtle, Psyduck, Shellder, Primal Kyogre.</span>
+            <span class="meta-val poke-chips" id="spot-3-pokemon">Squirtle, Psyduck, Shellder, Primal Kyogre.</span>
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="reason">Why Go</span>
@@ -334,9 +402,10 @@
           </div>
         </div>
 
-        <div class="spot-card">
+        <div class="spot-card" id="spot-4">
           <div class="spot-head">
             <span class="spot-num">04</span>
+            <span class="spot-icon">🏰</span>
             <h2 class="spot-name" id="spot-4-name">Kongens Have</h2>
           </div>
           <div class="spot-coord">
@@ -346,7 +415,7 @@
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="pokemon">Featured Pokémon</span>
-            <span class="meta-val" id="spot-4-pokemon">Comfey, Scyther, Butterfree, Paras, Mudbray, Charcadet, Dhelmise.</span>
+            <span class="meta-val poke-chips" id="spot-4-pokemon">Comfey, Scyther, Butterfree, Paras, Mudbray, Charcadet, Dhelmise.</span>
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="reason">Why Go</span>
@@ -354,9 +423,10 @@
           </div>
         </div>
 
-        <div class="spot-card">
+        <div class="spot-card" id="spot-5">
           <div class="spot-head">
             <span class="spot-num">05</span>
+            <span class="spot-icon">🏖️</span>
             <h2 class="spot-name" id="spot-5-name">Amager Beach Park</h2>
           </div>
           <div class="spot-coord">
@@ -366,7 +436,7 @@
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="pokemon">Featured Pokémon</span>
-            <span class="meta-val" id="spot-5-pokemon">Krabby, Staryu, Corsola, Vulpix (rainy-weather special: Poliwag).</span>
+            <span class="meta-val poke-chips" id="spot-5-pokemon">Krabby, Staryu, Corsola, Vulpix (rainy-weather special: Poliwag).</span>
           </div>
           <div class="meta-line">
             <span class="meta-key" data-l="reason">Why Go</span>
@@ -398,7 +468,10 @@
       </div>
 
       <!-- Closing note -->
-      <div class="portal-note fade-up fade-up-2" id="outro">Wishing every trainer a 100% catch rate in Copenhagen — complete that Pokédex! If this guide helped, share it with your raid crew.</div>
+      <div class="portal-note fade-up fade-up-2">
+        <span class="outro-ico">🎯</span>
+        <span id="outro">Wishing every trainer a 100% catch rate in Copenhagen — complete that Pokédex! If this guide helped, share it with your raid crew.</span>
+      </div>
 
       <!-- Hashtags -->
       <div class="hashtag-row fade-up fade-up-2">
@@ -582,6 +655,18 @@
       },
     };
 
+    // Split a localized Pokémon list ("A、B、C。" / "A, B, C.") into pill chips
+    function renderPokeChips(el, str) {
+      const items = str.replace(/[。.]\s*$/, '').split(/、|,\s+/).map(s => s.trim()).filter(Boolean);
+      el.innerHTML = '';
+      items.forEach(name => {
+        const chip = document.createElement('span');
+        chip.className = 'poke-chip';
+        chip.textContent = name;
+        el.appendChild(chip);
+      });
+    }
+
     function copyCoord(btn, coord) {
       navigator.clipboard.writeText(coord).then(() => {
         const p = PAGE_TEXT[getLang()] || PAGE_TEXT.en;
@@ -610,9 +695,12 @@
 
       p.spots.forEach((s, i) => {
         const n = i + 1;
-        document.getElementById('spot-' + n + '-name').textContent    = s.name;
-        document.getElementById('spot-' + n + '-pokemon').textContent = s.pokemon;
-        document.getElementById('spot-' + n + '-reason').textContent  = s.reason;
+        document.getElementById('spot-' + n + '-name').textContent   = s.name;
+        document.getElementById('spot-' + n + '-reason').textContent = s.reason;
+        renderPokeChips(document.getElementById('spot-' + n + '-pokemon'), s.pokemon);
+        // Quick-jump label: "01 · <short name>" (drop the latin part in zh variants)
+        const short = s.name.split(' (')[0];
+        document.getElementById('jump-' + n).textContent = '0' + n + ' · ' + short;
       });
       p.tips.forEach((tip, i) => {
         const n = i + 1;

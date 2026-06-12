@@ -4,6 +4,22 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.37] — 2026-06-12
+
+### Changed — Copenhagen post GUI polish (page-scoped)
+
+- `pages/post-pokemon-go-copenhagen.html` visual upgrade (no other pages touched):
+  - **Quick-jump bar** — five icon chips (🏟️🎡⚓🏰🏖️) under the intro that anchor-scroll to each
+    spot card (`scroll-margin-top` compensates for the fixed nav; labels localized per language).
+  - **Spot cards** — gradient circular number badges, per-spot emoji icon next to the name,
+    accent left-border + soft shadow lift on hover.
+  - **Pokémon pill chips** — featured-Pokémon lists now render as individual rounded chips
+    (split from the localized list at runtime; plain text kept in static HTML for SEO).
+  - **Closing note** — upgraded from a dashed box to a gradient banner with a 🎯 icon.
+- No functional/structural changes — same IDs, i18n tables and `applyPageText()` flow.
+
+---
+
 ## [1.0.36] — 2026-06-12
 
 ### Added — Blog post: Copenhagen Top 5 Pokémon GO Hotspot Coordinates
