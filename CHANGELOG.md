@@ -4,6 +4,16 @@ All notable changes to the SpaceSquare website are recorded here.
 
 ---
 
+## [1.0.38] — 2026-06-12
+
+### Fixed — Fælledparken coordinate correction (Copenhagen post)
+
+- `pages/post-pokemon-go-copenhagen.html` — spot 01 (Fælledparken) coordinates corrected from
+  `55.6932, 12.5687` to `55.701696, 12.56613` (the previous point sat slightly off the park).
+  Updated in all three places: displayed value, copy-button payload and Google Maps link.
+
+---
+
 ## [1.0.37] — 2026-06-12
 
 ### Changed — Copenhagen post GUI polish (page-scoped)
